@@ -1,0 +1,397 @@
+execve("./devquery", ["./devquery"], [/* 18 vars */]) = 0
+brk(0)                                  = 0x12000
+uname({sys="Linux", node="localhost.localdomain", ...}) = 0
+access("/etc/ld.so.nohwcap", F_OK)      = -1 ENOENT (No such file or directory)
+mmap2(NULL, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0xb6fbe000
+access("/etc/ld.so.preload", R_OK)      = -1 ENOENT (No such file or directory)
+open("/usr/local/pocl/lib/tls/v7l/neon/vfp/libOpenCL.so.1", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+stat64("/usr/local/pocl/lib/tls/v7l/neon/vfp", 0xbed67e40) = -1 ENOENT (No such file or directory)
+open("/usr/local/pocl/lib/tls/v7l/neon/libOpenCL.so.1", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+stat64("/usr/local/pocl/lib/tls/v7l/neon", 0xbed67e40) = -1 ENOENT (No such file or directory)
+open("/usr/local/pocl/lib/tls/v7l/vfp/libOpenCL.so.1", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+stat64("/usr/local/pocl/lib/tls/v7l/vfp", 0xbed67e40) = -1 ENOENT (No such file or directory)
+open("/usr/local/pocl/lib/tls/v7l/libOpenCL.so.1", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+stat64("/usr/local/pocl/lib/tls/v7l", 0xbed67e40) = -1 ENOENT (No such file or directory)
+open("/usr/local/pocl/lib/tls/neon/vfp/libOpenCL.so.1", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+stat64("/usr/local/pocl/lib/tls/neon/vfp", 0xbed67e40) = -1 ENOENT (No such file or directory)
+open("/usr/local/pocl/lib/tls/neon/libOpenCL.so.1", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+stat64("/usr/local/pocl/lib/tls/neon", 0xbed67e40) = -1 ENOENT (No such file or directory)
+open("/usr/local/pocl/lib/tls/vfp/libOpenCL.so.1", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+stat64("/usr/local/pocl/lib/tls/vfp", 0xbed67e40) = -1 ENOENT (No such file or directory)
+open("/usr/local/pocl/lib/tls/libOpenCL.so.1", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+stat64("/usr/local/pocl/lib/tls", 0xbed67e40) = -1 ENOENT (No such file or directory)
+open("/usr/local/pocl/lib/v7l/neon/vfp/libOpenCL.so.1", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+stat64("/usr/local/pocl/lib/v7l/neon/vfp", 0xbed67e40) = -1 ENOENT (No such file or directory)
+open("/usr/local/pocl/lib/v7l/neon/libOpenCL.so.1", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+stat64("/usr/local/pocl/lib/v7l/neon", 0xbed67e40) = -1 ENOENT (No such file or directory)
+open("/usr/local/pocl/lib/v7l/vfp/libOpenCL.so.1", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+stat64("/usr/local/pocl/lib/v7l/vfp", 0xbed67e40) = -1 ENOENT (No such file or directory)
+open("/usr/local/pocl/lib/v7l/libOpenCL.so.1", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+stat64("/usr/local/pocl/lib/v7l", 0xbed67e40) = -1 ENOENT (No such file or directory)
+open("/usr/local/pocl/lib/neon/vfp/libOpenCL.so.1", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+stat64("/usr/local/pocl/lib/neon/vfp", 0xbed67e40) = -1 ENOENT (No such file or directory)
+open("/usr/local/pocl/lib/neon/libOpenCL.so.1", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+stat64("/usr/local/pocl/lib/neon", 0xbed67e40) = -1 ENOENT (No such file or directory)
+open("/usr/local/pocl/lib/vfp/libOpenCL.so.1", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+stat64("/usr/local/pocl/lib/vfp", 0xbed67e40) = -1 ENOENT (No such file or directory)
+open("/usr/local/pocl/lib/libOpenCL.so.1", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\1\1\1\0\0\0\0\0\0\0\0\0\3\0(\0\1\0\0\0\320\333/\0004\0\0\0"..., 512) = 512
+lseek(3, 35035680, SEEK_SET)            = 35035680
+read(3, "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"..., 1520) = 1520
+lseek(3, 24005958, SEEK_SET)            = 24005958
+read(3, "A6\0\0\0aeabi\0\1,\0\0\0\0057-A\0\6\n\7A\10\1\t\2\n\4\22"..., 55) = 55
+fstat64(3, {st_mode=S_IFREG|0755, st_size=40230280, ...}) = 0
+mmap2(NULL, 24081744, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0xb58ab000
+mprotect(0xb6e14000, 28672, PROT_NONE)  = 0
+mmap2(0xb6e1b000, 1560576, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x1568) = 0xb6e1b000
+mmap2(0xb6f98000, 42320, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0xb6f98000
+close(3)                                = 0
+open("/usr/local/pocl/lib/libc.so.6", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+open("/etc/ld.so.cache", O_RDONLY|O_CLOEXEC) = 3
+fstat64(3, {st_mode=S_IFREG|0644, st_size=68369, ...}) = 0
+mmap2(NULL, 68369, PROT_READ, MAP_PRIVATE, 3, 0) = 0xb589a000
+close(3)                                = 0
+access("/etc/ld.so.nohwcap", F_OK)      = -1 ENOENT (No such file or directory)
+open("/lib/arm-linux-gnueabihf/libc.so.6", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\1\1\1\0\0\0\0\0\0\0\0\0\3\0(\0\1\0\0\0\355p\1\0004\0\0\0"..., 512) = 512
+lseek(3, 880572, SEEK_SET)              = 880572
+read(3, "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"..., 1360) = 1360
+lseek(3, 880132, SEEK_SET)              = 880132
+read(3, "A4\0\0\0aeabi\0\1*\0\0\0\0057-A\0\6\n\7A\10\1\t\2\n\4\22"..., 53) = 53
+fstat64(3, {st_mode=S_IFREG|0755, st_size=881932, ...}) = 0
+mmap2(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0xb6fbd000
+mmap2(NULL, 923008, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0xb57b8000
+mprotect(0xb588c000, 32768, PROT_NONE)  = 0
+mmap2(0xb5894000, 12288, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0xd4) = 0xb5894000
+mmap2(0xb5897000, 9600, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0xb5897000
+close(3)                                = 0
+open("/usr/local/pocl/lib/libhwloc.so.5", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+access("/etc/ld.so.nohwcap", F_OK)      = -1 ENOENT (No such file or directory)
+open("/usr/local/lib/libhwloc.so.5", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\1\1\1\0\0\0\0\0\0\0\0\0\3\0(\0\1\0\0\0 <\0\0004\0\0\0"..., 512) = 512
+lseek(3, 673572, SEEK_SET)              = 673572
+read(3, "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"..., 1480) = 1480
+lseek(3, 140262, SEEK_SET)              = 140262
+read(3, "A6\0\0\0aeabi\0\1,\0\0\0\0057-A\0\6\n\7A\10\1\t\2\n\4\22"..., 55) = 55
+fstat64(3, {st_mode=S_IFREG|0755, st_size=708673, ...}) = 0
+mmap2(NULL, 173092, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0xb578d000
+mprotect(0xb57af000, 28672, PROT_NONE)  = 0
+mmap2(0xb57b6000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x21) = 0xb57b6000
+close(3)                                = 0
+open("/usr/local/pocl/lib/libltdl.so.7", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+access("/etc/ld.so.nohwcap", F_OK)      = -1 ENOENT (No such file or directory)
+open("/usr/lib/arm-linux-gnueabihf/libltdl.so.7", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\1\1\1\0\0\0\0\0\0\0\0\0\3\0(\0\1\0\0\0\300\26\0\0004\0\0\0"..., 512) = 512
+lseek(3, 21016, SEEK_SET)               = 21016
+read(3, "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"..., 1040) = 1040
+lseek(3, 20700, SEEK_SET)               = 20700
+read(3, "A6\0\0\0aeabi\0\1,\0\0\0\0057-A\0\6\n\7A\10\1\t\2\n\4\22"..., 55) = 55
+fstat64(3, {st_mode=S_IFREG|0644, st_size=22056, ...}) = 0
+mmap2(NULL, 53512, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0xb577f000
+mprotect(0xb5784000, 28672, PROT_NONE)  = 0
+mmap2(0xb578b000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x4) = 0xb578b000
+close(3)                                = 0
+open("/usr/local/pocl/lib/libpthread.so.0", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+access("/etc/ld.so.nohwcap", F_OK)      = -1 ENOENT (No such file or directory)
+open("/lib/arm-linux-gnueabihf/libpthread.so.0", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\1\1\1\0\0\0\0\0\0\0\0\0\3\0(\0\1\0\0\0\5P\0\0004\0\0\0"..., 512) = 512
+lseek(3, 66332, SEEK_SET)               = 66332
+read(3, "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"..., 1400) = 1400
+lseek(3, 65924, SEEK_SET)               = 65924
+read(3, "A6\0\0\0aeabi\0\1,\0\0\0\0057-A\0\6\n\7A\10\1\t\2\n\4\22"..., 55) = 55
+fstat64(3, {st_mode=S_IFREG|0755, st_size=100802, ...}) = 0
+mmap2(NULL, 107024, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0xb5764000
+mprotect(0xb5774000, 28672, PROT_NONE)  = 0
+mmap2(0xb577b000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0xf) = 0xb577b000
+mmap2(0xb577d000, 4624, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0xb577d000
+close(3)                                = 0
+open("/usr/local/pocl/lib/libstdc++.so.6", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+access("/etc/ld.so.nohwcap", F_OK)      = -1 ENOENT (No such file or directory)
+open("/usr/lib/arm-linux-gnueabihf/libstdc++.so.6", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\1\1\1\0\0\0\0\0\0\0\0\0\3\0(\0\1\0\0\0\10`\4\0004\0\0\0"..., 512) = 512
+lseek(3, 623424, SEEK_SET)              = 623424
+read(3, "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"..., 1200) = 1200
+lseek(3, 623064, SEEK_SET)              = 623064
+read(3, "A6\0\0\0aeabi\0\1,\0\0\0\0057-A\0\6\n\7A\10\1\t\2\n\4\22"..., 55) = 55
+fstat64(3, {st_mode=S_IFREG|0644, st_size=624624, ...}) = 0
+mmap2(NULL, 683360, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0xb56bd000
+mprotect(0xb5751000, 32768, PROT_NONE)  = 0
+mmap2(0xb5759000, 20480, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x94) = 0xb5759000
+mmap2(0xb575e000, 23904, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0xb575e000
+close(3)                                = 0
+open("/usr/local/pocl/lib/libgcc_s.so.1", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+access("/etc/ld.so.nohwcap", F_OK)      = -1 ENOENT (No such file or directory)
+open("/lib/arm-linux-gnueabihf/libgcc_s.so.1", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\1\1\1\0\0\0\0\0\0\0\0\0\3\0(\0\1\0\0\0\340%\0\0004\0\0\0"..., 512) = 512
+lseek(3, 33324, SEEK_SET)               = 33324
+read(3, "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"..., 1120) = 1120
+lseek(3, 32988, SEEK_SET)               = 32988
+read(3, "A6\0\0\0aeabi\0\1,\0\0\0\0057-A\0\6\n\7A\10\1\t\2\n\4\22"..., 55) = 55
+fstat64(3, {st_mode=S_IFREG|0644, st_size=34444, ...}) = 0
+mmap2(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0xb6fbc000
+mmap2(NULL, 65812, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0xb56ac000
+mprotect(0xb56b4000, 28672, PROT_NONE)  = 0
+mmap2(0xb56bb000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x7) = 0xb56bb000
+close(3)                                = 0
+open("/usr/local/pocl/lib/libdl.so.2", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+access("/etc/ld.so.nohwcap", F_OK)      = -1 ENOENT (No such file or directory)
+open("/lib/arm-linux-gnueabihf/libdl.so.2", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\1\1\1\0\0\0\0\0\0\0\0\0\3\0(\0\1\0\0\0<\t\0\0004\0\0\0"..., 512) = 512
+lseek(3, 8656, SEEK_SET)                = 8656
+read(3, "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"..., 1160) = 1160
+lseek(3, 8320, SEEK_SET)                = 8320
+read(3, "A6\0\0\0aeabi\0\1,\0\0\0\0057-A\0\6\n\7A\10\1\t\2\n\4\22"..., 55) = 55
+fstat64(3, {st_mode=S_IFREG|0644, st_size=9816, ...}) = 0
+mmap2(NULL, 41136, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0xb56a1000
+mprotect(0xb56a3000, 28672, PROT_NONE)  = 0
+mmap2(0xb56aa000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x1) = 0xb56aa000
+close(3)                                = 0
+open("/usr/local/pocl/lib/libm.so.6", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+access("/etc/ld.so.nohwcap", F_OK)      = -1 ENOENT (No such file or directory)
+open("/lib/arm-linux-gnueabihf/libm.so.6", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\1\1\1\0\0\0\0\0\0\0\0\0\3\0(\0\1\0\0\0\230;\0\0004\0\0\0"..., 512) = 512
+lseek(3, 397768, SEEK_SET)              = 397768
+read(3, "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"..., 1160) = 1160
+lseek(3, 397432, SEEK_SET)              = 397432
+read(3, "A6\0\0\0aeabi\0\1,\0\0\0\0057-A\0\6\n\7A\10\1\t\2\n\4\22"..., 55) = 55
+fstat64(3, {st_mode=S_IFREG|0644, st_size=398928, ...}) = 0
+mmap2(NULL, 430208, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0xb5637000
+mprotect(0xb5698000, 28672, PROT_NONE)  = 0
+mmap2(0xb569f000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x60) = 0xb569f000
+close(3)                                = 0
+writev(2, [{"./devquery", 10}, {": ", 2}, {"/usr/local/pocl/lib/libOpenCL.so"..., 34}, {": ", 2}, {"no version information available"..., 57}, {"\n", 1}], 6./devquery: /usr/local/pocl/lib/libOpenCL.so.1: no version information available (required by ./devquery)
+) = 106
+mmap2(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0xb6fbb000
+mmap2(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0xb6fba000
+set_tls(0xb6fba4c0, 0xb6fbaba8, 0xb6fc2048, 0xb6fba4c0, 0xb6fbb3d0) = 0
+mprotect(0xb5894000, 8192, PROT_READ)   = 0
+mprotect(0xb569f000, 4096, PROT_READ)   = 0
+mprotect(0xb56aa000, 4096, PROT_READ)   = 0
+mprotect(0xb56bb000, 4096, PROT_READ)   = 0
+mmap2(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0xb5636000
+mprotect(0xb5759000, 12288, PROT_READ)  = 0
+mprotect(0xb577b000, 4096, PROT_READ)   = 0
+mprotect(0xb578b000, 4096, PROT_READ)   = 0
+mprotect(0xb57b6000, 4096, PROT_READ)   = 0
+mprotect(0xb6e1b000, 1490944, PROT_READ) = 0
+mprotect(0x10000, 4096, PROT_READ)      = 0
+mprotect(0xb6fc1000, 4096, PROT_READ)   = 0
+munmap(0xb589a000, 68369)               = 0
+set_tid_address(0xb6fba068)             = 11008
+set_robust_list(0xb6fba070, 0xc)        = 0
+rt_sigaction(SIGRTMIN, {0xb5768cfd, [], SA_SIGINFO|0x4000000}, NULL, 8) = 0
+rt_sigaction(SIGRT_1, {0xb5768c11, [], SA_RESTART|SA_SIGINFO|0x4000000}, NULL, 8) = 0
+rt_sigprocmask(SIG_UNBLOCK, [RTMIN RT_1], NULL, 8) = 0
+getrlimit(RLIMIT_STACK, {rlim_cur=8192*1024, rlim_max=RLIM_INFINITY}) = 0
+futex(0xb575ddac, FUTEX_WAKE_PRIVATE, 2147483647) = 0
+brk(0)                                  = 0x12000
+brk(0x33000)                            = 0x33000
+gettimeofday({1450361976, 120776}, NULL) = 0
+gettimeofday({1450361976, 121052}, NULL) = 0
+fstat64(1, {st_mode=S_IFREG|0644, st_size=14395, ...}) = 0
+mmap2(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0xb58aa000
+access("/proc/cpuinfo", R_OK)           = 0
+open("/proc/cpuinfo", O_RDONLY)         = 3
+fstat64(3, {st_mode=S_IFREG|0444, st_size=0, ...}) = 0
+mmap2(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0xb58a9000
+read(3, "processor\t: 0\nmodel name\t: ARMv7"..., 64512) = 511
+read(3, "", 64512)                      = 0
+close(3)                                = 0
+munmap(0xb58a9000, 4096)                = 0
+access("/sys/devices/system/cpu/cpu0/cpufreq/cpuinfo_max_freq", R_OK) = -1 ENOENT (No such file or directory)
+access("/proc/cpuinfo", R_OK)           = 0
+open("/proc/cpuinfo", O_RDONLY)         = 3
+fstat64(3, {st_mode=S_IFREG|0444, st_size=0, ...}) = 0
+mmap2(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0xb58a9000
+read(3, "processor\t: 0\nmodel name\t: ARMv7"..., 64512) = 511
+read(3, "", 64512)                      = 0
+close(3)                                = 0
+munmap(0xb58a9000, 4096)                = 0
+access("/proc/cpuinfo", R_OK)           = 0
+open("/proc/cpuinfo", O_RDONLY)         = 3
+fstat64(3, {st_mode=S_IFREG|0444, st_size=0, ...}) = 0
+mmap2(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0xb58a9000
+read(3, "processor\t: 0\nmodel name\t: ARMv7"..., 64512) = 511
+read(3, "", 64512)                      = 0
+open("/", O_RDONLY|O_DIRECTORY)         = 4
+fcntl64(4, F_GETFD)                     = 0
+fcntl64(4, F_SETFD, FD_CLOEXEC)         = 0
+uname({sys="Linux", node="localhost.localdomain", ...}) = 0
+openat(4, "proc/hwloc-nofile-info", O_RDONLY) = -1 ENOENT (No such file or directory)
+openat(4, "proc/mounts", O_RDONLY)      = 5
+fcntl64(5, F_GETFL)                     = 0 (flags O_RDONLY)
+fstat64(5, {st_mode=S_IFREG|0444, st_size=0, ...}) = 0
+mmap2(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0xb58a8000
+_llseek(5, 0, [0], SEEK_CUR)            = 0
+read(5, "rootfs / rootfs rw 0 0\n/dev/root"..., 1024) = 562
+read(5, "", 1024)                       = 0
+close(5)                                = 0
+munmap(0xb58a8000, 4096)                = 0
+openat(4, "proc/nodes", O_RDONLY|O_DIRECTORY) = -1 ENOENT (No such file or directory)
+newfstatat(4, "sys/kernel/mm/hugepages", 0xbed67368, 0) = -1 ENOENT (No such file or directory)
+openat(4, "proc/meminfo", O_RDONLY)     = 5
+fcntl64(5, F_GETFL)                     = 0 (flags O_RDONLY)
+fstat64(5, {st_mode=S_IFREG|0444, st_size=0, ...}) = 0
+mmap2(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0xb58a8000
+_llseek(5, 0, [0], SEEK_CUR)            = 0
+read(5, "MemTotal:         511732 kB\nMemF"..., 1024) = 1024
+read(5, "  239228 kB\n", 1024)          = 12
+read(5, "", 1024)                       = 0
+close(5)                                = 0
+munmap(0xb58a8000, 4096)                = 0
+openat(4, "sys/bus/node/devices", O_RDONLY|O_DIRECTORY) = -1 ENOENT (No such file or directory)
+openat(4, "sys/devices/system/node", O_RDONLY|O_DIRECTORY) = -1 ENOENT (No such file or directory)
+faccessat(4, "sys/devices/system/cpu/cpu0/topology/core_siblings", R_OK) = 0
+openat(4, "proc/cpuinfo", O_RDONLY)     = 5
+fcntl64(5, F_GETFL)                     = 0 (flags O_RDONLY)
+fstat64(5, {st_mode=S_IFREG|0444, st_size=0, ...}) = 0
+mmap2(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0xb58a8000
+_llseek(5, 0, [0], SEEK_CUR)            = 0
+read(5, "processor\t: 0\nmodel name\t: ARMv7"..., 1024) = 511
+read(5, "", 1024)                       = 0
+close(5)                                = 0
+munmap(0xb58a8000, 4096)                = 0
+openat(4, "sys/bus/cpu/devices", O_RDONLY|O_DIRECTORY) = 5
+fstat64(5, {st_mode=S_IFDIR|0755, st_size=0, ...}) = 0
+fcntl64(5, F_GETFL)                     = 0x4000 (flags O_RDONLY|O_DIRECTORY)
+fcntl64(5, F_SETFD, FD_CLOEXEC)         = 0
+getdents(5, /* 4 entries */, 32768)     = 64
+openat(4, "sys/bus/cpu/devices/cpu0/online", O_RDONLY) = 6
+fcntl64(6, F_GETFL)                     = 0 (flags O_RDONLY)
+fstat64(6, {st_mode=S_IFREG|0644, st_size=4096, ...}) = 0
+mmap2(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0xb58a8000
+_llseek(6, 0, [0], SEEK_CUR)            = 0
+read(6, "1\n", 4096)                    = 2
+close(6)                                = 0
+munmap(0xb58a8000, 4096)                = 0
+faccessat(4, "sys/bus/cpu/devices/cpu0/topology", X_OK) = 0
+openat(4, "sys/bus/cpu/devices/cpu1/online", O_RDONLY) = 6
+fcntl64(6, F_GETFL)                     = 0 (flags O_RDONLY)
+fstat64(6, {st_mode=S_IFREG|0644, st_size=4096, ...}) = 0
+mmap2(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0xb58a8000
+_llseek(6, 0, [0], SEEK_CUR)            = 0
+read(6, "1\n", 4096)                    = 2
+close(6)                                = 0
+munmap(0xb58a8000, 4096)                = 0
+faccessat(4, "sys/bus/cpu/devices/cpu1/topology", X_OK) = 0
+getdents(5, /* 0 entries */, 32768)     = 0
+close(5)                                = 0
+openat(4, "sys/bus/cpu/devices/cpu0/topology/physical_package_id", O_RDONLY) = 5
+fcntl64(5, F_GETFL)                     = 0 (flags O_RDONLY)
+fstat64(5, {st_mode=S_IFREG|0444, st_size=4096, ...}) = 0
+mmap2(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0xb58a8000
+_llseek(5, 0, [0], SEEK_CUR)            = 0
+read(5, "0\n", 4096)                    = 2
+close(5)                                = 0
+munmap(0xb58a8000, 4096)                = 0
+openat(4, "sys/bus/cpu/devices/cpu0/topology/core_siblings", O_RDONLY) = 5
+fcntl64(5, F_GETFL)                     = 0 (flags O_RDONLY)
+fstat64(5, {st_mode=S_IFREG|0444, st_size=4096, ...}) = 0
+mmap2(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0xb58a8000
+_llseek(5, 0, [0], SEEK_CUR)            = 0
+read(5, "3\n", 4096)                    = 2
+read(5, "", 4096)                       = 0
+close(5)                                = 0
+munmap(0xb58a8000, 4096)                = 0
+openat(4, "sys/bus/cpu/devices/cpu0/topology/core_id", O_RDONLY) = 5
+fcntl64(5, F_GETFL)                     = 0 (flags O_RDONLY)
+fstat64(5, {st_mode=S_IFREG|0444, st_size=4096, ...}) = 0
+mmap2(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0xb58a8000
+_llseek(5, 0, [0], SEEK_CUR)            = 0
+read(5, "0\n", 4096)                    = 2
+close(5)                                = 0
+munmap(0xb58a8000, 4096)                = 0
+openat(4, "sys/bus/cpu/devices/cpu0/topology/thread_siblings", O_RDONLY) = 5
+fcntl64(5, F_GETFL)                     = 0 (flags O_RDONLY)
+fstat64(5, {st_mode=S_IFREG|0444, st_size=4096, ...}) = 0
+mmap2(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0xb58a8000
+_llseek(5, 0, [0], SEEK_CUR)            = 0
+read(5, "1\n", 4096)                    = 2
+read(5, "", 4096)                       = 0
+close(5)                                = 0
+munmap(0xb58a8000, 4096)                = 0
+openat(4, "sys/bus/cpu/devices/cpu0/topology/book_id", O_RDONLY) = -1 ENOENT (No such file or directory)
+openat(4, "sys/bus/cpu/devices/cpu0/cache/index0/level", O_RDONLY) = -1 ENOENT (No such file or directory)
+openat(4, "sys/bus/cpu/devices/cpu0/cache/index1/level", O_RDONLY) = -1 ENOENT (No such file or directory)
+openat(4, "sys/bus/cpu/devices/cpu0/cache/index2/level", O_RDONLY) = -1 ENOENT (No such file or directory)
+openat(4, "sys/bus/cpu/devices/cpu0/cache/index3/level", O_RDONLY) = -1 ENOENT (No such file or directory)
+openat(4, "sys/bus/cpu/devices/cpu0/cache/index4/level", O_RDONLY) = -1 ENOENT (No such file or directory)
+openat(4, "sys/bus/cpu/devices/cpu0/cache/index5/level", O_RDONLY) = -1 ENOENT (No such file or directory)
+openat(4, "sys/bus/cpu/devices/cpu0/cache/index6/level", O_RDONLY) = -1 ENOENT (No such file or directory)
+openat(4, "sys/bus/cpu/devices/cpu0/cache/index7/level", O_RDONLY) = -1 ENOENT (No such file or directory)
+openat(4, "sys/bus/cpu/devices/cpu0/cache/index8/level", O_RDONLY) = -1 ENOENT (No such file or directory)
+openat(4, "sys/bus/cpu/devices/cpu0/cache/index9/level", O_RDONLY) = -1 ENOENT (No such file or directory)
+openat(4, "sys/bus/cpu/devices/cpu1/topology/physical_package_id", O_RDONLY) = 5
+fcntl64(5, F_GETFL)                     = 0 (flags O_RDONLY)
+fstat64(5, {st_mode=S_IFREG|0444, st_size=4096, ...}) = 0
+mmap2(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0xb58a8000
+_llseek(5, 0, [0], SEEK_CUR)            = 0
+read(5, "0\n", 4096)                    = 2
+close(5)                                = 0
+munmap(0xb58a8000, 4096)                = 0
+openat(4, "sys/bus/cpu/devices/cpu1/topology/core_siblings", O_RDONLY) = 5
+fcntl64(5, F_GETFL)                     = 0 (flags O_RDONLY)
+fstat64(5, {st_mode=S_IFREG|0444, st_size=4096, ...}) = 0
+mmap2(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0xb58a8000
+_llseek(5, 0, [0], SEEK_CUR)            = 0
+read(5, "3\n", 4096)                    = 2
+read(5, "", 4096)                       = 0
+close(5)                                = 0
+munmap(0xb58a8000, 4096)                = 0
+openat(4, "sys/bus/cpu/devices/cpu1/topology/core_id", O_RDONLY) = 5
+fcntl64(5, F_GETFL)                     = 0 (flags O_RDONLY)
+fstat64(5, {st_mode=S_IFREG|0444, st_size=4096, ...}) = 0
+mmap2(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0xb58a8000
+_llseek(5, 0, [0], SEEK_CUR)            = 0
+read(5, "1\n", 4096)                    = 2
+close(5)                                = 0
+munmap(0xb58a8000, 4096)                = 0
+openat(4, "sys/bus/cpu/devices/cpu1/topology/thread_siblings", O_RDONLY) = 5
+fcntl64(5, F_GETFL)                     = 0 (flags O_RDONLY)
+fstat64(5, {st_mode=S_IFREG|0444, st_size=4096, ...}) = 0
+mmap2(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0xb58a8000
+_llseek(5, 0, [0], SEEK_CUR)            = 0
+read(5, "2\n", 4096)                    = 2
+read(5, "", 4096)                       = 0
+close(5)                                = 0
+munmap(0xb58a8000, 4096)                = 0
+openat(4, "sys/bus/cpu/devices/cpu1/topology/book_id", O_RDONLY) = -1 ENOENT (No such file or directory)
+openat(4, "sys/bus/cpu/devices/cpu1/cache/index0/level", O_RDONLY) = -1 ENOENT (No such file or directory)
+openat(4, "sys/bus/cpu/devices/cpu1/cache/index1/level", O_RDONLY) = -1 ENOENT (No such file or directory)
+openat(4, "sys/bus/cpu/devices/cpu1/cache/index2/level", O_RDONLY) = -1 ENOENT (No such file or directory)
+openat(4, "sys/bus/cpu/devices/cpu1/cache/index3/level", O_RDONLY) = -1 ENOENT (No such file or directory)
+openat(4, "sys/bus/cpu/devices/cpu1/cache/index4/level", O_RDONLY) = -1 ENOENT (No such file or directory)
+openat(4, "sys/bus/cpu/devices/cpu1/cache/index5/level", O_RDONLY) = -1 ENOENT (No such file or directory)
+openat(4, "sys/bus/cpu/devices/cpu1/cache/index6/level", O_RDONLY) = -1 ENOENT (No such file or directory)
+openat(4, "sys/bus/cpu/devices/cpu1/cache/index7/level", O_RDONLY) = -1 ENOENT (No such file or directory)
+openat(4, "sys/bus/cpu/devices/cpu1/cache/index8/level", O_RDONLY) = -1 ENOENT (No such file or directory)
+openat(4, "sys/bus/cpu/devices/cpu1/cache/index9/level", O_RDONLY) = -1 ENOENT (No such file or directory)
+openat(4, "proc/device-tree/cpus", O_RDONLY|O_DIRECTORY) = 5
+fstat64(5, {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+fcntl64(5, F_GETFL)                     = 0x4000 (flags O_RDONLY|O_DIRECTORY)
+fcntl64(5, F_SETFD, FD_CLOEXEC)         = 0
+openat(4, "sys/devices/virtual/dmi/id", O_RDONLY|O_DIRECTORY) = -1 ENOENT (No such file or directory)
+openat(4, "sys/class/dmi/id", O_RDONLY|O_DIRECTORY) = -1 ENOENT (No such file or directory)
+openat(4, "proc/elog", O_RDONLY)        = -1 ENOENT (No such file or directory)
+write(2, "pocl warning: encountered incomp"..., 77pocl warning: encountered incomplete implementation in clGetDeviceInfo.c:129
+) = 77
+write(1, "\nNumber of platforms:\t1\n\nPlatfor"..., 306
+Number of platforms:	1
+
+Platform:		0
+
+	Platform Vendor:	The pocl project
+	Number of devices:	1
+
+	Device: 0
+		Name:				pthread
+		Vendor:				unknown
+		Available:			Yes
+		Compute Units:			4
+		Clock Frequency:		0 mHz
+		Global Memory:			500 mb
+		Max Allocateable Memory:	128 mb
+		Local Memory:			134217728 kb
+
+) = 306
+exit_group(0)                           = ?
