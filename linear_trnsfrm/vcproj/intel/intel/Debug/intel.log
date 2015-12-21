@@ -1,0 +1,24 @@
+﻿Build started 21/12/2015 10:53:39 AM.
+     1>Project "H:\Documents\Uma\NTU\_Dissertation\OpenCL_exmplCode\sample\linear_trnsfrm\vcproj\intel\intel\intel.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"C:\Program Files (x86)\Intel\OpenCL SDK\5.3\\include\\" /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt ..\..\..\linear_trnsfrm.cpp
+         linear_trnsfrm.cpp
+     1>h:\documents\uma\ntu\_dissertation\opencl_exmplcode\sample\linear_trnsfrm\pgm.h(35): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdio.h(211) : see declaration of 'fopen'
+     1>h:\documents\uma\ntu\_dissertation\opencl_exmplcode\sample\linear_trnsfrm\pgm.h(96): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdio.h(211) : see declaration of 'fopen'
+     1>h:\documents\uma\ntu\_dissertation\opencl_exmplcode\sample\linear_trnsfrm\linear_trnsfrm.cpp(79): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdio.h(211) : see declaration of 'fopen'
+     1>h:\documents\uma\ntu\_dissertation\opencl_exmplcode\sample\linear_trnsfrm\linear_trnsfrm.cpp(112): warning C4996: 'clCreateCommandQueue': was declared deprecated
+                 c:\program files (x86)\intel\opencl sdk\5.3\include\cl\cl.h(1423) : see declaration of 'clCreateCommandQueue'
+     1>h:\documents\uma\ntu\_dissertation\opencl_exmplcode\sample\linear_trnsfrm\linear_trnsfrm.cpp(144): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdio.h(283) : see declaration of 'scanf'
+     1>h:\documents\uma\ntu\_dissertation\opencl_exmplcode\sample\linear_trnsfrm\linear_trnsfrm.cpp(74): warning C4101: 'lws' : unreferenced local variable
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"H:\Documents\Uma\NTU\_Dissertation\OpenCL_exmplCode\sample\linear_trnsfrm\vcproj\intel\\..\..\intel.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\Program Files (x86)\Intel\OpenCL SDK\5.3\\lib\x86\\" OpenCL.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"H:\Documents\Uma\NTU\_Dissertation\OpenCL_exmplCode\sample\linear_trnsfrm\vcproj\intel\\..\..\intel.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"H:\Documents\Uma\NTU\_Dissertation\OpenCL_exmplCode\sample\linear_trnsfrm\vcproj\intel\\..\..\intel.lib" /MACHINE:X86 /SAFESEH Debug\linear_trnsfrm.obj
+         intel.vcxproj -> H:\Documents\Uma\NTU\_Dissertation\OpenCL_exmplCode\sample\linear_trnsfrm\vcproj\intel\\..\..\intel.exe
+     1>Done Building Project "H:\Documents\Uma\NTU\_Dissertation\OpenCL_exmplCode\sample\linear_trnsfrm\vcproj\intel\intel\intel.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:00.38
