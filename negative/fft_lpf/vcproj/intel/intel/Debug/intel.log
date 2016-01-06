@@ -1,9 +1,0 @@
-﻿Build started 20/12/2015 11:19:40 AM.
-     1>Project "H:\Documents\Uma\NTU\_Dissertation\OpenCL_exmplCode\sample\6-1\fft_lpf\vcproj\intel\intel\intel.vcxproj" on node 2 (Build target(s)).
-     1>Link:
-         intel.vcxproj -> H:\Documents\Uma\NTU\_Dissertation\OpenCL_exmplCode\sample\6-1\fft_lpf\vcproj\intel\\..\..\intel.exe
-     1>Done Building Project "H:\Documents\Uma\NTU\_Dissertation\OpenCL_exmplCode\sample\6-1\fft_lpf\vcproj\intel\intel\intel.vcxproj" (Build target(s)).
-
-Build succeeded.
-
-Time Elapsed 00:00:00.04

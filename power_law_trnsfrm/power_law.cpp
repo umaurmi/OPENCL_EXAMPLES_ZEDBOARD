@@ -10,10 +10,7 @@
 
 #include "pgm.h"
 
-#define PI 3.14159265358979
-
 #define MAX_SOURCE_SIZE (0x100000)
-
 
 cl_device_id device_id = NULL;
 cl_context context = NULL;
@@ -44,7 +41,10 @@ int setWorkSize(size_t* gws, size_t* lws, cl_int x, cl_int y)
 
 int main()
 {
-    
+ 	long long timer1 = 0;
+        cl_event event;
+        long long timer2 = 0;
+
     cl_mem xmobj = NULL;
     cl_mem rmobj = NULL;
     cl_kernel kernel = NULL;
@@ -55,10 +55,8 @@ int main()
     cl_uint ret_num_platforms;
 
     cl_int ret;
-
-
-	cl_float *xm;
-	cl_float *rm;
+    cl_float *xm;
+    cl_float *rm;
 	
     pgm_t ipgm;
     pgm_t opgm;
@@ -72,8 +70,6 @@ int main()
 
     size_t gws[2];
     size_t lws[2];
-
-
     
     /*  Load source code , including kernel */
     fp = fopen(fileName, "r");
@@ -89,10 +85,10 @@ int main()
     readPGM(&ipgm, "lena.pgm");
 
     n = ipgm.width; 
-	printf("image wisth is %d \n", n);
+    printf("image wisth is %d \n", n);
 
     xm = (cl_float *)malloc(n * n * sizeof(cl_float));
-	rm = (cl_float *)malloc(n * n * sizeof(cl_float));
+    rm = (cl_float *)malloc(n * n * sizeof(cl_float));
 
     for( i = 0; i < n; i++ ) {
         for( j = 0; j < n; j++ ) {
@@ -109,7 +105,7 @@ int main()
     context = clCreateContext( NULL, 1, &device_id, NULL, NULL, &ret);
 
     /* Creating a command queue */
-    queue = clCreateCommandQueue(context, device_id, 0, &ret);
+    queue = clCreateCommandQueue(context, device_id, CL_QUEUE_PROFILING_ENABLE, &ret);
 
     /* Creating a buffer object */
     xmobj = clCreateBuffer(context, CL_MEM_READ_WRITE, n*n*sizeof(cl_float), NULL, &ret);
@@ -145,12 +141,23 @@ int main()
 	gws[1] = n;
 
 	/*Enque task for parallel execution*/
-    ret = clEnqueueNDRangeKernel(queue, kernel, 2, NULL, gws, NULL, 0, NULL, NULL);
+    ret = clEnqueueNDRangeKernel(queue, kernel, 2, NULL, gws, NULL, 0, NULL, &event);
+
+	//opencl timer
+        clWaitForEvents(1, &event);
+        clFinish(queue);
+        cl_ulong time_start, time_end;
+        double total_time;
+        clGetEventProfilingInfo(event, CL_PROFILING_COMMAND_START, sizeof(time_start), &time_start, NULL);
+        clGetEventProfilingInfo(event, CL_PROFILING_COMMAND_END, sizeof(time_end), &time_end, NULL);
+        total_time = time_end - time_start;
+        printf("OpenCl Execution time is: %0.3f us \n", total_time / 1000.0);
+
 
     /* Get results from the memory buffer */
     ret = clEnqueueReadBuffer(queue, rmobj, CL_TRUE, 0, n*n*sizeof(cl_float), rm, 0, NULL, NULL);
 
-	opgm.width = n;
+    opgm.width = n;
     opgm.height = n;
     normalizeF2PGM(&opgm, rm);
 

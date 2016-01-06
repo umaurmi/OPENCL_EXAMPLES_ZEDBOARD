@@ -10,10 +10,7 @@
 
 #include "pgm.h"
 
-#define PI 3.14159265358979
-
 #define MAX_SOURCE_SIZE (0x100000)
-
 
 cl_device_id device_id = NULL;
 cl_context context = NULL;
@@ -45,6 +42,10 @@ int setWorkSize(size_t* gws, size_t* lws, cl_int x, cl_int y)
 int main()
 {
     
+	long long timer1 = 0;
+        cl_event event;
+        long long timer2 = 0;
+
     cl_mem xmobj = NULL;
     cl_mem rmobj = NULL;
     cl_kernel trns = NULL;
@@ -107,7 +108,7 @@ int main()
     context = clCreateContext( NULL, 1, &device_id, NULL, NULL, &ret);
 
     /* Createing command queue */
-    queue = clCreateCommandQueue(context, device_id, 0, &ret);
+    queue = clCreateCommandQueue(context, device_id, CL_QUEUE_PROFILING_ENABLE, &ret);
 
     /*Create memory buffer */
     xmobj = clCreateBuffer(context, CL_MEM_READ_WRITE, n*n*sizeof(cl_float), NULL, &ret);
@@ -137,7 +138,18 @@ int main()
 	gws[0] = n;
 	gws[1] = n;
 
-    ret = clEnqueueNDRangeKernel(queue, trns, 2, NULL, gws, NULL, 0, NULL, NULL);
+    ret = clEnqueueNDRangeKernel(queue, trns, 2, NULL, gws, NULL, 0, NULL, &event);
+
+	 //opencl timer
+        clWaitForEvents(1, &event);
+        clFinish(queue);
+        cl_ulong time_start, time_end;
+        double total_time;
+        clGetEventProfilingInfo(event, CL_PROFILING_COMMAND_START, sizeof(time_start), &time_start, NULL);
+        clGetEventProfilingInfo(event, CL_PROFILING_COMMAND_END, sizeof(time_end), &time_end, NULL);
+        total_time = time_end - time_start;
+        printf("OpenCl Execution time is: %0.3f us \n", total_time / 1000.0);
+
 
     /* Read from memory buffer */
     ret = clEnqueueReadBuffer(queue, rmobj, CL_TRUE, 0, n*n*sizeof(cl_float), rm, 0, NULL, NULL);

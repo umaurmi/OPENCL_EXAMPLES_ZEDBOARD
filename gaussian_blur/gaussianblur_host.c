@@ -11,24 +11,7 @@
 #include <CL/cl.h>
 #include <stdbool.h>
 
-////////////////////////////////////////////////////////////////////////////////
-#define WA 1024
-#define HA 768
-#define WB 3
-#define HB 3
-#define WC 1024
-#define HC 768
-////////////////////////////////////////////////////////////////////////////////
-
- 
-// Allocates a matrix with random float entries.
-void randomMemInit(float* data, int size)
-{
-   int i;
-
-   for (i = 0; i < size; ++i)
-   	data[i] = rand() / (float)RAND_MAX;
-}
+#include "pgm.h"
 
 long LoadOpenCLKernel(char const* path, char **buf)
 {
@@ -87,11 +70,16 @@ long LoadOpenCLKernel(char const* path, char **buf)
 int main(int argc, char** argv)
 {
 	long long timer1 = 0;
-        cl_event event;
-        long long timer2 = 0;
+	cl_event event;
+	long long timer2 = 0;
 
    int err;                            // error code returned from api calls
-
+   int ipgm_img_width = 0;
+   int ipgm_img_height = 0;
+   int i = 0;
+   int j = 0;
+   pgm_t ipgm;
+   pgm_t opgm;
    cl_device_id device_id;             // compute device id 
    cl_context context;                 // compute context
    cl_command_queue commands;          // compute command queue
@@ -103,24 +91,40 @@ int main(int argc, char** argv)
    cl_mem d_B;
    cl_mem d_C;
 
-   // set seed for rand()
-   srand(2014);
+   /* Image file input */
+    readPGM(&ipgm,"sunny_uhd.pgm");
+
+    ipgm_img_width = ipgm.width;
+    ipgm_img_height = ipgm.height;
+    printf("image width is %d \n", ipgm_img_width);
+    printf("image height is %d \n", ipgm_img_height);
  
    //Allocate host memory for matrices A and B
-   unsigned int size_A = WA * HA;
+   unsigned int size_A = ipgm_img_width*ipgm_img_height;
    unsigned int mem_size_A = sizeof(float) * size_A;
    float* h_A = (float*) malloc(mem_size_A);
+   for(i = 0; i < ipgm_img_height; i++ ) {   //interchanged ht and width
+        for(j = 0; j < ipgm_img_width; j++ ) {
+                ((float*)h_A)[(ipgm_img_height*j) + (i)] = (float)ipgm.buf[(ipgm_img_height*j) + (i)];
+        }
+    }
  
-   unsigned int size_B = WB * HB;
+   unsigned int size_B = 9;
    unsigned int mem_size_B = sizeof(float) * size_B;
    float* h_B = (float*) malloc(mem_size_B);
+   h_B[0] = 1;
+   h_B[1] = 1;
+   h_B[2] = 1;
+   h_B[3] = 1;
+   h_B[4] = 1;
+   h_B[5] = 1;
+   h_B[6] = 1;
+   h_B[7] = 1;
+   h_B[8] = 1;
+    
 
-   //Initialize host memory
-   randomMemInit(h_A, size_A);
-   randomMemInit(h_B, size_B);
- 
    //Allocate host memory for the result C
-   unsigned int size_C = WC * HC;
+   unsigned int size_C = ipgm_img_width * ipgm_img_height;
    unsigned int mem_size_C = sizeof(float) * size_C;
    float* h_C = (float*) malloc(mem_size_C);
   
@@ -161,7 +165,7 @@ int main(int argc, char** argv)
    char *KernelSource;
    long lFileSize;
 
-   lFileSize = LoadOpenCLKernel("matrixconv_kernel.cl", &KernelSource);
+   lFileSize = LoadOpenCLKernel("gaussianblur_kernel.cl", &KernelSource);
    if( lFileSize < 0L ) {
        perror("File read failed");
        return 1;
@@ -175,7 +179,10 @@ int main(int argc, char** argv)
    }
 
    // Build the program executable
-   err = clBuildProgram(program, 0, NULL, NULL, NULL, NULL);
+     err = clBuildProgram(program, 0, NULL, NULL, NULL, NULL);
+     //err = clBuildProgram(program, 1, &device_id, NULL, NULL, NULL);
+
+
    if (err != CL_SUCCESS)
    {
        size_t len;
@@ -188,7 +195,7 @@ int main(int argc, char** argv)
 
    // Create the compute kernel in the program we wish to run
    //
-   kernel = clCreateKernel(program, "matrixconv", &err);
+   kernel = clCreateKernel(program, "gaussianblur", &err);
    if (!kernel || err != CL_SUCCESS)
    {
        printf("Error: Failed to create compute kernel!\n");
@@ -206,14 +213,14 @@ int main(int argc, char** argv)
        exit(1);
    }    
     
-   printf("Running matrix convolution for matrices A (%dx%d) and B (%dx%d) ...\n", WA,HA,WB,HB); 
+   printf("Running gaussian blur\n"); 
 
    //Launch OpenCL kernel
    size_t localWorkSize[2], globalWorkSize[2];
  
-   int wA = WA;
-   int wB = WB;
-   int wC = WC;
+   int wA = ipgm_img_width;
+   int wB = 3;
+   int wC = ipgm_img_width;
    err = clSetKernelArg(kernel, 0, sizeof(cl_mem), (void *)&d_A);
    err |= clSetKernelArg(kernel, 1, sizeof(cl_mem), (void *)&d_B);
    err |= clSetKernelArg(kernel, 2, sizeof(cl_mem), (void *)&d_C);
@@ -226,12 +233,12 @@ int main(int argc, char** argv)
        exit(1);
    }
  
-   localWorkSize[0] = 16;
-   localWorkSize[1] = 16;
-   globalWorkSize[0] = 1024;
-   globalWorkSize[1] = 1024;
+   localWorkSize[0] = 4;
+   localWorkSize[1] = 4;
+   globalWorkSize[0] = ipgm_img_width;
+   globalWorkSize[1] = ipgm_img_height;
  
-   err = clEnqueueNDRangeKernel(commands, kernel, 2, NULL, globalWorkSize, localWorkSize, 0, NULL, &event);
+   err = clEnqueueNDRangeKernel(commands, kernel, 2, NULL, globalWorkSize, NULL, 0, NULL, &event);
 
    if (err != CL_SUCCESS)
    {
@@ -239,15 +246,15 @@ int main(int argc, char** argv)
        exit(1);
    }
  
- //opencl timer
-        clWaitForEvents(1, &event);
-        clFinish(commands);
-        cl_ulong time_start, time_end;
-        double total_time;
-        clGetEventProfilingInfo(event, CL_PROFILING_COMMAND_START, sizeof(time_start), &time_start, NULL);
-        clGetEventProfilingInfo(event, CL_PROFILING_COMMAND_END, sizeof(time_end), &time_end, NULL);
-        total_time = time_end - time_start;
-        printf("OpenCl Execution time is: %0.3f us \n", total_time / 1000.0);
+	//opencl timer
+	clWaitForEvents(1, &event);
+	clFinish(commands);
+	cl_ulong time_start, time_end;
+	double total_time;
+	clGetEventProfilingInfo(event, CL_PROFILING_COMMAND_START, sizeof(time_start), &time_start, NULL);
+	clGetEventProfilingInfo(event, CL_PROFILING_COMMAND_END, sizeof(time_end), &time_end, NULL);
+	total_time = time_end - time_start;
+	printf("OpenCl Execution time is: %0.3f us \n", total_time / 1000.0);
 
    //Retrieve result from device
    err = clEnqueueReadBuffer(commands, d_C, CL_TRUE, 0, mem_size_C, h_C, 0, NULL, NULL);
@@ -258,25 +265,33 @@ int main(int argc, char** argv)
        exit(1);
    }
  
-   //print out the results
-/*
-   printf("\n\nMatrix C (Results)\n");
-   int i;
-   for(i = 0; i < size_C; i++)
-   {
-      printf("%f ", h_C[i]);
-      if(((i + 1) % WC) == 0)
-      printf("\n");
-   }
-   printf("\n");
-*/
-  
-   printf("Matrix convolution completed...\n"); 
+   /* Copy to buffer - not needed */
+    float* ampd;
+    ampd = (float*)malloc(ipgm_img_width*ipgm_img_height*sizeof(float));
+    for (i=0; i<ipgm_img_height; i++) { //interchanged ht and width
+        for (j=0; j<ipgm_img_width; j++) {
+                        ampd[(ipgm_img_height*j) + (i)] = (((float*)h_C)[(ipgm_img_height*j) + (i)]);
+        }
+    }
+
+
+   printf("Gaussian blur completed...\n"); 
+
+   opgm.width = ipgm_img_width;
+   opgm.height = ipgm_img_height;
+   normalizeF2PGM(&opgm, ampd);
+
+   /* Output image */
+   writePGM(&opgm, "output.pgm");
 
    //Shutdown and cleanup
    free(h_A);
    free(h_B);
    free(h_C);
+   free(ampd);
+
+   destroyPGM(&ipgm);
+   destroyPGM(&opgm);
  
    clReleaseMemObject(d_A);
    clReleaseMemObject(d_C);

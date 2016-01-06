@@ -15,8 +15,12 @@
  
 int main()
 {
-long long timer1 = 0;
-long long timer2 = 0;
+	 long long timer1 = 0;
+	 cl_event event;
+         long long timer2 = 0;
+
+long long ptimer1 = 0;
+long long ptimer2 = 0;
 cl_device_id device_id = NULL;
 cl_context context = NULL;
 cl_command_queue command_queue = NULL;
@@ -36,7 +40,7 @@ char *source_str;
 size_t source_size;
  
 
-timer1 = PAPI_get_virt_usec();
+ptimer1 = PAPI_get_virt_usec();
 /* Load the source code containing the kernel*/
 fp = fopen(fileName, "r");
 if (!fp) {
@@ -55,7 +59,7 @@ ret = clGetDeviceIDs(platform_id, CL_DEVICE_TYPE_DEFAULT, 1, &device_id, &ret_nu
 context = clCreateContext(NULL, 1, &device_id, NULL, NULL, &ret);
  
 /* Create Command Queue */
-command_queue = clCreateCommandQueue(context, device_id, 0, &ret);
+command_queue = clCreateCommandQueue(context, device_id,  CL_QUEUE_PROFILING_ENABLE, &ret);
  
 /* Create Memory Buffer */
 memobj = clCreateBuffer(context, CL_MEM_READ_WRITE,MEM_SIZE * sizeof(char), NULL, &ret);
@@ -74,19 +78,27 @@ kernel = clCreateKernel(program, "hello", &ret);
 ret = clSetKernelArg(kernel, 0, sizeof(cl_mem), (void *)&memobj);
  
 /* Execute OpenCL Kernel */
-ret = clEnqueueTask(command_queue, kernel, 0, NULL,NULL);
+ret = clEnqueueTask(command_queue, kernel, 0, NULL,&event);
  
 /* Copy results from the memory buffer */
-ret = clEnqueueReadBuffer(command_queue, memobj, CL_TRUE, 0,
-MEM_SIZE * sizeof(char),string, 0, NULL, NULL);
+ret = clEnqueueReadBuffer(command_queue, memobj, CL_TRUE, 0,MEM_SIZE * sizeof(char),string, 0, NULL, NULL);
 
-timer2 = PAPI_get_virt_usec();
-
-
-printf("Time elapsed is %llu\n",(timer2-timer1));
+ptimer2 = PAPI_get_virt_usec();
+printf("Time elapsed is (PAPI)%llu\n",(ptimer2-ptimer1));
 /* Display Result */
 puts(string);
  
+ //opencl timer
+        clWaitForEvents(1, &event);
+        clFinish(command_queue);
+        cl_ulong time_start, time_end;
+        double total_time;
+        clGetEventProfilingInfo(event, CL_PROFILING_COMMAND_START, sizeof(time_start), &time_start, NULL);
+        clGetEventProfilingInfo(event, CL_PROFILING_COMMAND_END, sizeof(time_end), &time_end, NULL);
+        total_time = time_end - time_start;
+        printf("OpenCl Execution time is: %0.3f us \n", total_time / 1000000.0);
+
+
 /* Finalization */
 ret = clFlush(command_queue);
 ret = clFinish(command_queue);

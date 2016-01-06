@@ -10,8 +10,6 @@
 
 #include "pgm.h"
 
-#define PI 3.14159265358979
-
 #define MAX_SOURCE_SIZE (0x100000)
 
 
@@ -44,7 +42,11 @@ int setWorkSize(size_t* gws, size_t* lws, cl_int x, cl_int y)
 
 int main()
 {
-    
+
+        long long timer1 = 0;
+        cl_event event;
+        long long timer2 = 0;
+ 
     cl_mem xmobj = NULL;
     cl_mem rmobj = NULL;
     cl_kernel kernel = NULL;
@@ -109,7 +111,7 @@ int main()
     context = clCreateContext( NULL, 1, &device_id, NULL, NULL, &ret);
 
     /* Creating a command queue */
-    queue = clCreateCommandQueue(context, device_id, 0, &ret);
+    queue = clCreateCommandQueue(context, device_id,  CL_QUEUE_PROFILING_ENABLE, &ret);
 
     /* Creating a buffer object */
     xmobj = clCreateBuffer(context, CL_MEM_READ_WRITE, n*n*sizeof(cl_float), NULL, &ret);
@@ -155,7 +157,18 @@ int main()
 	gws[1] = n;
 
 	/*Enque task for parallel execution*/
-    ret = clEnqueueNDRangeKernel(queue, kernel, 2, NULL, gws, NULL, 0, NULL, NULL);
+    ret = clEnqueueNDRangeKernel(queue, kernel, 2, NULL, gws, NULL, 0, NULL, &event);
+
+	//opencl timer
+        clWaitForEvents(1, &event);
+        clFinish(queue);
+        cl_ulong time_start, time_end;
+        double total_time;
+        clGetEventProfilingInfo(event, CL_PROFILING_COMMAND_START, sizeof(time_start), &time_start, NULL);
+        clGetEventProfilingInfo(event, CL_PROFILING_COMMAND_END, sizeof(time_end), &time_end, NULL);
+        total_time = time_end - time_start;
+        printf("OpenCl Execution time is: %0.3f us \n", total_time / 1000.0);
+
 
     /* Get results from the memory buffer */
     ret = clEnqueueReadBuffer(queue, rmobj, CL_TRUE, 0, n*n*sizeof(cl_float), rm, 0, NULL, NULL);
@@ -173,7 +186,7 @@ int main()
 		}
 	}*/
 	
-	opgm.width = n;
+    opgm.width = n;
     opgm.height = n;
     normalizeF2PGM(&opgm, rm); //to display kernel computation result
 	//normalizeF2PGM(&opgm, ampd);//to display host computation result

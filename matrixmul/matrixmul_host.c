@@ -87,6 +87,10 @@ long LoadOpenCLKernel(char const* path, char **buf)
 
 int main(int argc, char** argv)
 {
+	 long long timer1 = 0;
+        cl_event event;
+        long long timer2 = 0;
+
    int err;                            // error code returned from api calls
 
    cl_device_id device_id;             // compute device id 
@@ -147,7 +151,7 @@ int main(int argc, char** argv)
    }
 
    // Create a command commands
-   commands = clCreateCommandQueue(context, device_id, 0, &err);
+   commands = clCreateCommandQueue(context, device_id,  CL_QUEUE_PROFILING_ENABLE, &err);
    if (!commands)
    {
        printf("Error: Failed to create a command commands!\n");
@@ -227,7 +231,18 @@ int main(int argc, char** argv)
    globalWorkSize[0] = 1024;
    globalWorkSize[1] = 1024;
  
-   err = clEnqueueNDRangeKernel(commands, kernel, 2, NULL, globalWorkSize, localWorkSize, 0, NULL, NULL);
+   err = clEnqueueNDRangeKernel(commands, kernel, 2, NULL, globalWorkSize, localWorkSize, 0, NULL, &event);
+
+	//opencl timer
+        clWaitForEvents(1, &event);
+        clFinish(commands);
+        cl_ulong time_start, time_end;
+        double total_time;
+        clGetEventProfilingInfo(event, CL_PROFILING_COMMAND_START, sizeof(time_start), &time_start, NULL);
+        clGetEventProfilingInfo(event, CL_PROFILING_COMMAND_END, sizeof(time_end), &time_end, NULL);
+        total_time = time_end - time_start;
+        printf("OpenCl Execution time is: %0.3f us \n", total_time / 1000.0);
+
 
    if (err != CL_SUCCESS)
    {
