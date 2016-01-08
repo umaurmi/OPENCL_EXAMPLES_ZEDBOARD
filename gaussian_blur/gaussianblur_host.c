@@ -70,10 +70,13 @@ long LoadOpenCLKernel(char const* path, char **buf)
 
 int main(int argc, char** argv)
 {
-	cl_event event;
+   printf("cl:main program:gausblur\n");
+   cl_event event;
 
-        long long ptimer1=0;
-        long long ptimer2=0;
+   register long long ptimer1=0;
+   register long long ptimer2=0;
+   register long long ptotal_start =0;
+   register long long ptotal_end=0;
 
    int err;                            // error code returned from api calls
    int ipgm_img_width = 0;
@@ -98,8 +101,8 @@ int main(int argc, char** argv)
 
     ipgm_img_width = ipgm.width;
     ipgm_img_height = ipgm.height;
-    printf("image width is %d \n", ipgm_img_width);
-    printf("image height is %d \n", ipgm_img_height);
+    printf("cl:main program:img_width %d\n", ipgm_img_width);
+    printf("cl:main program:img_height %d\n", ipgm_img_height);
  
    //Allocate host memory for matrices A and B
    unsigned int size_A = ipgm_img_width*ipgm_img_height;
@@ -130,17 +133,26 @@ int main(int argc, char** argv)
    unsigned int mem_size_C = sizeof(float) * size_C;
    float* h_C = (float*) malloc(mem_size_C);
   
-   printf("Initializing OpenCL device...\n"); 
+   printf("cl:main program:Init_Device \n"); 
 
    cl_uint dev_cnt = 0;
    clGetPlatformIDs(0, 0, &dev_cnt);
 	
+ptotal_start = PAPI_get_virt_usec();
+
    cl_platform_id platform_ids[100];
+
+ptimer1 = PAPI_get_virt_usec();
    clGetPlatformIDs(dev_cnt, platform_ids, NULL);
+ptimer2 = PAPI_get_virt_usec();
+printf("cl:main timing:PAPI clGetPlatformIDs %lluus\n",(ptimer2-ptimer1));
 	
    // Connect to a compute device
    int gpu = 1;
+ptimer1 = PAPI_get_virt_usec();
    err = clGetDeviceIDs(platform_ids[0], CL_DEVICE_TYPE_DEFAULT, 1, &device_id, NULL);
+ptimer2 = PAPI_get_virt_usec();
+printf("cl:main timing:PAPI clGetDeviceIDs %lluus\n",(ptimer2-ptimer1));
    if (err != CL_SUCCESS)
    {
        printf("Error: Failed to create a device group!\n");
@@ -148,7 +160,10 @@ int main(int argc, char** argv)
    }
   
    // Create a compute context 
+ptimer1 = PAPI_get_virt_usec();
    context = clCreateContext(0, 1, &device_id, NULL, NULL, &err);
+ptimer2 = PAPI_get_virt_usec();
+printf("cl:main timing:PAPI clCreateContext %lluus\n",(ptimer2-ptimer1));
    if (!context)
    {
        printf("Error: Failed to create a compute context!\n");
@@ -156,7 +171,10 @@ int main(int argc, char** argv)
    }
 
    // Create a command commands
+ptimer1 = PAPI_get_virt_usec();
    commands = clCreateCommandQueue(context, device_id, CL_QUEUE_PROFILING_ENABLE, &err);
+ptimer2 = PAPI_get_virt_usec();
+printf("cl:main timing:PAPI clCreateCommandQueue %lluus\n",(ptimer2-ptimer1));
    if (!commands)
    {
        printf("Error: Failed to create a command commands!\n");
@@ -166,14 +184,19 @@ int main(int argc, char** argv)
    // Create the compute program from the source file
    char *KernelSource;
    long lFileSize;
-
+ptimer1 = PAPI_get_virt_usec();
    lFileSize = LoadOpenCLKernel("gaussianblur_kernel.cl", &KernelSource);
+ptimer2 = PAPI_get_virt_usec();
+printf("cl:main timing:PAPI LoadOpenCLKernel %lluus\n",(ptimer2-ptimer1));
    if( lFileSize < 0L ) {
        perror("File read failed");
        return 1;
    }
 
+ptimer1 = PAPI_get_virt_usec();
    program = clCreateProgramWithSource(context, 1, (const char **) & KernelSource, NULL, &err);
+ptimer2 = PAPI_get_virt_usec();
+printf("cl:main timing:PAPI clCreateProgramWithSource %lluus\n",(ptimer2-ptimer1));
    if (!program)
    {
        printf("Error: Failed to create compute program!\n");
@@ -181,10 +204,11 @@ int main(int argc, char** argv)
    }
 
    // Build the program executable
+ptimer1 = PAPI_get_virt_usec();
      err = clBuildProgram(program, 0, NULL, NULL, NULL, NULL);
+ptimer2 = PAPI_get_virt_usec();
+printf("cl:main timing:PAPI clBuildProgram %lluus\n",(ptimer2-ptimer1));
      //err = clBuildProgram(program, 1, &device_id, NULL, NULL, NULL);
-
-
    if (err != CL_SUCCESS)
    {
        size_t len;
@@ -197,25 +221,30 @@ int main(int argc, char** argv)
 
    // Create the compute kernel in the program we wish to run
    //
+ptimer1 = PAPI_get_virt_usec();
    kernel = clCreateKernel(program, "gaussianblur", &err);
+ptimer2 = PAPI_get_virt_usec();
+printf("cl:main timing:PAPI clCreateKernel %lluus\n",(ptimer2-ptimer1));
    if (!kernel || err != CL_SUCCESS)
    {
        printf("Error: Failed to create compute kernel!\n");
        exit(1);
    }
 
+ptimer1 = PAPI_get_virt_usec();
    // Create the input and output arrays in device memory for our calculation
    d_C = clCreateBuffer(context, CL_MEM_READ_WRITE, mem_size_A, NULL, &err);
    d_A = clCreateBuffer(context, CL_MEM_READ_WRITE | CL_MEM_COPY_HOST_PTR, mem_size_A, h_A, &err);
    d_B = clCreateBuffer(context, CL_MEM_READ_WRITE | CL_MEM_COPY_HOST_PTR, mem_size_B, h_B, &err);
-
+ptimer2 = PAPI_get_virt_usec();
+printf("cl:main timing:PAPI clCreateBuffer %lluus\n",(ptimer2-ptimer1));
    if (!d_A || !d_B || !d_C)
    {
        printf("Error: Failed to allocate device memory!\n");
        exit(1);
    }    
     
-   printf("Running gaussian blur\n"); 
+   printf("cl:main program:Running_gauss_blur\n"); 
 
    //Launch OpenCL kernel
    size_t localWorkSize[2], globalWorkSize[2];
@@ -223,12 +252,14 @@ int main(int argc, char** argv)
    int wA = ipgm_img_width;
    int wB = 3;
    int wC = ipgm_img_width;
+ptimer1 = PAPI_get_virt_usec();
    err = clSetKernelArg(kernel, 0, sizeof(cl_mem), (void *)&d_A);
    err |= clSetKernelArg(kernel, 1, sizeof(cl_mem), (void *)&d_B);
    err |= clSetKernelArg(kernel, 2, sizeof(cl_mem), (void *)&d_C);
    err |= clSetKernelArg(kernel, 3, sizeof(int), (void *)&wA);
    err |= clSetKernelArg(kernel, 4, sizeof(int), (void *)&wB);
-
+ptimer2 = PAPI_get_virt_usec();
+printf("cl:main timing:PAPI clSetKernelArg %lluus\n",(ptimer2-ptimer1));
    if (err != CL_SUCCESS)
    {
        printf("Error: Failed to set kernel arguments! %d\n", err);
@@ -240,13 +271,11 @@ int main(int argc, char** argv)
    globalWorkSize[0] = ipgm_img_width;
    globalWorkSize[1] = ipgm_img_height;
  
- 	ptimer1 = PAPI_get_virt_usec();
-
+   ptimer1 = PAPI_get_virt_usec();
    /*Enqueue task for parallel execution*/
    err = clEnqueueNDRangeKernel(commands, kernel, 2, NULL, globalWorkSize, NULL, 0, NULL, &event);
-
- 	ptimer2 = PAPI_get_virt_usec();
-        printf("Time elapsed (using PAPI) is %llu us\n",(ptimer2-ptimer1));
+   ptimer2 = PAPI_get_virt_usec();
+   printf("cl:main timing:PAPI clEnqueueNDRangeKernel %lluus\n",(ptimer2-ptimer1));
 
    if (err != CL_SUCCESS)
    {
@@ -262,11 +291,12 @@ int main(int argc, char** argv)
 	clGetEventProfilingInfo(event, CL_PROFILING_COMMAND_START, sizeof(time_start), &time_start, NULL);
 	clGetEventProfilingInfo(event, CL_PROFILING_COMMAND_END, sizeof(time_end), &time_end, NULL);
 	total_time = time_end - time_start;
-	printf("OpenCl Execution time is: %0.3f us \n", total_time / 1000.0);
+	printf("cl:main timing:opencl clEnqueueNDRangeKernel %0.3fus\n", total_time / 1000.0);
 
    //Retrieve result from device
    err = clEnqueueReadBuffer(commands, d_C, CL_TRUE, 0, mem_size_C, h_C, 0, NULL, NULL);
-
+ptotal_end = PAPI_get_virt_usec();
+printf("cl:main timing:PAPI total_time%lluus\n",(ptotal_end-ptotal_start));
    if (err != CL_SUCCESS)
    {
        printf("Error: Failed to read output array! %d\n", err);
