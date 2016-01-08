@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/marketing/!svn/ver/1900/PR/OpenCL/Book/1.2/sample/6-1/fft
+END
+fft.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/marketing/!svn/ver/1900/PR/OpenCL/Book/1.2/sample/6-1/fft/fft.cpp
+END
+lena.pgm
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/marketing/!svn/ver/1881/PR/OpenCL/Book/1.2/sample/6-1/fft/lena.pgm
+END
+pgm.h
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/marketing/!svn/ver/1900/PR/OpenCL/Book/1.2/sample/6-1/fft/pgm.h
+END
+fft.cl
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/marketing/!svn/ver/1881/PR/OpenCL/Book/1.2/sample/6-1/fft/fft.cl
+END
+Makefile
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/marketing/!svn/ver/1895/PR/OpenCL/Book/1.2/sample/6-1/fft/Makefile
+END

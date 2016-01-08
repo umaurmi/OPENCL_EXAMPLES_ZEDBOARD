@@ -12,6 +12,7 @@
 #include <stdbool.h>
 
 #include "pgm.h"
+#include "papi.h"
 
 long LoadOpenCLKernel(char const* path, char **buf)
 {
@@ -69,9 +70,10 @@ long LoadOpenCLKernel(char const* path, char **buf)
 
 int main(int argc, char** argv)
 {
-	long long timer1 = 0;
 	cl_event event;
-	long long timer2 = 0;
+
+        long long ptimer1=0;
+        long long ptimer2=0;
 
    int err;                            // error code returned from api calls
    int ipgm_img_width = 0;
@@ -238,7 +240,13 @@ int main(int argc, char** argv)
    globalWorkSize[0] = ipgm_img_width;
    globalWorkSize[1] = ipgm_img_height;
  
+ 	ptimer1 = PAPI_get_virt_usec();
+
+   /*Enqueue task for parallel execution*/
    err = clEnqueueNDRangeKernel(commands, kernel, 2, NULL, globalWorkSize, NULL, 0, NULL, &event);
+
+ 	ptimer2 = PAPI_get_virt_usec();
+        printf("Time elapsed (using PAPI) is %llu us\n",(ptimer2-ptimer1));
 
    if (err != CL_SUCCESS)
    {

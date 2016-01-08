@@ -9,6 +9,7 @@
 #endif
 
 #include "pgm.h"
+#include "papi.h"
 
 #define MAX_SOURCE_SIZE (0x100000)
 
@@ -43,10 +44,14 @@ int setWorkSize(size_t* gws, size_t* lws, cl_int x, cl_int y)
 int main()
 {
 
-        long long timer1 = 0;
-        cl_event event;
-        long long timer2 = 0;
- 
+	cl_event event;
+
+        long long ptimer1=0;
+        long long ptimer2=0;
+
+	long long ptotal_start = 0;
+	long long ptotal_end = 0;
+
     cl_mem xmobj = NULL;
     cl_mem rmobj = NULL;
     cl_kernel kernel = NULL;
@@ -103,33 +108,68 @@ int main()
         }
     }
 
-    /* Acquisition of platform devices information */
+ ptimer1 = PAPI_get_virt_usec();
+   /* Acquisition of platform devices information */
     ret = clGetPlatformIDs(1, &platform_id, &ret_num_platforms);
-    ret = clGetDeviceIDs( platform_id, CL_DEVICE_TYPE_DEFAULT, 1, &device_id, &ret_num_devices);
+ptimer2 = PAPI_get_virt_usec();
+printf("Time elapsed (using PAPI) in clGetPlatformIDs is %llu us\n",(ptimer2-ptimer1));
 
+
+ ptimer1 = PAPI_get_virt_usec();
+    ret = clGetDeviceIDs( platform_id, CL_DEVICE_TYPE_DEFAULT, 1, &device_id, &ret_num_devices);
+ptimer2 = PAPI_get_virt_usec();
+printf("Time elapsed (using PAPI) in clGetDeviceIDs is %llu us\n",(ptimer2-ptimer1));
+
+
+ ptimer1 = PAPI_get_virt_usec();
     /* OpenCL Creating a Context */
     context = clCreateContext( NULL, 1, &device_id, NULL, NULL, &ret);
+ptimer2 = PAPI_get_virt_usec();
+printf("Time elapsed (using PAPI) in creating context is %llu us\n",(ptimer2-ptimer1));
 
+
+ ptimer1 = PAPI_get_virt_usec();
     /* Creating a command queue */
     queue = clCreateCommandQueue(context, device_id,  CL_QUEUE_PROFILING_ENABLE, &ret);
+ptimer2 = PAPI_get_virt_usec();
+printf("Time elapsed (using PAPI) in creating command queue is %llu us\n",(ptimer2-ptimer1));
 
+
+ ptimer1 = PAPI_get_virt_usec();
     /* Creating a buffer object */
-    xmobj = clCreateBuffer(context, CL_MEM_READ_WRITE, n*n*sizeof(cl_float), NULL, &ret);
-	rmobj = clCreateBuffer(context, CL_MEM_READ_WRITE, n*n*sizeof(cl_float), NULL, &ret);
+   xmobj = clCreateBuffer(context, CL_MEM_READ_WRITE, n*n*sizeof(cl_float), NULL, &ret);
+   rmobj = clCreateBuffer(context, CL_MEM_READ_WRITE, n*n*sizeof(cl_float), NULL, &ret);
+ptimer2 = PAPI_get_virt_usec();
+printf("Time elapsed (using PAPI) in creating memory object is %llu us\n",(ptimer2-ptimer1));
 
 
+ ptimer1 = PAPI_get_virt_usec();
     /* And transfer the data to the memory buffer */
     ret = clEnqueueWriteBuffer(queue, xmobj, CL_TRUE, 0, n*n*sizeof(cl_float), xm, 0, NULL, NULL);
+ptimer2 = PAPI_get_virt_usec();
+printf("Time elapsed (using PAPI) in writing to device memory(memory object) is %llu us\n",(ptimer2-ptimer1));
 
 
+ ptimer1 = PAPI_get_virt_usec();
     /* Create a kernel program from the read source */
     program = clCreateProgramWithSource(context, 1, (const char **)&source_str, (const size_t *)&source_size, &ret);
+ptimer2 = PAPI_get_virt_usec();
+printf("Time elapsed (using PAPI) in creating program is %llu us\n",(ptimer2-ptimer1));
 
+
+ ptimer1 = PAPI_get_virt_usec();
     /* Build a kernel program */ 
     ret = clBuildProgram(program, 1, &device_id, NULL, NULL, NULL);
+ptimer2 = PAPI_get_virt_usec();
+printf("Time elapsed (using PAPI) in building program is %llu us\n",(ptimer2-ptimer1));
 
+
+ ptimer1 = PAPI_get_virt_usec();
     /* OpenCL Creating the kernel */
     kernel = clCreateKernel(program, "linear_trnsfrm",    &ret);
+ptimer2 = PAPI_get_virt_usec();
+printf("Time elapsed (using PAPI) in creating kernel is %llu us\n",(ptimer2-ptimer1));
+
 
 	/*read thresh from user*/
 	
@@ -146,18 +186,26 @@ int main()
 	scanf("%d", &thresh);
 	
 
-	/* set kernel arguments */
+ ptimer1 = PAPI_get_virt_usec();
+    /* set kernel arguments */
     ret = clSetKernelArg(kernel, 0, sizeof(cl_mem), (void *)&rmobj);
     ret = clSetKernelArg(kernel, 1, sizeof(cl_mem), (void *)&xmobj);
-	ret = clSetKernelArg(kernel, 2, sizeof(cl_int), (void *)&n);
-	ret = clSetKernelArg(kernel, 3, sizeof(cl_int), (void *)&thresh);
+    ret = clSetKernelArg(kernel, 2, sizeof(cl_int), (void *)&n);
+    ret = clSetKernelArg(kernel, 3, sizeof(cl_int), (void *)&thresh);
+ptimer2 = PAPI_get_virt_usec();
+printf("Time elapsed (using PAPI) in setting kernel arguments is %llu us\n",(ptimer2-ptimer1));
+
 
     //setWorkSize(gws, lws, n, n);
 	gws[0] = n;
 	gws[1] = n;
 
+ ptimer1 = PAPI_get_virt_usec();
 	/*Enque task for parallel execution*/
     ret = clEnqueueNDRangeKernel(queue, kernel, 2, NULL, gws, NULL, 0, NULL, &event);
+
+ptimer2 = PAPI_get_virt_usec();
+printf("Time elapsed (using PAPI) in kernel execution is %llu us\n",(ptimer2-ptimer1));
 
 	//opencl timer
         clWaitForEvents(1, &event);
@@ -170,8 +218,16 @@ int main()
         printf("OpenCl Execution time is: %0.3f us \n", total_time / 1000.0);
 
 
+ ptimer1 = PAPI_get_virt_usec();
     /* Get results from the memory buffer */
     ret = clEnqueueReadBuffer(queue, rmobj, CL_TRUE, 0, n*n*sizeof(cl_float), rm, 0, NULL, NULL);
+ptotal_end = PAPI_get_virt_usec();
+
+ptimer2 = PAPI_get_virt_usec();
+printf("Time elapsed (using PAPI) in writing from device to host memory is %llu us\n",(ptimer2-ptimer1));
+
+printf("Total time elapsed (using PAPI) is %llu us\n",(ptotal_end-ptotal_start));
+
 
 	/* host side C code for thresholding (for verification purpose) */
 	/*float* ampd;
