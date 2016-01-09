@@ -87,12 +87,15 @@ long LoadOpenCLKernel(char const* path, char **buf)
 
 int main(int argc, char** argv)
 {
-	 long long timer1 = 0;
-        cl_event event;
-        long long timer2 = 0;
+	 printf("cl:main program:matrixmul\n");
+	 cl_event event;
+
+	long long ptimer1 = 0;
+        long long ptimer2 = 0;
+	long long ptotal_start = 0;
+	long long ptotal_end = 0;
 
    int err;                            // error code returned from api calls
-
    cl_device_id device_id;             // compute device id 
    cl_context context;                 // compute context
    cl_command_queue commands;          // compute command queue
@@ -129,29 +132,48 @@ int main(int argc, char** argv)
 
    cl_uint dev_cnt = 0;
    clGetPlatformIDs(0, 0, &dev_cnt);
-	
    cl_platform_id platform_ids[100];
+
+   printf("cl:main program:Init_Device \n");
+
+   ptotal_start = PAPI_get_virt_usec();
+   ptimer1 = PAPI_get_virt_usec();
    clGetPlatformIDs(dev_cnt, platform_ids, NULL);
+   ptimer2 = PAPI_get_virt_usec();
+   printf("cl:main timing:PAPI clGetPlatformIDs %lluus\n",(ptimer2-ptimer1));
+
 	
    // Connect to a compute device
    int gpu = 1;
+   ptimer1 = PAPI_get_virt_usec();
    err = clGetDeviceIDs(platform_ids[0], CL_DEVICE_TYPE_DEFAULT, 1, &device_id, NULL);
+   ptimer2 = PAPI_get_virt_usec();
+   printf("cl:main timing:PAPI clGetDeviceIDs %llu us\n",(ptimer2-ptimer1));
+
    if (err != CL_SUCCESS)
    {
        printf("Error: Failed to create a device group!\n");
        return EXIT_FAILURE;
    }
   
+   ptimer1 = PAPI_get_virt_usec();
    // Create a compute context 
    context = clCreateContext(0, 1, &device_id, NULL, NULL, &err);
+   ptimer2 = PAPI_get_virt_usec();
+   printf("cl:main timing:PAPI clCreateContext %llu us\n",(ptimer2-ptimer1));
+
    if (!context)
    {
        printf("Error: Failed to create a compute context!\n");
        return EXIT_FAILURE;
    }
 
+   ptimer1 = PAPI_get_virt_usec();
    // Create a command commands
    commands = clCreateCommandQueue(context, device_id,  CL_QUEUE_PROFILING_ENABLE, &err);
+   ptimer2 = PAPI_get_virt_usec();
+   printf("cl:main timing:PAPI clCreateCommandQueue %llu us\n",(ptimer2-ptimer1));
+
    if (!commands)
    {
        printf("Error: Failed to create a command commands!\n");
@@ -168,15 +190,24 @@ int main(int argc, char** argv)
        return 1;
    }
 
+   ptimer1 = PAPI_get_virt_usec();
+   /*Create program from source*/
    program = clCreateProgramWithSource(context, 1, (const char **) & KernelSource, NULL, &err);
+   ptimer2 = PAPI_get_virt_usec();
+   printf("cl:main timing:PAPI clCreateProgramWithSource %llu us\n",(ptimer2-ptimer1));
+
    if (!program)
    {
        printf("Error: Failed to create compute program!\n");
        return EXIT_FAILURE;
    }
 
+   ptimer1 = PAPI_get_virt_usec();
    // Build the program executable
    err = clBuildProgram(program, 0, NULL, NULL, NULL, NULL);
+   ptimer2 = PAPI_get_virt_usec();
+   printf("cl:main timing:PAPI clBuildProgram %llu us\n",(ptimer2-ptimer1));
+
    if (err != CL_SUCCESS)
    {
        size_t len;
@@ -187,19 +218,26 @@ int main(int argc, char** argv)
        exit(1);
    }
 
+   ptimer1 = PAPI_get_virt_usec();
    // Create the compute kernel in the program we wish to run
-   //
    kernel = clCreateKernel(program, "matrixMul", &err);
+   ptimer2 = PAPI_get_virt_usec();
+   printf("cl:main timing:PAPI clCreateKernel %llu us\n",(ptimer2-ptimer1));
+
    if (!kernel || err != CL_SUCCESS)
    {
        printf("Error: Failed to create compute kernel!\n");
        exit(1);
    }
 
+   ptimer1 = PAPI_get_virt_usec();
    // Create the input and output arrays in device memory for our calculation
    d_C = clCreateBuffer(context, CL_MEM_READ_WRITE, mem_size_A, NULL, &err);
    d_A = clCreateBuffer(context, CL_MEM_READ_WRITE | CL_MEM_COPY_HOST_PTR, mem_size_A, h_A, &err);
    d_B = clCreateBuffer(context, CL_MEM_READ_WRITE | CL_MEM_COPY_HOST_PTR, mem_size_B, h_B, &err);
+   ptimer2 = PAPI_get_virt_usec();
+   printf("cl:main timing:PAPI clCreateBuffer %llu us\n",(ptimer2-ptimer1));
+
 
    if (!d_A || !d_B || !d_C)
    {
@@ -207,18 +245,22 @@ int main(int argc, char** argv)
        exit(1);
    }    
     
-   printf("Running matrix multiplication for matrices A (%dx%d) and B (%dx%d) ...\n", WA,HA,WB,HB); 
+   //printf("Running matrix multiplication for matrices A (%dx%d) and B (%dx%d) ...\n", WA,HA,WB,HB); 
 
    //Launch OpenCL kernel
    size_t localWorkSize[2], globalWorkSize[2];
  
    int wA = WA;
    int wC = WC;
+   ptimer1 = PAPI_get_virt_usec();
    err = clSetKernelArg(kernel, 0, sizeof(cl_mem), (void *)&d_C);
    err |= clSetKernelArg(kernel, 1, sizeof(cl_mem), (void *)&d_A);
    err |= clSetKernelArg(kernel, 2, sizeof(cl_mem), (void *)&d_B);
    err |= clSetKernelArg(kernel, 3, sizeof(int), (void *)&wA);
    err |= clSetKernelArg(kernel, 4, sizeof(int), (void *)&wC);
+   ptimer2 = PAPI_get_virt_usec();
+   printf("cl:main timing:PAPI clSetKernelArg %llu us\n",(ptimer2-ptimer1));
+
 
    if (err != CL_SUCCESS)
    {
@@ -231,7 +273,12 @@ int main(int argc, char** argv)
    globalWorkSize[0] = 1024;
    globalWorkSize[1] = 1024;
  
+   ptimer1 = PAPI_get_virt_usec();
+   /*Enqueue for parallel execution*/
    err = clEnqueueNDRangeKernel(commands, kernel, 2, NULL, globalWorkSize, localWorkSize, 0, NULL, &event);
+   ptimer2 = PAPI_get_virt_usec();
+   printf("cl:main timing:PAPI clEnqueueNDRangeKernel %llu us\n",(ptimer2-ptimer1));
+
 
 	//opencl timer
         clWaitForEvents(1, &event);
@@ -241,7 +288,7 @@ int main(int argc, char** argv)
         clGetEventProfilingInfo(event, CL_PROFILING_COMMAND_START, sizeof(time_start), &time_start, NULL);
         clGetEventProfilingInfo(event, CL_PROFILING_COMMAND_END, sizeof(time_end), &time_end, NULL);
         total_time = time_end - time_start;
-        printf("OpenCl Execution time is: %0.3f us \n", total_time / 1000.0);
+        printf("cl:main timing:opencl clEnqueueNDRangeKernel %0.3f us \n", total_time / 1000.0);
 
 
    if (err != CL_SUCCESS)
@@ -250,8 +297,15 @@ int main(int argc, char** argv)
        exit(1);
    }
  
+   ptimer1 = PAPI_get_virt_usec();
    //Retrieve result from device
    err = clEnqueueReadBuffer(commands, d_C, CL_TRUE, 0, mem_size_C, h_C, 0, NULL, NULL);
+   ptotal_end = PAPI_get_virt_usec();
+   ptimer2 = PAPI_get_virt_usec();
+   printf("cl:main timing:PAPI clEnqueueReadBuffer %lluus\n",(ptimer2-ptimer1));
+
+   printf("cl:main timing:PAPI total_time %llu us\n",(ptotal_end-ptotal_start));
+
 
    if (err != CL_SUCCESS)
    {
