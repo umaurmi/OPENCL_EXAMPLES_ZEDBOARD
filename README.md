@@ -15,8 +15,13 @@ There are a set of pre-requisites that must be fulfilled in order for the code a
 
 ### <a name="prereq-zb"></a> 1) Zedboard
 
+* **Booting Xilinux on zedboard:**
+The following examples will run on POCL installed over the linux version for zedboard "xilinux" xilinux is an ubuntu 12.04 flavour that also can be used to integrate the linux running on the PS directly to the PL through /dev/.
+
+In order to install the xilinux on zedboard with the base xillybus bitstream please follow the instructions given in the "Getting Started" guide provided in the xillybus website:([http://xillybus.com/xillinux](http://xillybus.com/xillinux))
+
 ### <a name="prereq-x64"></a> 2) linux-x64 targets(intel only)
 
 ### <a name="prereq-x64"></a> 3) mac x64 targets
 
-***COMING SOON***
+       **COMING SOON**
