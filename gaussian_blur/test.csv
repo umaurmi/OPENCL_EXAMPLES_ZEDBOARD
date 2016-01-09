@@ -1,0 +1,12 @@
+clGetPlatformIDs,0us
+clGetDeviceIDs,4811us
+clCreateContext,129us
+clCreateCommandQueue,19us
+clCreateProgramWithSource,276us
+clBuildProgram,1544302us
+clCreateKernel,645us
+clCreateBuffer,50136us
+clSetKernelArg,18us
+clEnqueueNDRangeKernel,4425746us
+clEnqueueReadBuffer,50541us
+total_time,6100861us

@@ -101,7 +101,7 @@ int main()
 	   cl_mem d_C;
 	
 	   /* Image file input */
-	    readPGM(&ipgm,"sunny_uhd.pgm");
+	    readPGM(&ipgm,"lena.pgm");
 	
 	    ipgm_img_width = ipgm.width;
 	    ipgm_img_height = ipgm.height;

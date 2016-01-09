@@ -13,6 +13,7 @@
 
 #define MAX_SOURCE_SIZE (0x100000)
 
+
 cl_device_id device_id = NULL;
 cl_context context = NULL;
 cl_command_queue queue = NULL;
@@ -42,7 +43,7 @@ int setWorkSize(size_t* gws, size_t* lws, cl_int x, cl_int y)
 
 int main()
 {
-	printf("cl:main program:power_law_trnsfrm\n");
+	printf("cl:main program:linear_trnsfrm\n");
 
 	cl_event event;
 
@@ -51,7 +52,7 @@ int main()
 
 	long long ptotal_start = 0;
 	long long ptotal_end = 0;
-    
+
     cl_mem xmobj = NULL;
     cl_mem rmobj = NULL;
     cl_kernel kernel = NULL;
@@ -69,14 +70,14 @@ int main()
     pgm_t opgm;
 
     FILE *fp;
-    const char fileName[] = "./power_law.cl";
+    const char fileName[] = "./linear_trnsfrm.cl";
     size_t source_size;
     char *source_str;
-    cl_int i, j,n;
-
+    cl_int i, j, n;
+    
     size_t gws[2];
     size_t lws[2];
-    
+
     /*  Load source code , including kernel */
     fp = fopen(fileName, "r");
     if (!fp) {
@@ -105,17 +106,18 @@ int main()
 
     printf("cl:main program:Init_Device \n");
 
-    ptotal_start = PAPI_get_virt_usec();
     ptimer1 = PAPI_get_virt_usec();
     /* Acquisition of platform devices information */
     ret = clGetPlatformIDs(1, &platform_id, &ret_num_platforms);
     ptimer2 = PAPI_get_virt_usec();
     printf("cl:main timing:PAPI clGetPlatformIDs %llu us\n",(ptimer2-ptimer1));
 
+
     ptimer1 = PAPI_get_virt_usec();
     ret = clGetDeviceIDs( platform_id, CL_DEVICE_TYPE_DEFAULT, 1, &device_id, &ret_num_devices);
     ptimer2 = PAPI_get_virt_usec();
     printf("cl:main timing:PAPI clGetDeviceIDs %llu us\n",(ptimer2-ptimer1));
+
 
     ptimer1 = PAPI_get_virt_usec();
     /* OpenCL Creating a Context */
@@ -123,11 +125,13 @@ int main()
     ptimer2 = PAPI_get_virt_usec();
     printf("cl:main timing:PAPI clCreateContext %llu us\n",(ptimer2-ptimer1));
 
+
     ptimer1 = PAPI_get_virt_usec();
     /* Creating a command queue */
-    queue = clCreateCommandQueue(context, device_id, CL_QUEUE_PROFILING_ENABLE, &ret);
+    queue = clCreateCommandQueue(context, device_id,  CL_QUEUE_PROFILING_ENABLE, &ret);
     ptimer2 = PAPI_get_virt_usec();
     printf("cl:main timing:PAPI clCreateCommandQueue %llu us\n",(ptimer2-ptimer1));
+
 
     ptimer1 = PAPI_get_virt_usec();
     /* Creating a buffer object */
@@ -136,11 +140,13 @@ int main()
     ptimer2 = PAPI_get_virt_usec();
     printf("cl:main timing:PAPI clCreateBuffer %llu us\n",(ptimer2-ptimer1));
 
+
     ptimer1 = PAPI_get_virt_usec();
     /* And transfer the data to the memory buffer */
     ret = clEnqueueWriteBuffer(queue, xmobj, CL_TRUE, 0, n*n*sizeof(cl_float), xm, 0, NULL, NULL);
     ptimer2 = PAPI_get_virt_usec();
     printf("cl:main timing:PAPI clEnqueueWriteBuffer %llu us\n",(ptimer2-ptimer1));
+
 
     ptimer1 = PAPI_get_virt_usec();
     /* Create a kernel program from the read source */
@@ -148,41 +154,55 @@ int main()
     ptimer2 = PAPI_get_virt_usec();
     printf("cl:main timing:PAPI clCreateProgramWithSource %llu us\n",(ptimer2-ptimer1));
 
+
     ptimer1 = PAPI_get_virt_usec();
     /* Build a kernel program */ 
     ret = clBuildProgram(program, 1, &device_id, NULL, NULL, NULL);
     ptimer2 = PAPI_get_virt_usec();
     printf("cl:main timing:PAPI clBuildProgram %llu us\n",(ptimer2-ptimer1));
 
+
     ptimer1 = PAPI_get_virt_usec();
     /* OpenCL Creating the kernel */
-    kernel = clCreateKernel(program, "power_law",    &ret);
+    kernel = clCreateKernel(program, "linear_trnsfrm",    &ret);
     ptimer2 = PAPI_get_virt_usec();
     printf("cl:main timing:PAPI clCreateKernel %llu us\n",(ptimer2-ptimer1));
 
-	/*read gamma from user*/
-	cl_float gamma;
-	printf("Enter required gamma value for power-law transform (higher gamma implies darker image) \n");
-	scanf("%f", &gamma);
 
- 	ptimer1 = PAPI_get_virt_usec();
-	/* set kernel arguments */
-	ret = clSetKernelArg(kernel, 0, sizeof(cl_mem), (void *)&rmobj);
-	ret = clSetKernelArg(kernel, 1, sizeof(cl_mem), (void *)&xmobj);
-	ret = clSetKernelArg(kernel, 2, sizeof(cl_int), (void *)&n);
-	ret = clSetKernelArg(kernel, 3, sizeof(cl_float), (void *)&gamma);
-	ptimer2 = PAPI_get_virt_usec();
-	printf("cl:main timing:PAPI clSetKernelArg %llu us\n",(ptimer2-ptimer1));
+	/*read thresh from user*/
+	
+	/* threshold values :
+		for test_image => 10-80;
+						  35-70(better clarity)
+		for lena       => around 127
+		for einstein   => 20-40
+
+	*/
+
+	cl_int thresh = 100;
+	//printf("Enter required thresholding value (0-255) \n"); hardcoding treshold value for easier timing
+	//scanf("%d", &thresh); hardcoding treshold value for easier timing
+	
+
+    ptimer1 = PAPI_get_virt_usec();
+    /* set kernel arguments */
+    ret = clSetKernelArg(kernel, 0, sizeof(cl_mem), (void *)&rmobj);
+    ret = clSetKernelArg(kernel, 1, sizeof(cl_mem), (void *)&xmobj);
+    ret = clSetKernelArg(kernel, 2, sizeof(cl_int), (void *)&n);
+    ret = clSetKernelArg(kernel, 3, sizeof(cl_int), (void *)&thresh);
+    ptimer2 = PAPI_get_virt_usec();
+    printf("cl:main timing:PAPI clSetKernelArg %llu us\n",(ptimer2-ptimer1));
+
 
     //setWorkSize(gws, lws, n, n);
 	gws[0] = n;
 	gws[1] = n;
 
-	 ptimer1 = PAPI_get_virt_usec();
-	/*Enque task for parallel execution*/
-	ret = clEnqueueNDRangeKernel(queue, kernel, 2, NULL, gws, NULL, 0, NULL, &event);
-	ptimer2 = PAPI_get_virt_usec();
-	printf("cl:main timing:PAPI clEnqueueNDRangeKernel %llu us\n",(ptimer2-ptimer1));
+    ptimer1 = PAPI_get_virt_usec();
+    /*Enque task for parallel execution*/
+    ret = clEnqueueNDRangeKernel(queue, kernel, 2, NULL, gws, NULL, 0, NULL, &event);
+    ptimer2 = PAPI_get_virt_usec();
+    printf("cl:main timing:PAPI clEnqueueNDRangeKernel %llu us\n",(ptimer2-ptimer1));
 
 	//opencl timer
         clWaitForEvents(1, &event);
@@ -194,22 +214,36 @@ int main()
         total_time = time_end - time_start;
         printf("cl:main timing:opencl clEnqueueNDRangeKernel %0.3f us \n", total_time / 1000.0);
 
-	ptimer1 = PAPI_get_virt_usec();
-    	/* Get results from the memory buffer */
-    	ret = clEnqueueReadBuffer(queue, rmobj, CL_TRUE, 0, n*n*sizeof(cl_float), rm, 0, NULL, NULL);
-	ptotal_end = PAPI_get_virt_usec();
-	ptimer2 = PAPI_get_virt_usec();
-	printf("cl:main timing:PAPI clEnqueueReadBuffer %llu us\n",(ptimer2-ptimer1));
 
-	printf("cl:main timing:PAPI total_time %llu us\n",(ptotal_end-ptotal_start));
+    ptimer1 = PAPI_get_virt_usec();
+    /* Get results from the memory buffer */
+    ret = clEnqueueReadBuffer(queue, rmobj, CL_TRUE, 0, n*n*sizeof(cl_float), rm, 0, NULL, NULL);
+    ptotal_end = PAPI_get_virt_usec();
+    ptimer2 = PAPI_get_virt_usec();
+    printf("cl:main timing:PAPI clEnqueueReadBuffer %llu us\n",(ptimer2-ptimer1));
 
+    printf("cl:main timing:PAPI total_time %llu us\n",(ptotal_end-ptotal_start));
+
+
+	/* host side C code for thresholding (for verification purpose) */
+	/*float* ampd;
+	ampd = (float*)malloc(n*n*sizeof(float));
+	for (i = 0; i<n; i++) {
+		for (j = 0; j<n; j++) {
+			ampd[n*((i)) + ((j))] = (((float*)xm)[(n*i) + j]);
+			if (ampd[n*((i)) + ((j))] > 50)
+				ampd[n*((i)) + ((j))] = 255;
+			else
+				ampd[n*((i)) + ((j))] = 0;
+		}
+	}*/
+	
     opgm.width = n;
     opgm.height = n;
-    normalizeF2PGM(&opgm, rm);
-
+    normalizeF2PGM(&opgm, rm); //to display kernel computation result
 
     /* Image file output */
-    writePGM(&opgm, "lena_out.pgm");
+    writePGM(&opgm, "output.pgm");
 
 
     /*End processing */

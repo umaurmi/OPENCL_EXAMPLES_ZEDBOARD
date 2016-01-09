@@ -1,0 +1,13 @@
+OpenCL_API,Timing
+clGetPlatformIDs,0us
+clGetDeviceIDs,4829us
+clCreateContext,129us
+clCreateCommandQueue,19us
+clCreateProgramWithSource,276us
+clBuildProgram,1535252us
+clCreateKernel,737us
+clCreateBuffer,3244us
+clSetKernelArg,19us
+clEnqueueNDRangeKernel,4420308us
+clEnqueueReadBuffer,3263us
+total_time,5982950us

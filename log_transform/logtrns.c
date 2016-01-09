@@ -213,7 +213,7 @@ int main()
     normalizeF2PGM(&opgm, rm);
 
     /* Output image */
-    writePGM(&opgm, "output_einstein.pgm");
+    writePGM(&opgm, "output.pgm");
 
 
     /* End processing */

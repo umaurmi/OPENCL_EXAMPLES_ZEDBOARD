@@ -65,11 +65,11 @@ int main()
     	pgm_t opgm;
 
     	FILE *fp;
-    	const char fileName[] = "./test2.cl";
+    	const char fileName[] = "./transpose.cl";
     	size_t source_size;
     	char *source_str;
    	register int i, j;
-  	register int n;
+  	int n;
 
     	size_t gws[2];
     	size_t lws[2];
@@ -100,7 +100,7 @@ int main()
         	}
     	}
 
-	printf("cl:main program:Init_Device \n");
+	printf("cl:main status:Init_Device \n");
 
 	ptotal_start = PAPI_get_virt_usec();
 	ptimer1 = PAPI_get_virt_usec();
