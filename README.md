@@ -19,7 +19,7 @@ There are a set of pre-requisites that must be fulfilled in order for the code a
 The following examples will run on POCL installed over the linux version for zedboard "xilinux" xilinux is an ubuntu 12.04 flavour that also can be used to integrate the linux running on the PS directly to the PL through /dev/.
 In order to install the xilinux on zedboard with the base xillybus bitstream please follow the instructions given in the "Getting Started" guide provided in the xillybus website:([http://xillybus.com/xillinux](http://xillybus.com/xillinux))
 
-[http://google.com](http://google.com){:target="_blank"}
+<a href="http://google.com/" target="_blank">example</a>
 
 * **Installing POCL on zedboard**
     *    Before installing POCL, please make sure that all the required dependencies are installed.
