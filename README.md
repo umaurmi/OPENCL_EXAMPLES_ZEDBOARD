@@ -7,6 +7,7 @@ The repository contains certain OpenCl Examples that can be run on the zedboard 
 + [Pre-Requisites](#prereq) 
     + [Zedboard](#prereq-zb)
     + [linux x64 targets(intel only)](#prereq-x64)
+    + [mac x64 targets](#prereq-x64)
 
 
 ## <a name="prereq"></a> Pre-Requisites
@@ -14,4 +15,8 @@ There are a set of pre-requisites that must be fulfilled in order for the code a
 
 ### <a name="prereq-zb"></a> 1) Zedboard
 
-### <a name="prereq-x64"></a> 1) linux-x64 targets(intel only)
+### <a name="prereq-x64"></a> 2) linux-x64 targets(intel only)
+
+### <a name="prereq-x64"></a> 3) mac x64 targets
+
+***COMING SOON***
