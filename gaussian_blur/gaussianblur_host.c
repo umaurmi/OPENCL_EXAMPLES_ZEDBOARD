@@ -72,7 +72,7 @@ long LoadOpenCLKernel(char const* path, char **buf)
     return (long)fsz;
 }
 
-int main(int argc, char** argv)
+int main()
 {
 	   printf("cl:main program:gausblur\n");
 	   cl_event event;
@@ -267,14 +267,14 @@ int main(int argc, char** argv)
        	       exit(1);
    	  }
  
-	   localWorkSize[0] = 4;
-	   localWorkSize[1] = 4;
+	   localWorkSize[0] = 8;
+	   localWorkSize[1] = 8;
 	   globalWorkSize[0] = ipgm_img_width;
 	   globalWorkSize[1] = ipgm_img_height;
 	 
 	   ptimer1 = PAPI_get_virt_usec();
 	   /*Enqueue task for parallel execution*/
-	   err = clEnqueueNDRangeKernel(commands, kernel, 2, NULL, globalWorkSize, NULL, 0, NULL, &event);
+	   err = clEnqueueNDRangeKernel(commands, kernel, 2, NULL, globalWorkSize, localWorkSize, 0, NULL, &event);
 	   ptimer2 = PAPI_get_virt_usec();
 	   printf("cl:main timing:PAPI clEnqueueNDRangeKernel %lluus\n",(ptimer2-ptimer1));
 	
@@ -319,7 +319,7 @@ int main(int argc, char** argv)
 	    }
 	
 	
-	   printf("Gaussian blur completed...\n"); 
+	   printf("cl:main program:completed\n"); 
 	
 	   opgm.width = ipgm_img_width;
 	   opgm.height = ipgm_img_height;

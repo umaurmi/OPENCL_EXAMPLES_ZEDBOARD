@@ -8,14 +8,14 @@ __kernel void gaussianblur(
     const int x = get_global_id(0);
     const int y = get_global_id(1);
 
-    uint sum = 0;
+    float sum = 0;
     for (int r = 0; r < maskWidth; r++)
     {
         const int idxIntmp = (y + r) * inputWidth + x;
 
         for (int c = 0; c < maskWidth; c++)
         {
-			sum += mask[(r * maskWidth)  + c] * input[idxIntmp + c];
+			sum += ((mask[(r * maskWidth)  + c])/9) * input[idxIntmp + c];
         }
     } 
     
