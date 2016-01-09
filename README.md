@@ -23,7 +23,7 @@ In order to install the xilinux on zedboard with the base xillybus bitstream ple
 
 * **Installing POCL on zedboard**
     *    Before installing POCL, please make sure that all the required dependencies are installed.
-         * Refer to wiki: https://github.com/umaurmi/OPENCL_EXAMPLES_ZEDBOARD/wiki/Installing-POCL-dependencies-on-zedboard-zynq-7000-all-programmable-SoC
+         * Refer to wiki: <a href="https://github.com/umaurmi/OPENCL_EXAMPLES_ZEDBOARD/wiki/Installing-POCL-dependencies-on-zedboard-zynq-7000-all-programmable-SoC" target="_blank">Installing-POCL-dependencies-on-zedboard-zynq-7000-all-programmable-SoC</a>
     *    Refer to wiki: to install POCL **Only after all dependencies**
     *    An install script to automatically install all dependencies will be released soon.
 
