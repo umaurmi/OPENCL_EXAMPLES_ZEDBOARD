@@ -29,6 +29,8 @@ In order to install the xilinux on zedboard with the base xillybus bitstream ple
 
 ### <a name="prereq-x64"></a> 1.2: linux-x64 targets(intel only)
 
+       **COMING SOON**
+
 ### <a name="prereq-x64"></a> 1.3: mac x64 targets
 
        **COMING SOON**
