@@ -27,6 +27,10 @@ In order to install the xilinux on zedboard with the base xillybus bitstream ple
     *    Refer to wiki: to install POCL **Only after all dependencies**
     *    An install script to automatically install all dependencies will be released soon.
 
+* **Installing PAPI for timing and profiling**
+
+       **COMING SOON**
+
 ### <a name="prereq-x64"></a> 1.2: linux-x64 targets(intel only)
 
        **COMING SOON**
