@@ -17,6 +17,7 @@ for csvfile in glob.glob(os.path.join('.', '*.csv')):
 
 
 import os
+import platform
 import glob
 import csv
 import xlwt
@@ -35,4 +36,9 @@ for csvfile in glob.glob(os.path.join('.', '*.csv')):
             for c, col in enumerate(row):
                 ws.write(r, c, col)
             print("saving workbook")
-    wb.save('output.xls')
+    if platform.processor() == 'armv7l':
+    	wb.save('armv7l.xls')
+    elif platform.processor() == 'armv7a':
+    	wb.save('armv7a.xls')
+    elif platform.processor() == 'x86_64':
+    	wb.save('x86_64.xls')

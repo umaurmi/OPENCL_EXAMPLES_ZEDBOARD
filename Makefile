@@ -31,5 +31,5 @@ clean:
 	cd power_law_trnsfrm && $(MAKE) clean
 	cd transpose && $(MAKE) clean
 	rm -rf reports/*.csv
-	rm -rf reports/*.xls
+	#rm -rf reports/*.xls
 
