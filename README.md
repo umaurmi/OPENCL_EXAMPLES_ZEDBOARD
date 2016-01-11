@@ -8,7 +8,9 @@ The repository contains certain OpenCl Examples that can be run on the zedboard 
     + [Zedboard Pre-Requisites](#prereq-zb)
     + [linux x64 targets(intel only)](#prereq-x64)
     + [mac x64 targets](#prereq-x64)
-+ [
++ [Installing PAPI and XLWT for timing and profiling](#instpapi)
+    + [Installing PAPI(Performance API)](#papi)
+    + [Installing XWLT package](#xlwt)
 
 
 ## <a name="prereq"></a> 1) Pre-Requisites
@@ -26,9 +28,9 @@ In order to install the xilinux on zedboard with the base xillybus bitstream ple
     *    Refer to wiki: to install POCL **Only after all dependencies**
     *    An install script to automatically install all dependencies will be released soon.
 
-##Installing PAPI and XLWT for timing and profiling
+##<a name="instpapi"></a> 2: Installing PAPI and XLWT for timing and profiling
 
-### Installing PAPI(Performance API)
+###<a name="papi"></a> 2.1: Installing PAPI(Performance API)
 The perforamnce api is an api that can be used for effective profiling in arm as well as intel targets. In both cases the api needs to be compiled from source to support the profiling used by us. Please follow the below steps for installing PAPI in x64 or Arm.
 
 Download the latest stable tarball of PAPI from the <a href="http://icl.cs.utk.edu/papi/"target="_blank">PAPI website</a>
@@ -49,7 +51,7 @@ Enter the folder and run the following commands to install the software:
 P.S. :- The makefiles are built assuming the papi libraries are installed in the folder :- /usr/local/lib/libpapi.a, if your papi library is installed in some other location, you might need to edit the makefiles to support papi, we are currently working on making the makefiles more generic.
 
 
-### Installing XWLT package for python-2.7 to support data wrangling for reports
+###<a name="xlwt"></a> 2.2: Installing XWLT package
 The profiling is done using a python code which generates a multisheet excel page with all the timing analyses. Please note the xlwt tool installed and the python code is for python-2.7. It will not work with python-3.0
 
 In order to install XLWT python-pip needs to be installed. PIP can be installed in 2 ways. For x64 and other well supported targets it can be installed with apt-get:
@@ -71,11 +73,7 @@ Once this is done you can verify whether pip is installed by using the following
 Once pip is successfully installed, use pip to install the XLWT package for python:
 
     $pip install xlwt
-
-
-
-
-
+    
 
 ### <a name="prereq-x64"></a> 1.2: linux-x64 targets(intel only)
 
