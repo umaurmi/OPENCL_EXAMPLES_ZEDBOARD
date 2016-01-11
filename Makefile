@@ -20,6 +20,8 @@ linux64_profiling:
 	cd transpose && $(MAKE) linux64
 
 clean:
+	cd devquery && $(MAKE) clean
+	cd hello && $(MAKE) clean
 	cd gaussian_blur && $(MAKE) clean
 	cd linear_trnsfrm && $(MAKE) clean
 	cd log_transform && $(MAKE) clean
