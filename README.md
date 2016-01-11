@@ -5,21 +5,20 @@ The repository contains certain OpenCl Examples that can be run on the zedboard 
 
 ## Table of Contents
 + [Pre-Requisites](#prereq) 
-    + [Zedboard](#prereq-zb)
+    + [Zedboard Pre-Requisites](#prereq-zb)
     + [linux x64 targets(intel only)](#prereq-x64)
     + [mac x64 targets](#prereq-x64)
++ [
 
 
 ## <a name="prereq"></a> 1) Pre-Requisites
 There are a set of pre-requisites that must be fulfilled in order for the code and profiling to work on the zedboard as well as linux targets, please follow the instructions given below
 
-### <a name="prereq-zb"></a> 1.1: Zedboard
+### <a name="prereq-zb"></a> 1.1: Zedboard Pre-Requisites
 
 * **Booting Xilinux on zedboard:**
 The following examples will run on POCL installed over the linux version for zedboard "xilinux" xilinux is an ubuntu 12.04 flavour that also can be used to integrate the linux running on the PS directly to the PL through /dev/.
 In order to install the xilinux on zedboard with the base xillybus bitstream please follow the instructions given in the "Getting Started" guide provided in the <a href="http://xillybus.com/xillinux" target="_blank">xillybus website</a>
-
-
 
 * **Installing POCL on zedboard**
     *    Before installing POCL, please make sure that all the required dependencies are installed.
@@ -27,9 +26,9 @@ In order to install the xilinux on zedboard with the base xillybus bitstream ple
     *    Refer to wiki: to install POCL **Only after all dependencies**
     *    An install script to automatically install all dependencies will be released soon.
 
-* **Installing PAPI and XLWT for timing and profiling**
+##Installing PAPI and XLWT for timing and profiling
 
-#### Installing PAPI(Performance API)
+### Installing PAPI(Performance API)
 The perforamnce api is an api that can be used for effective profiling in arm as well as intel targets. In both cases the api needs to be compiled from source to support the profiling used by us. Please follow the below steps for installing PAPI in x64 or Arm.
 
 Download the latest stable tarball of PAPI from the <a href="http://icl.cs.utk.edu/papi/"target="_blank">PAPI website</a>
@@ -50,7 +49,7 @@ Enter the folder and run the following commands to install the software:
 P.S. :- The makefiles are built assuming the papi libraries are installed in the folder :- /usr/local/lib/libpapi.a, if your papi library is installed in some other location, you might need to edit the makefiles to support papi, we are currently working on making the makefiles more generic.
 
 
-#### Installing XWLT package for python-2.7 to support data wrangling for reports
+### Installing XWLT package for python-2.7 to support data wrangling for reports
 The profiling is done using a python code which generates a multisheet excel page with all the timing analyses. Please note the xlwt tool installed and the python code is for python-2.7. It will not work with python-3.0
 
 In order to install XLWT python-pip needs to be installed. PIP can be installed in 2 ways. For x64 and other well supported targets it can be installed with apt-get:
