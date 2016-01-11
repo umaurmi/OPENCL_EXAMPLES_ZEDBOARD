@@ -12,9 +12,9 @@
 #include <stdbool.h>
 
 ////////////////////////////////////////////////////////////////////////////////
-#define WA 1024
-#define HA 1024
-#define WB 1024
+#define WA 512
+#define HA 512
+#define WB 512
 
 #define HB WA
 #define WC WB
