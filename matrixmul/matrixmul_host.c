@@ -270,8 +270,8 @@ int main(int argc, char** argv)
  
    localWorkSize[0] = 16;
    localWorkSize[1] = 16;
-   globalWorkSize[0] = 1024;
-   globalWorkSize[1] = 1024;
+   globalWorkSize[0] = WA;
+   globalWorkSize[1] = HA;
  
    ptimer1 = PAPI_get_virt_usec();
    /*Enqueue for parallel execution*/
