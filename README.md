@@ -6,7 +6,7 @@ The repository contains certain OpenCl Examples that can be run on the zedboard 
 ## Table of Contents
 + [Pre-Requisites](#prereq) 
     + [Zedboard Pre-Requisites](#prereq-zb)
-    + [linux x64 targets(intel only)](#prereq-x64)
+    + [Ubuntu based x64 targets(intel only)](#prereq-x64)
     + [mac x64 targets](#prereq-x64)
 + [Installing PAPI and XLWT for timing and profiling](#instpapi)
     + [Installing PAPI(Performance API)](#papi)
@@ -75,9 +75,11 @@ Once pip is successfully installed, use pip to install the XLWT package for pyth
     $pip install xlwt
     
 
-### <a name="prereq-x64"></a> 1.2: linux-x64 targets(intel only)
+### <a name="prereq-x64"></a> 1.2: Ubuntu based x64 targets(intel only)
 
-       **COMING SOON**
+We are currently working upon the profiling for the Ubuntu based x64 targets running intel's opencl sdk in ubuntu, it is underway and will be released soon, meanwhile profiling applications with POCL installed on ubuntu based x64 targets can still be done using the same makefiles and commands in exactly the same way.
+
+POCL ideally should be installable in full blown ubuntu desktops exactly in the same manner as mentioned for the zedboard using the two wiki's given in the <a href="https://github.com/umaurmi/OPENCL_EXAMPLES_ZEDBOARD/wiki"target="_blank">wiki page</a> of this repo.
 
 ### <a name="prereq-x64"></a> 1.3: mac x64 targets
 
