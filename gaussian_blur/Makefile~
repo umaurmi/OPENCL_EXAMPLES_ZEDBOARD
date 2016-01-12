@@ -11,7 +11,7 @@ pocl:gaussianblur_host.c
 			echo 'OpenCL_API,Timing' > ../reports/armv7l/gaussianblur_host.csv; \
 			sed -n '/PAPI/p' test.txt | awk '{print $$3,$$4}' OFS="," >> ../reports/armv7l/gaussianblur_host.csv; \
 			rm -rf test.txt; \
-	else \
+	else
 		echo "done"; \
 	fi
 

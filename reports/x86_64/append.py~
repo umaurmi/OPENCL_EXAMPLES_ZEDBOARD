@@ -24,9 +24,9 @@ import xlwt
 
 print("starting new workbook") 
 wb = xlwt.Workbook()
-for csvfile in glob.glob(os.path.join('./x86_64/', '*.csv')):
+for csvfile in glob.glob(os.path.join('.', '*.csv')):
            
-    fpath = csvfile.split("/x86_64/", 1)
+    fpath = csvfile.split("/", 1)
     fname = fpath[1].split(".", 1) ## fname[0] should be our worksheet name
     print("adding sheet " + fname[0]) 
     ws = wb.add_sheet(fname[0])
@@ -44,26 +44,22 @@ for csvfile in glob.glob(os.path.join('./x86_64/', '*.csv')):
     elif platform.processor() == 'x86_64':
     	wb.save('x86_64.xls')
 
-test_array_name = []
-test_array_value_x86pocl = []
 
 search_for = ['clEnqueueNDRangeKernel']
 
-for csvfile in glob.glob(os.path.join('./x86_64/', '*.csv')):
-    fpath = csvfile.split("/x86_64/", 1)
+for csvfile in glob.glob(os.path.join('.', '*.csv')):
+    fpath = csvfile.split("/", 1)
     fname = fpath[1].split(".", 1) ## fname[0] should be our worksheet name
 
-    with open(csvfile, 'rb') as inf, open('out.csv','w') as outf:
+    with open(csvfile, 'rb') as inf, open('out.csv','wb') as outf:
         reader = csv.reader(inf)
+        writer = csv.writer(outf)
         for row in reader:
             if row[0] in search_for:
+		out = row
+		outf.write(row[0])
                 print(fname[0])
-		test_array_name.append(fname[0])
                 print row
-		test_array_value_x86pocl.append(row[1])
-		
-		print(test_array_name)
-		print(test_array_value_x86pocl)
         
 		
             

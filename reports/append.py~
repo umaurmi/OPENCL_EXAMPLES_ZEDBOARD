@@ -58,12 +58,7 @@ for csvfile in glob.glob(os.path.join('./x86_64/', '*.csv')):
         for row in reader:
             if row[0] in search_for:
                 print(fname[0])
-		test_array_name.append(fname[0])
                 print row
-		test_array_value_x86pocl.append(row[1])
-		
-		print(test_array_name)
-		print(test_array_value_x86pocl)
         
 		
             

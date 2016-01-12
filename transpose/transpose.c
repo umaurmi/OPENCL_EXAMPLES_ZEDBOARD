@@ -107,7 +107,7 @@ int main()
 	/* Acquisition of platform devices information */
 	ret = clGetPlatformIDs(1, &platform_id, &ret_num_platforms);
 	ptimer2 = PAPI_get_virt_usec();
-        printf("cl:main timing:PAPI clGetPlatformIDs %lluus\n",(ptimer2-ptimer1));
+        printf("cl:main timing:PAPI clGetPlatformIDs %llu us\n",(ptimer2-ptimer1));
     	
 	ptimer1 = PAPI_get_virt_usec();
 	ret = clGetDeviceIDs( platform_id, CL_DEVICE_TYPE_DEFAULT, 1, &device_id, &ret_num_devices);
@@ -118,7 +118,7 @@ int main()
 	/* OpenCL Creating a Context */
 	context = clCreateContext(NULL, 1, &device_id, NULL, NULL, &ret);
  	ptimer2 = PAPI_get_virt_usec();
-        printf("cl:main timing:PAPI clCreateContext %lluus\n",(ptimer2-ptimer1));
+        printf("cl:main timing:PAPI clCreateContext %llu us\n",(ptimer2-ptimer1));
 
 	ptimer1 = PAPI_get_virt_usec();
 	/* Creating a command queue */
@@ -194,7 +194,7 @@ int main()
 	ret = clEnqueueReadBuffer(queue, rmobj, CL_TRUE, 0, n*n*sizeof(cl_float), rm, 0, NULL, NULL);
 	ptotal_end = PAPI_get_virt_usec();
  	ptimer2 = PAPI_get_virt_usec();
-        printf("cl:main timing:PAPI clEnqueueReadBuffer %lluus\n",(ptimer2-ptimer1));
+        printf("cl:main timing:PAPI clEnqueueReadBuffer %llu us\n",(ptimer2-ptimer1));
 
  	printf("cl:main timing:PAPI total_time %llu us\n",(ptotal_end-ptotal_start));
 	

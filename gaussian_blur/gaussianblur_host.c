@@ -149,14 +149,14 @@ int main()
 	   ptimer1 = PAPI_get_virt_usec();
 	   clGetPlatformIDs(dev_cnt, platform_ids, NULL);
 	   ptimer2 = PAPI_get_virt_usec();
-	   printf("cl:main timing:PAPI clGetPlatformIDs %lluus\n",(ptimer2-ptimer1));
+	   printf("cl:main timing:PAPI clGetPlatformIDs %llu us\n",(ptimer2-ptimer1));
 	
 	   // Connect to a compute device
 	   int gpu = 1;
 	   ptimer1 = PAPI_get_virt_usec();
 	   err = clGetDeviceIDs(platform_ids[0], CL_DEVICE_TYPE_DEFAULT, 1, &device_id, NULL);
 	   ptimer2 = PAPI_get_virt_usec();
-	   printf("cl:main timing:PAPI clGetDeviceIDs %lluus\n",(ptimer2-ptimer1));
+	   printf("cl:main timing:PAPI clGetDeviceIDs %llu us\n",(ptimer2-ptimer1));
 	   if (err != CL_SUCCESS)
 	   {
 	       printf("Error: Failed to create a device group!\n");
@@ -167,7 +167,7 @@ int main()
 	   ptimer1 = PAPI_get_virt_usec();
 	   context = clCreateContext(0, 1, &device_id, NULL, NULL, &err);
 	   ptimer2 = PAPI_get_virt_usec();
-	   printf("cl:main timing:PAPI clCreateContext %lluus\n",(ptimer2-ptimer1));
+	   printf("cl:main timing:PAPI clCreateContext %llu us\n",(ptimer2-ptimer1));
 	   if (!context)
 	   {
 	       printf("Error: Failed to create a compute context!\n");
@@ -178,7 +178,7 @@ int main()
 	   ptimer1 = PAPI_get_virt_usec();
 	   commands = clCreateCommandQueue(context, device_id, CL_QUEUE_PROFILING_ENABLE, &err);
 	   ptimer2 = PAPI_get_virt_usec();
-	   printf("cl:main timing:PAPI clCreateCommandQueue %lluus\n",(ptimer2-ptimer1));
+	   printf("cl:main timing:PAPI clCreateCommandQueue %llu us\n",(ptimer2-ptimer1));
 	   if (!commands)
 	   {
 	       printf("Error: Failed to create a command commands!\n");
@@ -197,7 +197,7 @@ int main()
 	   ptimer1 = PAPI_get_virt_usec();
 	   program = clCreateProgramWithSource(context, 1, (const char **) & KernelSource, NULL, &err);
 	   ptimer2 = PAPI_get_virt_usec();
-	   printf("cl:main timing:PAPI clCreateProgramWithSource %lluus\n",(ptimer2-ptimer1));
+	   printf("cl:main timing:PAPI clCreateProgramWithSource %llu us\n",(ptimer2-ptimer1));
 	   if (!program)
 	   {
 	       printf("Error: Failed to create compute program!\n");
@@ -208,7 +208,7 @@ int main()
 	   ptimer1 = PAPI_get_virt_usec();
 	   err = clBuildProgram(program, 0, NULL, NULL, NULL, NULL);
 	   ptimer2 = PAPI_get_virt_usec();
-	   printf("cl:main timing:PAPI clBuildProgram %lluus\n",(ptimer2-ptimer1));
+	   printf("cl:main timing:PAPI clBuildProgram %llu us\n",(ptimer2-ptimer1));
 	     //err = clBuildProgram(program, 1, &device_id, NULL, NULL, NULL);
 	   if (err != CL_SUCCESS)
 	   {
@@ -225,7 +225,7 @@ int main()
 	   ptimer1 = PAPI_get_virt_usec();
 	   kernel = clCreateKernel(program, "gaussianblur", &err);
 	   ptimer2 = PAPI_get_virt_usec();
-	   printf("cl:main timing:PAPI clCreateKernel %lluus\n",(ptimer2-ptimer1));
+	   printf("cl:main timing:PAPI clCreateKernel %llu us\n",(ptimer2-ptimer1));
 	   if (!kernel || err != CL_SUCCESS)
 	   {
 	       printf("Error: Failed to create compute kernel!\n");
@@ -238,7 +238,7 @@ int main()
 	   d_A = clCreateBuffer(context, CL_MEM_READ_WRITE | CL_MEM_COPY_HOST_PTR, mem_size_A, h_A, &err);
 	   d_B = clCreateBuffer(context, CL_MEM_READ_WRITE | CL_MEM_COPY_HOST_PTR, mem_size_B, h_B, &err);
 	   ptimer2 = PAPI_get_virt_usec();
-	   printf("cl:main timing:PAPI clCreateBuffer %lluus\n",(ptimer2-ptimer1));
+	   printf("cl:main timing:PAPI clCreateBuffer %llu us\n",(ptimer2-ptimer1));
 	   if (!d_A || !d_B || !d_C)
 	   {
 	       printf("Error: Failed to allocate device memory!\n");
@@ -260,7 +260,7 @@ int main()
 	   err |= clSetKernelArg(kernel, 3, sizeof(int), (void *)&wA);
 	   err |= clSetKernelArg(kernel, 4, sizeof(int), (void *)&wB);
 	   ptimer2 = PAPI_get_virt_usec();
-	   printf("cl:main timing:PAPI clSetKernelArg %lluus\n",(ptimer2-ptimer1));
+	   printf("cl:main timing:PAPI clSetKernelArg %llu us\n",(ptimer2-ptimer1));
 	   if (err != CL_SUCCESS)
 	   {
 	       printf("Error: Failed to set kernel arguments! %d\n", err);
@@ -276,7 +276,7 @@ int main()
 	   /*Enqueue task for parallel execution*/
 	   err = clEnqueueNDRangeKernel(commands, kernel, 2, NULL, globalWorkSize, localWorkSize, 0, NULL, &event);
 	   ptimer2 = PAPI_get_virt_usec();
-	   printf("cl:main timing:PAPI clEnqueueNDRangeKernel %lluus\n",(ptimer2-ptimer1));
+	   printf("cl:main timing:PAPI clEnqueueNDRangeKernel %llu us\n",(ptimer2-ptimer1));
 	
 	   if (err != CL_SUCCESS)
 	   {
@@ -292,16 +292,16 @@ int main()
 		clGetEventProfilingInfo(event, CL_PROFILING_COMMAND_START, sizeof(time_start), &time_start, NULL);
 		clGetEventProfilingInfo(event, CL_PROFILING_COMMAND_END, sizeof(time_end), &time_end, NULL);
 		total_time = time_end - time_start;
-		printf("cl:main timing:opencl clEnqueueNDRangeKernel %0.3fus\n", total_time / 1000.0);
+		printf("cl:main timing:opencl clEnqueueNDRangeKernel %0.3f us\n", total_time / 1000.0);
 	
            ptimer1 = PAPI_get_virt_usec();
 	   /*Retrieve result from device*/
 	   err = clEnqueueReadBuffer(commands, d_C, CL_TRUE, 0, mem_size_C, h_C, 0, NULL, NULL);
 	   ptotal_end = PAPI_get_virt_usec();
  	   ptimer2 = PAPI_get_virt_usec();
-	   printf("cl:main timing:PAPI clEnqueueReadBuffer %lluus\n",(ptimer2-ptimer1));
+	   printf("cl:main timing:PAPI clEnqueueReadBuffer %llu us\n",(ptimer2-ptimer1));
 
-	   printf("cl:main timing:PAPI total_time %lluus\n",(ptotal_end-ptotal_start));
+	   printf("cl:main timing:PAPI total_time %llu us\n",(ptotal_end-ptotal_start));
 
 	   if (err != CL_SUCCESS)
 	   {

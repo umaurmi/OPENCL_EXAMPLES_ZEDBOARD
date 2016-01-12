@@ -304,7 +304,7 @@ if (!commands)
    err = clEnqueueReadBuffer(commands, d_C, CL_TRUE, 0, mem_size_C, h_C, 0, NULL, NULL);
    ptotal_end = PAPI_get_virt_usec();
    ptimer2 = PAPI_get_virt_usec();
-   printf("cl:main timing:PAPI clEnqueueReadBuffer %lluus\n",(ptimer2-ptimer1));
+   printf("cl:main timing:PAPI clEnqueueReadBuffer %llu us\n",(ptimer2-ptimer1));
 
    printf("cl:main timing:PAPI total_time %llu us\n",(ptotal_end-ptotal_start));
 
