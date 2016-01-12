@@ -3,6 +3,10 @@ This repository contains a set of examples of opencl code that can run on the ze
 
 The repository contains certain OpenCl Examples that can be run on the zedboard cpu as of now. The example codes are pretty generic and can run on linux targets as well in exactly the same way. Please read this README file completely in order to use this repository effectively.
 
+Current performance profiles are displayed below
+
+![alt tag](https://raw.githubusercontent.com/umaurmi/OPENCL_EXAMPLES_ZEDBOARD/master/reports/comp.png)
+
 ## Table of Contents
 + [Pre-Requisites](#prereq) 
     + [Zedboard Pre-Requisites](#prereq-zb)
