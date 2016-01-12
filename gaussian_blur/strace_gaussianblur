@@ -1,0 +1,899 @@
+execve("./gaussianblur_host", ["./gaussianblur_host"], [/* 18 vars */]) = 0
+brk(0)                                  = 0x5e000
+uname({sys="Linux", node="localhost.localdomain", ...}) = 0
+access("/etc/ld.so.nohwcap", F_OK)      = -1 ENOENT (No such file or directory)
+mmap2(NULL, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0xb6fcc000
+access("/etc/ld.so.preload", R_OK)      = -1 ENOENT (No such file or directory)
+open("/usr/local/pocl/lib/tls/v7l/neon/vfp/libOpenCL.so.1", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+stat64("/usr/local/pocl/lib/tls/v7l/neon/vfp", 0xbe9b0df0) = -1 ENOENT (No such file or directory)
+open("/usr/local/pocl/lib/tls/v7l/neon/libOpenCL.so.1", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+stat64("/usr/local/pocl/lib/tls/v7l/neon", 0xbe9b0df0) = -1 ENOENT (No such file or directory)
+open("/usr/local/pocl/lib/tls/v7l/vfp/libOpenCL.so.1", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+stat64("/usr/local/pocl/lib/tls/v7l/vfp", 0xbe9b0df0) = -1 ENOENT (No such file or directory)
+open("/usr/local/pocl/lib/tls/v7l/libOpenCL.so.1", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+stat64("/usr/local/pocl/lib/tls/v7l", 0xbe9b0df0) = -1 ENOENT (No such file or directory)
+open("/usr/local/pocl/lib/tls/neon/vfp/libOpenCL.so.1", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+stat64("/usr/local/pocl/lib/tls/neon/vfp", 0xbe9b0df0) = -1 ENOENT (No such file or directory)
+open("/usr/local/pocl/lib/tls/neon/libOpenCL.so.1", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+stat64("/usr/local/pocl/lib/tls/neon", 0xbe9b0df0) = -1 ENOENT (No such file or directory)
+open("/usr/local/pocl/lib/tls/vfp/libOpenCL.so.1", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+stat64("/usr/local/pocl/lib/tls/vfp", 0xbe9b0df0) = -1 ENOENT (No such file or directory)
+open("/usr/local/pocl/lib/tls/libOpenCL.so.1", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+stat64("/usr/local/pocl/lib/tls", 0xbe9b0df0) = -1 ENOENT (No such file or directory)
+open("/usr/local/pocl/lib/v7l/neon/vfp/libOpenCL.so.1", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+stat64("/usr/local/pocl/lib/v7l/neon/vfp", 0xbe9b0df0) = -1 ENOENT (No such file or directory)
+open("/usr/local/pocl/lib/v7l/neon/libOpenCL.so.1", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+stat64("/usr/local/pocl/lib/v7l/neon", 0xbe9b0df0) = -1 ENOENT (No such file or directory)
+open("/usr/local/pocl/lib/v7l/vfp/libOpenCL.so.1", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+stat64("/usr/local/pocl/lib/v7l/vfp", 0xbe9b0df0) = -1 ENOENT (No such file or directory)
+open("/usr/local/pocl/lib/v7l/libOpenCL.so.1", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+stat64("/usr/local/pocl/lib/v7l", 0xbe9b0df0) = -1 ENOENT (No such file or directory)
+open("/usr/local/pocl/lib/neon/vfp/libOpenCL.so.1", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+stat64("/usr/local/pocl/lib/neon/vfp", 0xbe9b0df0) = -1 ENOENT (No such file or directory)
+open("/usr/local/pocl/lib/neon/libOpenCL.so.1", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+stat64("/usr/local/pocl/lib/neon", 0xbe9b0df0) = -1 ENOENT (No such file or directory)
+open("/usr/local/pocl/lib/vfp/libOpenCL.so.1", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+stat64("/usr/local/pocl/lib/vfp", 0xbe9b0df0) = -1 ENOENT (No such file or directory)
+open("/usr/local/pocl/lib/libOpenCL.so.1", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\1\1\1\0\0\0\0\0\0\0\0\0\3\0(\0\1\0\0\0\320\333/\0004\0\0\0"..., 512) = 512
+lseek(3, 35035680, SEEK_SET)            = 35035680
+read(3, "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"..., 1520) = 1520
+lseek(3, 24005958, SEEK_SET)            = 24005958
+read(3, "A6\0\0\0aeabi\0\1,\0\0\0\0057-A\0\6\n\7A\10\1\t\2\n\4\22"..., 55) = 55
+fstat64(3, {st_mode=S_IFREG|0755, st_size=40230280, ...}) = 0
+mmap2(NULL, 24081744, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0xb58b9000
+mprotect(0xb6e22000, 28672, PROT_NONE)  = 0
+mmap2(0xb6e29000, 1560576, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x1568) = 0xb6e29000
+mmap2(0xb6fa6000, 42320, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0xb6fa6000
+close(3)                                = 0
+open("/usr/local/pocl/lib/libgcc_s.so.1", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+open("/etc/ld.so.cache", O_RDONLY|O_CLOEXEC) = 3
+fstat64(3, {st_mode=S_IFREG|0644, st_size=68630, ...}) = 0
+mmap2(NULL, 68630, PROT_READ, MAP_PRIVATE, 3, 0) = 0xb58a8000
+close(3)                                = 0
+access("/etc/ld.so.nohwcap", F_OK)      = -1 ENOENT (No such file or directory)
+open("/lib/arm-linux-gnueabihf/libgcc_s.so.1", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\1\1\1\0\0\0\0\0\0\0\0\0\3\0(\0\1\0\0\0\340%\0\0004\0\0\0"..., 512) = 512
+lseek(3, 33324, SEEK_SET)               = 33324
+read(3, "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"..., 1120) = 1120
+lseek(3, 32988, SEEK_SET)               = 32988
+read(3, "A6\0\0\0aeabi\0\1,\0\0\0\0057-A\0\6\n\7A\10\1\t\2\n\4\22"..., 55) = 55
+fstat64(3, {st_mode=S_IFREG|0644, st_size=34444, ...}) = 0
+mmap2(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0xb6fcb000
+mmap2(NULL, 65812, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0xb5897000
+mprotect(0xb589f000, 28672, PROT_NONE)  = 0
+mmap2(0xb58a6000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x7) = 0xb58a6000
+close(3)                                = 0
+open("/usr/local/pocl/lib/libc.so.6", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+access("/etc/ld.so.nohwcap", F_OK)      = -1 ENOENT (No such file or directory)
+open("/lib/arm-linux-gnueabihf/libc.so.6", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\1\1\1\0\0\0\0\0\0\0\0\0\3\0(\0\1\0\0\0\355p\1\0004\0\0\0"..., 512) = 512
+lseek(3, 880572, SEEK_SET)              = 880572
+read(3, "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"..., 1360) = 1360
+lseek(3, 880132, SEEK_SET)              = 880132
+read(3, "A4\0\0\0aeabi\0\1*\0\0\0\0057-A\0\6\n\7A\10\1\t\2\n\4\22"..., 53) = 53
+fstat64(3, {st_mode=S_IFREG|0755, st_size=881932, ...}) = 0
+mmap2(NULL, 923008, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0xb57b5000
+mprotect(0xb5889000, 32768, PROT_NONE)  = 0
+mmap2(0xb5891000, 12288, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0xd4) = 0xb5891000
+mmap2(0xb5894000, 9600, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0xb5894000
+close(3)                                = 0
+open("/usr/local/pocl/lib/libhwloc.so.5", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+access("/etc/ld.so.nohwcap", F_OK)      = -1 ENOENT (No such file or directory)
+open("/usr/local/lib/libhwloc.so.5", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\1\1\1\0\0\0\0\0\0\0\0\0\3\0(\0\1\0\0\0 <\0\0004\0\0\0"..., 512) = 512
+lseek(3, 673572, SEEK_SET)              = 673572
+read(3, "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"..., 1480) = 1480
+lseek(3, 140262, SEEK_SET)              = 140262
+read(3, "A6\0\0\0aeabi\0\1,\0\0\0\0057-A\0\6\n\7A\10\1\t\2\n\4\22"..., 55) = 55
+fstat64(3, {st_mode=S_IFREG|0755, st_size=708673, ...}) = 0
+mmap2(NULL, 173092, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0xb578a000
+mprotect(0xb57ac000, 28672, PROT_NONE)  = 0
+mmap2(0xb57b3000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x21) = 0xb57b3000
+close(3)                                = 0
+open("/usr/local/pocl/lib/libltdl.so.7", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+access("/etc/ld.so.nohwcap", F_OK)      = -1 ENOENT (No such file or directory)
+open("/usr/lib/arm-linux-gnueabihf/libltdl.so.7", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\1\1\1\0\0\0\0\0\0\0\0\0\3\0(\0\1\0\0\0\300\26\0\0004\0\0\0"..., 512) = 512
+lseek(3, 21016, SEEK_SET)               = 21016
+read(3, "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"..., 1040) = 1040
+lseek(3, 20700, SEEK_SET)               = 20700
+read(3, "A6\0\0\0aeabi\0\1,\0\0\0\0057-A\0\6\n\7A\10\1\t\2\n\4\22"..., 55) = 55
+fstat64(3, {st_mode=S_IFREG|0644, st_size=22056, ...}) = 0
+mmap2(NULL, 53512, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0xb577c000
+mprotect(0xb5781000, 28672, PROT_NONE)  = 0
+mmap2(0xb5788000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x4) = 0xb5788000
+close(3)                                = 0
+open("/usr/local/pocl/lib/libpthread.so.0", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+access("/etc/ld.so.nohwcap", F_OK)      = -1 ENOENT (No such file or directory)
+open("/lib/arm-linux-gnueabihf/libpthread.so.0", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\1\1\1\0\0\0\0\0\0\0\0\0\3\0(\0\1\0\0\0\5P\0\0004\0\0\0"..., 512) = 512
+lseek(3, 66332, SEEK_SET)               = 66332
+read(3, "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"..., 1400) = 1400
+lseek(3, 65924, SEEK_SET)               = 65924
+read(3, "A6\0\0\0aeabi\0\1,\0\0\0\0057-A\0\6\n\7A\10\1\t\2\n\4\22"..., 55) = 55
+fstat64(3, {st_mode=S_IFREG|0755, st_size=100802, ...}) = 0
+mmap2(NULL, 107024, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0xb5761000
+mprotect(0xb5771000, 28672, PROT_NONE)  = 0
+mmap2(0xb5778000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0xf) = 0xb5778000
+mmap2(0xb577a000, 4624, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0xb577a000
+close(3)                                = 0
+open("/usr/local/pocl/lib/libstdc++.so.6", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+access("/etc/ld.so.nohwcap", F_OK)      = -1 ENOENT (No such file or directory)
+open("/usr/lib/arm-linux-gnueabihf/libstdc++.so.6", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\1\1\1\0\0\0\0\0\0\0\0\0\3\0(\0\1\0\0\0\10`\4\0004\0\0\0"..., 512) = 512
+lseek(3, 623424, SEEK_SET)              = 623424
+read(3, "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"..., 1200) = 1200
+lseek(3, 623064, SEEK_SET)              = 623064
+read(3, "A6\0\0\0aeabi\0\1,\0\0\0\0057-A\0\6\n\7A\10\1\t\2\n\4\22"..., 55) = 55
+fstat64(3, {st_mode=S_IFREG|0644, st_size=624624, ...}) = 0
+mmap2(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0xb6fca000
+mmap2(NULL, 683360, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0xb56ba000
+mprotect(0xb574e000, 32768, PROT_NONE)  = 0
+mmap2(0xb5756000, 20480, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x94) = 0xb5756000
+mmap2(0xb575b000, 23904, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0xb575b000
+close(3)                                = 0
+open("/usr/local/pocl/lib/libdl.so.2", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+access("/etc/ld.so.nohwcap", F_OK)      = -1 ENOENT (No such file or directory)
+open("/lib/arm-linux-gnueabihf/libdl.so.2", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\1\1\1\0\0\0\0\0\0\0\0\0\3\0(\0\1\0\0\0<\t\0\0004\0\0\0"..., 512) = 512
+lseek(3, 8656, SEEK_SET)                = 8656
+read(3, "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"..., 1160) = 1160
+lseek(3, 8320, SEEK_SET)                = 8320
+read(3, "A6\0\0\0aeabi\0\1,\0\0\0\0057-A\0\6\n\7A\10\1\t\2\n\4\22"..., 55) = 55
+fstat64(3, {st_mode=S_IFREG|0644, st_size=9816, ...}) = 0
+mmap2(NULL, 41136, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0xb56af000
+mprotect(0xb56b1000, 28672, PROT_NONE)  = 0
+mmap2(0xb56b8000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x1) = 0xb56b8000
+close(3)                                = 0
+open("/usr/local/pocl/lib/libm.so.6", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+access("/etc/ld.so.nohwcap", F_OK)      = -1 ENOENT (No such file or directory)
+open("/lib/arm-linux-gnueabihf/libm.so.6", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\1\1\1\0\0\0\0\0\0\0\0\0\3\0(\0\1\0\0\0\230;\0\0004\0\0\0"..., 512) = 512
+lseek(3, 397768, SEEK_SET)              = 397768
+read(3, "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"..., 1160) = 1160
+lseek(3, 397432, SEEK_SET)              = 397432
+read(3, "A6\0\0\0aeabi\0\1,\0\0\0\0057-A\0\6\n\7A\10\1\t\2\n\4\22"..., 55) = 55
+fstat64(3, {st_mode=S_IFREG|0644, st_size=398928, ...}) = 0
+mmap2(NULL, 430208, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0xb5645000
+mprotect(0xb56a6000, 28672, PROT_NONE)  = 0
+mmap2(0xb56ad000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x60) = 0xb56ad000
+close(3)                                = 0
+writev(2, [{"./gaussianblur_host", 19}, {": ", 2}, {"/usr/local/pocl/lib/libOpenCL.so"..., 34}, {": ", 2}, {"no version information available"..., 66}, {"\n", 1}], 6./gaussianblur_host: /usr/local/pocl/lib/libOpenCL.so.1: no version information available (required by ./gaussianblur_host)
+) = 124
+mmap2(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0xb6fc9000
+mmap2(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0xb6fc8000
+set_tls(0xb6fc84c0, 0xb6fc8ba8, 0xb6fd0048, 0xb6fc84c0, 0xb6fc92f8) = 0
+mprotect(0xb5891000, 8192, PROT_READ)   = 0
+mprotect(0xb56ad000, 4096, PROT_READ)   = 0
+mprotect(0xb56b8000, 4096, PROT_READ)   = 0
+mprotect(0xb58a6000, 4096, PROT_READ)   = 0
+mmap2(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0xb5644000
+mprotect(0xb5756000, 12288, PROT_READ)  = 0
+mprotect(0xb5778000, 4096, PROT_READ)   = 0
+mprotect(0xb5788000, 4096, PROT_READ)   = 0
+mprotect(0xb57b3000, 4096, PROT_READ)   = 0
+mprotect(0xb6e29000, 1490944, PROT_READ) = 0
+mprotect(0x4d000, 4096, PROT_READ)      = 0
+mprotect(0xb6fcf000, 4096, PROT_READ)   = 0
+munmap(0xb58a8000, 68630)               = 0
+set_tid_address(0xb6fc8068)             = 21485
+set_robust_list(0xb6fc8070, 0xc)        = 0
+rt_sigaction(SIGRTMIN, {0xb5765cfd, [], SA_SIGINFO|0x4000000}, NULL, 8) = 0
+rt_sigaction(SIGRT_1, {0xb5765c11, [], SA_RESTART|SA_SIGINFO|0x4000000}, NULL, 8) = 0
+rt_sigprocmask(SIG_UNBLOCK, [RTMIN RT_1], NULL, 8) = 0
+getrlimit(RLIMIT_STACK, {rlim_cur=8192*1024, rlim_max=RLIM_INFINITY}) = 0
+futex(0xb575adac, FUTEX_WAKE_PRIVATE, 2147483647) = 0
+brk(0)                                  = 0x5e000
+brk(0x7f000)                            = 0x7f000
+gettimeofday({1452532143, 420737}, NULL) = 0
+gettimeofday({1452532143, 420958}, NULL) = 0
+fstat64(1, {st_mode=S_IFREG|0644, st_size=14440, ...}) = 0
+mmap2(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0xb58b8000
+open("lena.pgm", O_RDONLY)              = 3
+fstat64(3, {st_mode=S_IFREG|0644, st_size=262189, ...}) = 0
+mmap2(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0xb58b7000
+_llseek(3, 0, [0], SEEK_SET)            = 0
+fstat64(3, {st_mode=S_IFREG|0644, st_size=262189, ...}) = 0
+_llseek(3, 262144, [262144], SEEK_SET)  = 0
+read(3, "^fpw~\200{\202\201\201{{wqdaTK>;;:933,)+1.46"..., 45) = 45
+mmap2(NULL, 266240, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0xb5603000
+_llseek(3, 0, [0], SEEK_SET)            = 0
+read(3, "P5\n# Created by Paint Shop Pro 6"..., 262144) = 262144
+read(3, "^fpw~\200{\202\201\201{{wqdaTK>;;:933,)+1.46"..., 4096) = 45
+close(3)                                = 0
+munmap(0xb58b7000, 4096)                = 0
+mmap2(NULL, 266240, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0xb55c2000
+mmap2(NULL, 1052672, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0xb54c1000
+mmap2(NULL, 1052672, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0xb53c0000
+clock_gettime(0x3 /* CLOCK_??? */, {0, 79479466}) = 0
+clock_gettime(0x3 /* CLOCK_??? */, {0, 79497899}) = 0
+clock_gettime(0x3 /* CLOCK_??? */, {0, 79553195}) = 0
+clock_gettime(0x3 /* CLOCK_??? */, {0, 79608492}) = 0
+access("/proc/cpuinfo", R_OK)           = 0
+open("/proc/cpuinfo", O_RDONLY)         = 3
+fstat64(3, {st_mode=S_IFREG|0444, st_size=0, ...}) = 0
+mmap2(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0xb58b7000
+read(3, "processor\t: 0\nmodel name\t: ARMv7"..., 64512) = 511
+read(3, "", 64512)                      = 0
+close(3)                                = 0
+munmap(0xb58b7000, 4096)                = 0
+access("/sys/devices/system/cpu/cpu0/cpufreq/cpuinfo_max_freq", R_OK) = -1 ENOENT (No such file or directory)
+access("/proc/cpuinfo", R_OK)           = 0
+open("/proc/cpuinfo", O_RDONLY)         = 3
+fstat64(3, {st_mode=S_IFREG|0444, st_size=0, ...}) = 0
+mmap2(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0xb58b7000
+read(3, "processor\t: 0\nmodel name\t: ARMv7"..., 64512) = 511
+read(3, "", 64512)                      = 0
+close(3)                                = 0
+munmap(0xb58b7000, 4096)                = 0
+access("/proc/cpuinfo", R_OK)           = 0
+open("/proc/cpuinfo", O_RDONLY)         = 3
+fstat64(3, {st_mode=S_IFREG|0444, st_size=0, ...}) = 0
+mmap2(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0xb58b7000
+read(3, "processor\t: 0\nmodel name\t: ARMv7"..., 64512) = 511
+read(3, "", 64512)                      = 0
+open("/", O_RDONLY|O_DIRECTORY)         = 4
+fcntl64(4, F_GETFD)                     = 0
+fcntl64(4, F_SETFD, FD_CLOEXEC)         = 0
+uname({sys="Linux", node="localhost.localdomain", ...}) = 0
+openat(4, "proc/hwloc-nofile-info", O_RDONLY) = -1 ENOENT (No such file or directory)
+openat(4, "proc/mounts", O_RDONLY)      = 5
+fcntl64(5, F_GETFL)                     = 0 (flags O_RDONLY)
+fstat64(5, {st_mode=S_IFREG|0444, st_size=0, ...}) = 0
+mmap2(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0xb58b6000
+_llseek(5, 0, [0], SEEK_CUR)            = 0
+read(5, "rootfs / rootfs rw 0 0\n/dev/root"..., 1024) = 562
+read(5, "", 1024)                       = 0
+close(5)                                = 0
+munmap(0xb58b6000, 4096)                = 0
+openat(4, "proc/nodes", O_RDONLY|O_DIRECTORY) = -1 ENOENT (No such file or directory)
+newfstatat(4, "sys/kernel/mm/hugepages", 0xbe9b0228, 0) = -1 ENOENT (No such file or directory)
+openat(4, "proc/meminfo", O_RDONLY)     = 5
+fcntl64(5, F_GETFL)                     = 0 (flags O_RDONLY)
+fstat64(5, {st_mode=S_IFREG|0444, st_size=0, ...}) = 0
+mmap2(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0xb58b6000
+_llseek(5, 0, [0], SEEK_CUR)            = 0
+read(5, "MemTotal:         511732 kB\nMemF"..., 1024) = 1024
+read(5, "  239056 kB\n", 1024)          = 12
+read(5, "", 1024)                       = 0
+close(5)                                = 0
+munmap(0xb58b6000, 4096)                = 0
+openat(4, "sys/bus/node/devices", O_RDONLY|O_DIRECTORY) = -1 ENOENT (No such file or directory)
+openat(4, "sys/devices/system/node", O_RDONLY|O_DIRECTORY) = -1 ENOENT (No such file or directory)
+faccessat(4, "sys/devices/system/cpu/cpu0/topology/core_siblings", R_OK) = 0
+openat(4, "proc/cpuinfo", O_RDONLY)     = 5
+fcntl64(5, F_GETFL)                     = 0 (flags O_RDONLY)
+fstat64(5, {st_mode=S_IFREG|0444, st_size=0, ...}) = 0
+mmap2(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0xb58b6000
+_llseek(5, 0, [0], SEEK_CUR)            = 0
+read(5, "processor\t: 0\nmodel name\t: ARMv7"..., 1024) = 511
+read(5, "", 1024)                       = 0
+close(5)                                = 0
+munmap(0xb58b6000, 4096)                = 0
+openat(4, "sys/bus/cpu/devices", O_RDONLY|O_DIRECTORY) = 5
+fstat64(5, {st_mode=S_IFDIR|0755, st_size=0, ...}) = 0
+fcntl64(5, F_GETFL)                     = 0x4000 (flags O_RDONLY|O_DIRECTORY)
+fcntl64(5, F_SETFD, FD_CLOEXEC)         = 0
+getdents(5, /* 4 entries */, 32768)     = 64
+openat(4, "sys/bus/cpu/devices/cpu0/online", O_RDONLY) = 6
+fcntl64(6, F_GETFL)                     = 0 (flags O_RDONLY)
+fstat64(6, {st_mode=S_IFREG|0644, st_size=4096, ...}) = 0
+mmap2(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0xb58b6000
+_llseek(6, 0, [0], SEEK_CUR)            = 0
+read(6, "1\n", 4096)                    = 2
+close(6)                                = 0
+munmap(0xb58b6000, 4096)                = 0
+faccessat(4, "sys/bus/cpu/devices/cpu0/topology", X_OK) = 0
+openat(4, "sys/bus/cpu/devices/cpu1/online", O_RDONLY) = 6
+fcntl64(6, F_GETFL)                     = 0 (flags O_RDONLY)
+fstat64(6, {st_mode=S_IFREG|0644, st_size=4096, ...}) = 0
+mmap2(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0xb58b6000
+_llseek(6, 0, [0], SEEK_CUR)            = 0
+read(6, "1\n", 4096)                    = 2
+close(6)                                = 0
+munmap(0xb58b6000, 4096)                = 0
+faccessat(4, "sys/bus/cpu/devices/cpu1/topology", X_OK) = 0
+getdents(5, /* 0 entries */, 32768)     = 0
+close(5)                                = 0
+openat(4, "sys/bus/cpu/devices/cpu0/topology/physical_package_id", O_RDONLY) = 5
+fcntl64(5, F_GETFL)                     = 0 (flags O_RDONLY)
+fstat64(5, {st_mode=S_IFREG|0444, st_size=4096, ...}) = 0
+mmap2(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0xb58b6000
+_llseek(5, 0, [0], SEEK_CUR)            = 0
+read(5, "0\n", 4096)                    = 2
+close(5)                                = 0
+munmap(0xb58b6000, 4096)                = 0
+openat(4, "sys/bus/cpu/devices/cpu0/topology/core_siblings", O_RDONLY) = 5
+fcntl64(5, F_GETFL)                     = 0 (flags O_RDONLY)
+fstat64(5, {st_mode=S_IFREG|0444, st_size=4096, ...}) = 0
+mmap2(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0xb58b6000
+_llseek(5, 0, [0], SEEK_CUR)            = 0
+read(5, "3\n", 4096)                    = 2
+read(5, "", 4096)                       = 0
+close(5)                                = 0
+munmap(0xb58b6000, 4096)                = 0
+openat(4, "sys/bus/cpu/devices/cpu0/topology/core_id", O_RDONLY) = 5
+fcntl64(5, F_GETFL)                     = 0 (flags O_RDONLY)
+fstat64(5, {st_mode=S_IFREG|0444, st_size=4096, ...}) = 0
+mmap2(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0xb58b6000
+_llseek(5, 0, [0], SEEK_CUR)            = 0
+read(5, "0\n", 4096)                    = 2
+close(5)                                = 0
+munmap(0xb58b6000, 4096)                = 0
+openat(4, "sys/bus/cpu/devices/cpu0/topology/thread_siblings", O_RDONLY) = 5
+fcntl64(5, F_GETFL)                     = 0 (flags O_RDONLY)
+fstat64(5, {st_mode=S_IFREG|0444, st_size=4096, ...}) = 0
+mmap2(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0xb58b6000
+_llseek(5, 0, [0], SEEK_CUR)            = 0
+read(5, "1\n", 4096)                    = 2
+read(5, "", 4096)                       = 0
+close(5)                                = 0
+munmap(0xb58b6000, 4096)                = 0
+openat(4, "sys/bus/cpu/devices/cpu0/topology/book_id", O_RDONLY) = -1 ENOENT (No such file or directory)
+openat(4, "sys/bus/cpu/devices/cpu0/cache/index0/level", O_RDONLY) = -1 ENOENT (No such file or directory)
+openat(4, "sys/bus/cpu/devices/cpu0/cache/index1/level", O_RDONLY) = -1 ENOENT (No such file or directory)
+openat(4, "sys/bus/cpu/devices/cpu0/cache/index2/level", O_RDONLY) = -1 ENOENT (No such file or directory)
+openat(4, "sys/bus/cpu/devices/cpu0/cache/index3/level", O_RDONLY) = -1 ENOENT (No such file or directory)
+openat(4, "sys/bus/cpu/devices/cpu0/cache/index4/level", O_RDONLY) = -1 ENOENT (No such file or directory)
+openat(4, "sys/bus/cpu/devices/cpu0/cache/index5/level", O_RDONLY) = -1 ENOENT (No such file or directory)
+openat(4, "sys/bus/cpu/devices/cpu0/cache/index6/level", O_RDONLY) = -1 ENOENT (No such file or directory)
+openat(4, "sys/bus/cpu/devices/cpu0/cache/index7/level", O_RDONLY) = -1 ENOENT (No such file or directory)
+openat(4, "sys/bus/cpu/devices/cpu0/cache/index8/level", O_RDONLY) = -1 ENOENT (No such file or directory)
+openat(4, "sys/bus/cpu/devices/cpu0/cache/index9/level", O_RDONLY) = -1 ENOENT (No such file or directory)
+openat(4, "sys/bus/cpu/devices/cpu1/topology/physical_package_id", O_RDONLY) = 5
+fcntl64(5, F_GETFL)                     = 0 (flags O_RDONLY)
+fstat64(5, {st_mode=S_IFREG|0444, st_size=4096, ...}) = 0
+mmap2(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0xb58b6000
+_llseek(5, 0, [0], SEEK_CUR)            = 0
+read(5, "0\n", 4096)                    = 2
+close(5)                                = 0
+munmap(0xb58b6000, 4096)                = 0
+openat(4, "sys/bus/cpu/devices/cpu1/topology/core_siblings", O_RDONLY) = 5
+fcntl64(5, F_GETFL)                     = 0 (flags O_RDONLY)
+fstat64(5, {st_mode=S_IFREG|0444, st_size=4096, ...}) = 0
+mmap2(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0xb58b6000
+_llseek(5, 0, [0], SEEK_CUR)            = 0
+read(5, "3\n", 4096)                    = 2
+read(5, "", 4096)                       = 0
+close(5)                                = 0
+munmap(0xb58b6000, 4096)                = 0
+openat(4, "sys/bus/cpu/devices/cpu1/topology/core_id", O_RDONLY) = 5
+fcntl64(5, F_GETFL)                     = 0 (flags O_RDONLY)
+fstat64(5, {st_mode=S_IFREG|0444, st_size=4096, ...}) = 0
+mmap2(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0xb58b6000
+_llseek(5, 0, [0], SEEK_CUR)            = 0
+read(5, "1\n", 4096)                    = 2
+close(5)                                = 0
+munmap(0xb58b6000, 4096)                = 0
+openat(4, "sys/bus/cpu/devices/cpu1/topology/thread_siblings", O_RDONLY) = 5
+fcntl64(5, F_GETFL)                     = 0 (flags O_RDONLY)
+fstat64(5, {st_mode=S_IFREG|0444, st_size=4096, ...}) = 0
+mmap2(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0xb58b6000
+_llseek(5, 0, [0], SEEK_CUR)            = 0
+read(5, "2\n", 4096)                    = 2
+read(5, "", 4096)                       = 0
+close(5)                                = 0
+munmap(0xb58b6000, 4096)                = 0
+openat(4, "sys/bus/cpu/devices/cpu1/topology/book_id", O_RDONLY) = -1 ENOENT (No such file or directory)
+openat(4, "sys/bus/cpu/devices/cpu1/cache/index0/level", O_RDONLY) = -1 ENOENT (No such file or directory)
+openat(4, "sys/bus/cpu/devices/cpu1/cache/index1/level", O_RDONLY) = -1 ENOENT (No such file or directory)
+openat(4, "sys/bus/cpu/devices/cpu1/cache/index2/level", O_RDONLY) = -1 ENOENT (No such file or directory)
+openat(4, "sys/bus/cpu/devices/cpu1/cache/index3/level", O_RDONLY) = -1 ENOENT (No such file or directory)
+openat(4, "sys/bus/cpu/devices/cpu1/cache/index4/level", O_RDONLY) = -1 ENOENT (No such file or directory)
+openat(4, "sys/bus/cpu/devices/cpu1/cache/index5/level", O_RDONLY) = -1 ENOENT (No such file or directory)
+openat(4, "sys/bus/cpu/devices/cpu1/cache/index6/level", O_RDONLY) = -1 ENOENT (No such file or directory)
+openat(4, "sys/bus/cpu/devices/cpu1/cache/index7/level", O_RDONLY) = -1 ENOENT (No such file or directory)
+openat(4, "sys/bus/cpu/devices/cpu1/cache/index8/level", O_RDONLY) = -1 ENOENT (No such file or directory)
+openat(4, "sys/bus/cpu/devices/cpu1/cache/index9/level", O_RDONLY) = -1 ENOENT (No such file or directory)
+openat(4, "proc/device-tree/cpus", O_RDONLY|O_DIRECTORY) = 5
+fstat64(5, {st_mode=S_IFDIR|0555, st_size=0, ...}) = 0
+fcntl64(5, F_GETFL)                     = 0x4000 (flags O_RDONLY|O_DIRECTORY)
+fcntl64(5, F_SETFD, FD_CLOEXEC)         = 0
+openat(4, "sys/devices/virtual/dmi/id", O_RDONLY|O_DIRECTORY) = -1 ENOENT (No such file or directory)
+openat(4, "sys/class/dmi/id", O_RDONLY|O_DIRECTORY) = -1 ENOENT (No such file or directory)
+openat(4, "proc/elog", O_RDONLY)        = -1 ENOENT (No such file or directory)
+clock_gettime(0x3 /* CLOCK_??? */, {0, 91183890}) = 0
+clock_gettime(0x3 /* CLOCK_??? */, {0, 91220754}) = 0
+clock_gettime(0x3 /* CLOCK_??? */, {0, 91405077}) = 0
+clock_gettime(0x3 /* CLOCK_??? */, {0, 91423509}) = 0
+clock_gettime(0x3 /* CLOCK_??? */, {0, 91497238}) = 0
+open("gaussianblur_kernel.cl", O_RDONLY) = 6
+fstat64(6, {st_mode=S_IFREG|0644, st_size=571, ...}) = 0
+mmap2(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0xb58b6000
+fstat64(6, {st_mode=S_IFREG|0644, st_size=571, ...}) = 0
+_llseek(6, 0, [0], SEEK_SET)            = 0
+read(6, "__kernel void gaussianblur(\n\tcon"..., 571) = 571
+_llseek(6, 571, [571], SEEK_SET)        = 0
+close(6)                                = 0
+munmap(0xb58b6000, 4096)                = 0
+clock_gettime(0x3 /* CLOCK_??? */, {0, 91994907}) = 0
+gettimeofday({1452532143, 502889}, NULL) = 0
+mkdir("/tmp/pocleHGMzL", 0700)          = 0
+clock_gettime(0x3 /* CLOCK_??? */, {0, 92400415}) = 0
+clock_gettime(0x3 /* CLOCK_??? */, {0, 92455711}) = 0
+mkdir("/tmp/pocleHGMzL/", 0700)         = -1 EEXIST (File exists)
+open("/tmp/pocleHGMzL//program.cl", O_RDWR|O_CREAT|O_TRUNC, 0666) = 6
+fstat64(6, {st_mode=S_IFREG|0644, st_size=0, ...}) = 0
+mmap2(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0xb58b6000
+write(6, "__kernel void gaussianblur(\n\tcon"..., 571) = 571
+close(6)                                = 0
+munmap(0xb58b6000, 4096)                = 0
+mkdir("/tmp/pocleHGMzL/pthread", 0700)  = 0
+lseek(2, 0, SEEK_CUR)                   = 28912
+brk(0xa0000)                            = 0xa0000
+access("/usr/local/pocl/share/pocl/include/_kernel.h", F_OK) = 0
+stat64("/usr/local/pocl/share/pocl/include", {st_mode=S_IFDIR|0755, st_size=4096, ...}) = 0
+stat64("/usr/local/pocl/share/pocl/include/_kernel.h", {st_mode=S_IFREG|0644, st_size=98328, ...}) = 0
+stat64(".", {st_mode=S_IFDIR|0755, st_size=4096, ...}) = 0
+stat64("include", 0xbe9ae368)           = -1 ENOENT (No such file or directory)
+open("/System/Library/CoreServices/SystemVersion.plist", O_RDONLY) = -1 ENOENT (No such file or directory)
+stat64("/tmp/pocleHGMzL", {st_mode=S_IFDIR|0700, st_size=4096, ...}) = 0
+open("/tmp/pocleHGMzL//program.cl", O_RDONLY) = 6
+fstat64(6, {st_mode=S_IFREG|0644, st_size=571, ...}) = 0
+brk(0xc5000)                            = 0xc5000
+pread(6, "__kernel void gaussianblur(\n\tcon"..., 571, 0) = 571
+close(6)                                = 0
+open("/usr/local/pocl/share/pocl/include/_kernel.h", O_RDONLY) = 6
+fstat64(6, {st_mode=S_IFREG|0644, st_size=98328, ...}) = 0
+mmap2(NULL, 98328, PROT_READ, MAP_PRIVATE, 6, 0) = 0xb53a7000
+close(6)                                = 0
+open("/usr/local/pocl/share/pocl/include/_kernel_c.h", O_RDONLY) = 6
+fstat64(6, {st_mode=S_IFREG|0644, st_size=10891, ...}) = 0
+pread(6, "/* pocl/_kernel_c.h - C compatib"..., 10891, 0) = 10891
+close(6)                                = 0
+open("/usr/local/pocl/share/pocl/include/pocl_types.h", O_RDONLY) = 6
+fstat64(6, {st_mode=S_IFREG|0644, st_size=1332, ...}) = 0
+pread(6, "// Scalar type definitions\n\n#inc"..., 1332, 0) = 1332
+close(6)                                = 0
+open("/usr/local/pocl/share/pocl/include/pocl_features.h", O_RDONLY) = 6
+fstat64(6, {st_mode=S_IFREG|0644, st_size=536, ...}) = 0
+pread(6, "// Supported datataypes\n\n// LLVM"..., 536, 0) = 536
+close(6)                                = 0
+brk(0xe6000)                            = 0xe6000
+brk(0x107000)                           = 0x107000
+brk(0x128000)                           = 0x128000
+mmap2(NULL, 135168, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0xb5386000
+mmap2(NULL, 266240, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0xb5345000
+munmap(0xb5386000, 135168)              = 0
+brk(0x149000)                           = 0x149000
+brk(0x16a000)                           = 0x16a000
+mmap2(NULL, 528384, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0xb52c4000
+munmap(0xb5345000, 266240)              = 0
+brk(0x18b000)                           = 0x18b000
+brk(0x1ac000)                           = 0x1ac000
+brk(0x1cd000)                           = 0x1cd000
+mmap2(NULL, 1052672, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0xb51c3000
+munmap(0xb52c4000, 528384)              = 0
+brk(0x1ee000)                           = 0x1ee000
+brk(0x213000)                           = 0x213000
+brk(0x234000)                           = 0x234000
+brk(0x255000)                           = 0x255000
+brk(0x277000)                           = 0x277000
+mmap2(NULL, 2101248, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0xb4fc2000
+munmap(0xb51c3000, 1052672)             = 0
+brk(0x29a000)                           = 0x29a000
+brk(0x2bd000)                           = 0x2bd000
+brk(0x2de000)                           = 0x2de000
+brk(0x2ff000)                           = 0x2ff000
+brk(0x320000)                           = 0x320000
+brk(0x35e000)                           = 0x35e000
+brk(0x382000)                           = 0x382000
+brk(0x3a3000)                           = 0x3a3000
+brk(0x3c5000)                           = 0x3c5000
+brk(0x3e6000)                           = 0x3e6000
+brk(0x40a000)                           = 0x40a000
+brk(0x42d000)                           = 0x42d000
+brk(0x44f000)                           = 0x44f000
+brk(0x472000)                           = 0x472000
+brk(0x495000)                           = 0x495000
+brk(0x4b6000)                           = 0x4b6000
+munmap(0xb53a7000, 98328)               = 0
+munmap(0xb4fc2000, 2101248)             = 0
+clock_gettime(0x3 /* CLOCK_??? */, {1, 644498920}) = 0
+clock_gettime(0x3 /* CLOCK_??? */, {1, 644572648}) = 0
+access("/tmp/pocleHGMzL/pthread", F_OK) = 0
+mkdir("/tmp/pocleHGMzL/pthread/gaussianblur", 0700) = 0
+open("/tmp/pocleHGMzL/pthread/gaussianblur/descriptor.so.kernel_obj.c", O_WRONLY|O_CREAT|O_TRUNC, 0666) = 6
+fstat64(6, {st_mode=S_IFREG|0644, st_size=0, ...}) = 0
+mmap2(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0xb58b6000
+write(6, "\n #include <pocl_device.h>\nvoid "..., 354) = 354
+close(6)                                = 0
+munmap(0xb58b6000, 4096)                = 0
+clock_gettime(0x3 /* CLOCK_??? */, {1, 645567984}) = 0
+clock_gettime(0x3 /* CLOCK_??? */, {1, 645623281}) = 0
+mmap2(NULL, 33558528, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0xb33bf000
+clock_gettime(0x3 /* CLOCK_??? */, {1, 648959501}) = 0
+clock_gettime(0x3 /* CLOCK_??? */, {1, 648996365}) = 0
+clock_gettime(0x3 /* CLOCK_??? */, {1, 649070094}) = 0
+clock_gettime(0x3 /* CLOCK_??? */, {1, 649088526}) = 0
+mkdir("/tmp/pocleHGMzL/pthread/gaussianblur/8-8-1.0-0-0", 0700) = 0
+access("/tmp/pocleHGMzL/pthread/gaussianblur/8-8-1.0-0-0/parallel.bc", F_OK) = -1 ENOENT (No such file or directory)
+open("/usr/local/pocl/share/pocl/kernel-armv7-unknown-linux-gnueabihf.bc", O_RDONLY) = 6
+fstat64(6, {st_mode=S_IFREG|0644, st_size=2619056, ...}) = 0
+fstat64(6, {st_mode=S_IFREG|0644, st_size=2619056, ...}) = 0
+mmap2(NULL, 2619056, PROT_READ, MAP_PRIVATE, 6, 0) = 0xb313f000
+close(6)                                = 0
+brk(0x4d7000)                           = 0x4d7000
+brk(0x4f8000)                           = 0x4f8000
+brk(0x519000)                           = 0x519000
+brk(0x554000)                           = 0x554000
+brk(0x575000)                           = 0x575000
+brk(0x596000)                           = 0x596000
+brk(0x5b7000)                           = 0x5b7000
+brk(0x5f2000)                           = 0x5f2000
+brk(0x613000)                           = 0x613000
+brk(0x634000)                           = 0x634000
+brk(0x655000)                           = 0x655000
+brk(0x676000)                           = 0x676000
+brk(0x6a1000)                           = 0x6a1000
+brk(0x6c2000)                           = 0x6c2000
+brk(0x6e3000)                           = 0x6e3000
+brk(0x704000)                           = 0x704000
+brk(0x73f000)                           = 0x73f000
+brk(0x760000)                           = 0x760000
+brk(0x781000)                           = 0x781000
+brk(0x7a2000)                           = 0x7a2000
+brk(0x7df000)                           = 0x7df000
+brk(0x800000)                           = 0x800000
+brk(0x821000)                           = 0x821000
+brk(0x842000)                           = 0x842000
+brk(0x878000)                           = 0x878000
+brk(0x899000)                           = 0x899000
+brk(0x8ba000)                           = 0x8ba000
+brk(0x8db000)                           = 0x8db000
+brk(0x909000)                           = 0x909000
+brk(0x92a000)                           = 0x92a000
+brk(0x94b000)                           = 0x94b000
+brk(0x96c000)                           = 0x96c000
+brk(0x9a6000)                           = 0x9a6000
+brk(0x9c7000)                           = 0x9c7000
+brk(0x9e8000)                           = 0x9e8000
+brk(0xa09000)                           = 0xa09000
+brk(0xa42000)                           = 0xa42000
+brk(0xa63000)                           = 0xa63000
+brk(0xa84000)                           = 0xa84000
+brk(0xace000)                           = 0xace000
+brk(0xb04000)                           = 0xb04000
+brk(0xb25000)                           = 0xb25000
+brk(0xb46000)                           = 0xb46000
+brk(0xb67000)                           = 0xb67000
+brk(0xba6000)                           = 0xba6000
+brk(0xbc7000)                           = 0xbc7000
+brk(0xbe8000)                           = 0xbe8000
+brk(0xc09000)                           = 0xc09000
+brk(0xc46000)                           = 0xc46000
+brk(0xc67000)                           = 0xc67000
+brk(0xc88000)                           = 0xc88000
+brk(0xca9000)                           = 0xca9000
+brk(0xce1000)                           = 0xce1000
+brk(0xd02000)                           = 0xd02000
+brk(0xd23000)                           = 0xd23000
+brk(0xd44000)                           = 0xd44000
+brk(0xd81000)                           = 0xd81000
+brk(0xda2000)                           = 0xda2000
+brk(0xdc3000)                           = 0xdc3000
+brk(0xde4000)                           = 0xde4000
+brk(0xe22000)                           = 0xe22000
+brk(0xe43000)                           = 0xe43000
+brk(0xe64000)                           = 0xe64000
+brk(0xe85000)                           = 0xe85000
+brk(0xeb9000)                           = 0xeb9000
+brk(0xeda000)                           = 0xeda000
+brk(0xefb000)                           = 0xefb000
+brk(0xf1c000)                           = 0xf1c000
+brk(0xf58000)                           = 0xf58000
+brk(0xf79000)                           = 0xf79000
+brk(0xf9a000)                           = 0xf9a000
+brk(0xfbb000)                           = 0xfbb000
+brk(0xfdc000)                           = 0xfdc000
+brk(0xfff000)                           = 0xfff000
+brk(0x1020000)                          = 0x1020000
+brk(0x1041000)                          = 0x1041000
+brk(0x1062000)                          = 0x1062000
+brk(0x1083000)                          = 0x1083000
+brk(0x10b2000)                          = 0x10b2000
+brk(0x10d3000)                          = 0x10d3000
+brk(0x10f4000)                          = 0x10f4000
+brk(0x1115000)                          = 0x1115000
+brk(0x1136000)                          = 0x1136000
+brk(0x115b000)                          = 0x115b000
+brk(0x117c000)                          = 0x117c000
+brk(0x119d000)                          = 0x119d000
+brk(0x11be000)                          = 0x11be000
+brk(0x11fe000)                          = 0x11fe000
+brk(0x121f000)                          = 0x121f000
+brk(0x1240000)                          = 0x1240000
+brk(0x1261000)                          = 0x1261000
+mmap2(NULL, 397312, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0xb30de000
+brk(0x1282000)                          = 0x1282000
+brk(0x12a3000)                          = 0x12a3000
+brk(0x12c5000)                          = 0x12c5000
+brk(0x12e6000)                          = 0x12e6000
+brk(0x1307000)                          = 0x1307000
+brk(0x1328000)                          = 0x1328000
+brk(0x1349000)                          = 0x1349000
+brk(0x136a000)                          = 0x136a000
+brk(0x138b000)                          = 0x138b000
+brk(0x13b6000)                          = 0x13b6000
+mmap2(NULL, 790528, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0xb301d000
+munmap(0xb30de000, 397312)              = 0
+brk(0x13d7000)                          = 0x13d7000
+brk(0x13f8000)                          = 0x13f8000
+brk(0x1419000)                          = 0x1419000
+brk(0x143a000)                          = 0x143a000
+brk(0x145b000)                          = 0x145b000
+brk(0x147d000)                          = 0x147d000
+brk(0x149e000)                          = 0x149e000
+brk(0x14bf000)                          = 0x14bf000
+brk(0x14e0000)                          = 0x14e0000
+brk(0x1501000)                          = 0x1501000
+brk(0x1522000)                          = 0x1522000
+brk(0x154a000)                          = 0x154a000
+brk(0x156b000)                          = 0x156b000
+brk(0x158c000)                          = 0x158c000
+brk(0x15ad000)                          = 0x15ad000
+brk(0x15ce000)                          = 0x15ce000
+brk(0x160a000)                          = 0x160a000
+brk(0x162b000)                          = 0x162b000
+brk(0x164c000)                          = 0x164c000
+brk(0x166d000)                          = 0x166d000
+brk(0x168e000)                          = 0x168e000
+brk(0x16af000)                          = 0x16af000
+brk(0x16db000)                          = 0x16db000
+brk(0x16fc000)                          = 0x16fc000
+brk(0x171d000)                          = 0x171d000
+brk(0x173e000)                          = 0x173e000
+brk(0x175f000)                          = 0x175f000
+brk(0x178d000)                          = 0x178d000
+brk(0x17ae000)                          = 0x17ae000
+brk(0x17cf000)                          = 0x17cf000
+brk(0x17f0000)                          = 0x17f0000
+brk(0x1811000)                          = 0x1811000
+brk(0x1832000)                          = 0x1832000
+brk(0x1868000)                          = 0x1868000
+brk(0x1889000)                          = 0x1889000
+brk(0x18aa000)                          = 0x18aa000
+brk(0x18cb000)                          = 0x18cb000
+brk(0x18ec000)                          = 0x18ec000
+brk(0x190d000)                          = 0x190d000
+brk(0x1933000)                          = 0x1933000
+brk(0x1954000)                          = 0x1954000
+brk(0x1975000)                          = 0x1975000
+brk(0x1996000)                          = 0x1996000
+brk(0x19b7000)                          = 0x19b7000
+brk(0x19eb000)                          = 0x19eb000
+brk(0x1a0c000)                          = 0x1a0c000
+brk(0x1a2d000)                          = 0x1a2d000
+brk(0x1a4e000)                          = 0x1a4e000
+munmap(0xb313f000, 2619056)             = 0
+brk(0x1a74000)                          = 0x1a74000
+brk(0x1ab4000)                          = 0x1ab4000
+brk(0x1ad5000)                          = 0x1ad5000
+brk(0x1af6000)                          = 0x1af6000
+brk(0x1b40000)                          = 0x1b40000
+mmap2(NULL, 528384, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0xb333e000
+brk(0x1b61000)                          = 0x1b61000
+brk(0x1b82000)                          = 0x1b82000
+brk(0x1ba3000)                          = 0x1ba3000
+brk(0x1bc4000)                          = 0x1bc4000
+brk(0x1be5000)                          = 0x1be5000
+brk(0x1c06000)                          = 0x1c06000
+brk(0x1c27000)                          = 0x1c27000
+brk(0x1c48000)                          = 0x1c48000
+brk(0x1c69000)                          = 0x1c69000
+brk(0x1c8a000)                          = 0x1c8a000
+mmap2(NULL, 528384, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0xb32bd000
+munmap(0xb333e000, 528384)              = 0
+brk(0x1cab000)                          = 0x1cab000
+brk(0x1cf4000)                          = 0x1cf4000
+brk(0x1d15000)                          = 0x1d15000
+brk(0x1d36000)                          = 0x1d36000
+brk(0x1d57000)                          = 0x1d57000
+brk(0x1d78000)                          = 0x1d78000
+brk(0x1d99000)                          = 0x1d99000
+mmap2(NULL, 528384, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0xb333e000
+munmap(0xb32bd000, 528384)              = 0
+brk(0x1df0000)                          = 0x1df0000
+munmap(0xb333e000, 528384)              = 0
+rt_sigaction(SIGHUP, {0xb6b3a209, [], SA_NODEFER|SA_RESETHAND|0x4000000}, {SIG_DFL, [], 0}, 8) = 0
+rt_sigaction(SIGINT, {0xb6b3a209, [], SA_NODEFER|SA_RESETHAND|0x4000000}, {SIG_DFL, [], 0}, 8) = 0
+rt_sigaction(SIGPIPE, {0xb6b3a209, [], SA_NODEFER|SA_RESETHAND|0x4000000}, {SIG_DFL, [], 0}, 8) = 0
+rt_sigaction(SIGTERM, {0xb6b3a209, [], SA_NODEFER|SA_RESETHAND|0x4000000}, {SIG_DFL, [], 0}, 8) = 0
+rt_sigaction(SIGUSR1, {0xb6b3a209, [], SA_NODEFER|SA_RESETHAND|0x4000000}, {SIG_DFL, [], 0}, 8) = 0
+rt_sigaction(SIGUSR2, {0xb6b3a209, [], SA_NODEFER|SA_RESETHAND|0x4000000}, {SIG_DFL, [], 0}, 8) = 0
+rt_sigaction(SIGILL, {0xb6b3a209, [], SA_NODEFER|SA_RESETHAND|0x4000000}, {SIG_DFL, [], 0}, 8) = 0
+rt_sigaction(SIGTRAP, {0xb6b3a209, [], SA_NODEFER|SA_RESETHAND|0x4000000}, {SIG_DFL, [], 0}, 8) = 0
+rt_sigaction(SIGABRT, {0xb6b3a209, [], SA_NODEFER|SA_RESETHAND|0x4000000}, {SIG_DFL, [], 0}, 8) = 0
+rt_sigaction(SIGFPE, {0xb6b3a209, [], SA_NODEFER|SA_RESETHAND|0x4000000}, {SIG_DFL, [], 0}, 8) = 0
+rt_sigaction(SIGBUS, {0xb6b3a209, [], SA_NODEFER|SA_RESETHAND|0x4000000}, {SIG_DFL, [], 0}, 8) = 0
+rt_sigaction(SIGSEGV, {0xb6b3a209, [], SA_NODEFER|SA_RESETHAND|0x4000000}, {SIG_DFL, [], 0}, 8) = 0
+rt_sigaction(SIGQUIT, {0xb6b3a209, [], SA_NODEFER|SA_RESETHAND|0x4000000}, {SIG_DFL, [], 0}, 8) = 0
+rt_sigaction(SIGSYS, {0xb6b3a209, [], SA_NODEFER|SA_RESETHAND|0x4000000}, {SIG_DFL, [], 0}, 8) = 0
+rt_sigaction(SIGXCPU, {0xb6b3a209, [], SA_NODEFER|SA_RESETHAND|0x4000000}, {SIG_DFL, [], 0}, 8) = 0
+rt_sigaction(SIGXFSZ, {0xb6b3a209, [], SA_NODEFER|SA_RESETHAND|0x4000000}, {SIG_DFL, [], 0}, 8) = 0
+open("/tmp/pocleHGMzL/pthread/gaussianblur/8-8-1.0-0-0/parallel.bc", O_WRONLY|O_CREAT|O_TRUNC, 0666) = 6
+brk(0x1e11000)                          = 0x1e11000
+brk(0x1e32000)                          = 0x1e32000
+brk(0x1e53000)                          = 0x1e53000
+brk(0x1e74000)                          = 0x1e74000
+brk(0x1e9f000)                          = 0x1e9f000
+open("/proc/meminfo", O_RDONLY|O_CLOEXEC) = 7
+fcntl64(7, F_GETFD)                     = 0x1 (flags FD_CLOEXEC)
+fstat64(7, {st_mode=S_IFREG|0444, st_size=0, ...}) = 0
+mmap2(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0xb58b6000
+read(7, "MemTotal:         511732 kB\nMemF"..., 1024) = 1024
+close(7)                                = 0
+munmap(0xb58b6000, 4096)                = 0
+fstat64(6, {st_mode=S_IFREG|0644, st_size=0, ...}) = 0
+write(6, "BC\300\336!\f\0\0\314\6\0\0\v\202 \0\2\0\0\0\22\0\0\0\7\201#\221A\310\4I"..., 4096) = 4096
+write(6, "\314\22\220\301@\205\301Nc\320\220A\5*\2C\24e\202'x\302&\302`D \f\300\20\305\231"..., 2876) = 2876
+close(6)                                = 0
+gettimeofday({1452532149, 568324}, NULL) = 0
+clock_gettime(0x3 /* CLOCK_??? */, {6, 93690661}) = 0
+gettimeofday({1452532149, 568729}, NULL) = 0
+gettimeofday({1452532149, 568913}, NULL) = 0
+access("/tmp/pocleHGMzL/pthread/gaussianblur/8-8-1.0-0-0/parallel.so", F_OK) = -1 ENOENT (No such file or directory)
+rt_sigaction(SIGINT, {SIG_IGN, [], 0x4000000 /* SA_??? */}, {0xb6b3a209, [], SA_NODEFER|SA_RESETHAND|0x4000000}, 8) = 0
+rt_sigaction(SIGQUIT, {SIG_IGN, [], 0x4000000 /* SA_??? */}, {0xb6b3a209, [], SA_NODEFER|SA_RESETHAND|0x4000000}, 8) = 0
+rt_sigprocmask(SIG_BLOCK, [CHLD], [], 8) = 0
+clone(child_stack=0, flags=CLONE_CHILD_CLEARTID|CLONE_CHILD_SETTID|SIGCHLD, child_tidptr=0xb6fc8068) = 21486
+wait4(21486, [{WIFEXITED(s) && WEXITSTATUS(s) == 0}], 0, NULL) = 21486
+rt_sigaction(SIGINT, {0xb6b3a209, [], SA_NODEFER|SA_RESETHAND|0x4000000}, NULL, 8) = 0
+rt_sigaction(SIGQUIT, {0xb6b3a209, [], SA_NODEFER|SA_RESETHAND|0x4000000}, NULL, 8) = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+--- SIGCHLD (Child exited) @ 0 (0) ---
+rt_sigaction(SIGINT, {SIG_IGN, [], 0x4000000 /* SA_??? */}, {0xb6b3a209, [], SA_NODEFER|SA_RESETHAND|0x4000000}, 8) = 0
+rt_sigaction(SIGQUIT, {SIG_IGN, [], 0x4000000 /* SA_??? */}, {0xb6b3a209, [], SA_NODEFER|SA_RESETHAND|0x4000000}, 8) = 0
+rt_sigprocmask(SIG_BLOCK, [CHLD], [], 8) = 0
+clone(child_stack=0, flags=CLONE_CHILD_CLEARTID|CLONE_CHILD_SETTID|SIGCHLD, child_tidptr=0xb6fc8068) = 21488
+wait4(21488, [{WIFEXITED(s) && WEXITSTATUS(s) == 0}], 0, NULL) = 21488
+rt_sigaction(SIGINT, {0xb6b3a209, [], SA_NODEFER|SA_RESETHAND|0x4000000}, NULL, 8) = 0
+rt_sigaction(SIGQUIT, {0xb6b3a209, [], SA_NODEFER|SA_RESETHAND|0x4000000}, NULL, 8) = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+--- SIGCHLD (Child exited) @ 0 (0) ---
+rt_sigaction(SIGINT, {SIG_IGN, [], 0x4000000 /* SA_??? */}, {0xb6b3a209, [], SA_NODEFER|SA_RESETHAND|0x4000000}, 8) = 0
+rt_sigaction(SIGQUIT, {SIG_IGN, [], 0x4000000 /* SA_??? */}, {0xb6b3a209, [], SA_NODEFER|SA_RESETHAND|0x4000000}, 8) = 0
+rt_sigprocmask(SIG_BLOCK, [CHLD], [], 8) = 0
+clone(child_stack=0, flags=CLONE_CHILD_CLEARTID|CLONE_CHILD_SETTID|SIGCHLD, child_tidptr=0xb6fc8068) = 21491
+wait4(21491, [{WIFEXITED(s) && WEXITSTATUS(s) == 0}], 0, NULL) = 21491
+rt_sigaction(SIGINT, {0xb6b3a209, [], SA_NODEFER|SA_RESETHAND|0x4000000}, NULL, 8) = 0
+rt_sigaction(SIGQUIT, {0xb6b3a209, [], SA_NODEFER|SA_RESETHAND|0x4000000}, NULL, 8) = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+--- SIGCHLD (Child exited) @ 0 (0) ---
+futex(0xb56b90a4, FUTEX_WAKE_PRIVATE, 2147483647) = 0
+open("/tmp/pocleHGMzL/pthread/gaussianblur/8-8-1.0-0-0/parallel.so", O_RDONLY|O_CLOEXEC) = 6
+read(6, "\177ELF\1\1\1\0\0\0\0\0\0\0\0\0\3\0(\0\1\0\0\0\204\4\0\0004\0\0\0"..., 512) = 512
+lseek(6, 4508, SEEK_SET)                = 4508
+read(6, "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"..., 1040) = 1040
+lseek(6, 4220, SEEK_SET)                = 4220
+read(6, "A>\0\0\0aeabi\0\0014\0\0\0\0057-A\0\6\n\7A\10\1\t\2\n\3\f"..., 63) = 63
+fstat64(6, {st_mode=S_IFREG|0755, st_size=7270, ...}) = 0
+mmap2(NULL, 36908, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 6, 0) = 0xb58ad000
+mprotect(0xb58ae000, 28672, PROT_NONE)  = 0
+mmap2(0xb58b5000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 6, 0) = 0xb58b5000
+mprotect(0xb6fcf000, 3888, PROT_READ|PROT_WRITE) = 0
+mprotect(0xb6fcf000, 3888, PROT_READ)   = 0
+mprotect(0xbe9b1000, 4096, PROT_READ|PROT_WRITE|PROT_EXEC|PROT_GROWSDOWN) = 0
+close(6)                                = 0
+mprotect(0xb58b5000, 4096, PROT_READ)   = 0
+mmap2(NULL, 8388608, PROT_READ|PROT_WRITE|PROT_EXEC, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0xb281d000
+mprotect(0xb281d000, 4096, PROT_NONE)   = 0
+clone(child_stack=0xb301bf98, flags=CLONE_VM|CLONE_FS|CLONE_FILES|CLONE_SIGHAND|CLONE_THREAD|CLONE_SYSVSEM|CLONE_SETTLS|CLONE_PARENT_SETTID|CLONE_CHILD_CLEARTID, parent_tidptr=0xb301c4c8, tls=0xb301c920, child_tidptr=0xb301c4c8) = 21494
+mmap2(NULL, 8388608, PROT_READ|PROT_WRITE|PROT_EXEC, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0xb201d000
+mprotect(0xb201d000, 4096, PROT_NONE)   = 0
+clone(child_stack=0xb281bf98, flags=CLONE_VM|CLONE_FS|CLONE_FILES|CLONE_SIGHAND|CLONE_THREAD|CLONE_SYSVSEM|CLONE_SETTLS|CLONE_PARENT_SETTID|CLONE_CHILD_CLEARTID, parent_tidptr=0xb281c4c8, tls=0xb281c920, child_tidptr=0xb281c4c8) = 21495
+mmap2(NULL, 8388608, PROT_READ|PROT_WRITE|PROT_EXEC, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0xb181d000
+mprotect(0xb181d000, 4096, PROT_NONE)   = 0
+clone(child_stack=0xb201bf98, flags=CLONE_VM|CLONE_FS|CLONE_FILES|CLONE_SIGHAND|CLONE_THREAD|CLONE_SYSVSEM|CLONE_SETTLS|CLONE_PARENT_SETTID|CLONE_CHILD_CLEARTID, parent_tidptr=0xb201c4c8, tls=0xb201c920, child_tidptr=0xb201c4c8) = 21496
+mmap2(NULL, 8388608, PROT_READ|PROT_WRITE|PROT_EXEC, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0xb101d000
+mprotect(0xb101d000, 4096, PROT_NONE)   = 0
+clone(child_stack=0xb181bf98, flags=CLONE_VM|CLONE_FS|CLONE_FILES|CLONE_SIGHAND|CLONE_THREAD|CLONE_SYSVSEM|CLONE_SETTLS|CLONE_PARENT_SETTID|CLONE_CHILD_CLEARTID, parent_tidptr=0xb181c4c8, tls=0xb181c920, child_tidptr=0xb181c4c8) = 21497
+futex(0xb301c4c8, FUTEX_WAIT, 21494, NULL) = 0
+futex(0xb281c4c8, FUTEX_WAIT, 21495, NULL) = 0
+gettimeofday({1452532150, 353202}, NULL) = 0
+clock_gettime(0x3 /* CLOCK_??? */, {6, 109800370}) = 0
+clock_gettime(0x3 /* CLOCK_??? */, {6, 113155023}) = 0
+clock_gettime(0x3 /* CLOCK_??? */, {6, 113228752}) = 0
+open("output.pgm", O_RDWR|O_CREAT|O_TRUNC, 0666) = 6
+fstat64(6, {st_mode=S_IFREG|0644, st_size=0, ...}) = 0
+mmap2(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0xb58ac000
+write(6, "P5\n512 512\n255\n\261\261\261\257\257\257\262\261\262\260\256\256\256\256\254\252\255"..., 4096) = 4096
+write(6, "\212\212\212\207\200vgWG@974[\202\253\254\254\254\253\252\254\254\255\254\255\254\254\252\252\252\252"..., 4096) = 4096
+write(6, "=630013443124^\205\254\253\254\253\252\251\251\252\253\253\252\253\254\254\253\253\252"..., 4096) = 4096
+write(6, "222331236688:`\205\251\251\250\251\252\254\254\255\255\256\256\256\255\255\255\255\254"..., 4096) = 4096
+write(6, "89986655569<=b\207\255\255\255\255\255\253\255\254\256\256\256\256\256\257\260\260\260"..., 4096) = 4096
+write(6, "9865455421113^\211\261\261\260\261\260\257\256\257\257\261\261\261\261\263\265\266\267"..., 4096) = 4096
+write(6, "1/.0023333444^\210\262\261\260\260\260\260\256\256\257\262\265\270\272\272\272\271\267"..., 4096) = 4096
+write(6, ":7543300/0334\\\205\257\257\260\261\262\264\265\271\273\274\273\270\266\262\257\253\250"..., 4096) = 4096
+write(6, "/00113479:985_\212\267\271\274\276\276\275\272\270\264\261\255\253\246\243\236\230\216"..., 4096) = 4096
+write(6, "@FIKE>4-&\"$/Fw\240\275\274\272\271\265\262\257\252\246\240\231\222\212\201vi_"..., 4096) = 4096
+write(6, "C710:Jaw\213\231\245\255\264\265\263\260\257\253\247\242\234\225\215\204zne]ZYY["..., 4096) = 4096
+write(6, "\177\214\226\236\244\246\246\244\237\235\233\234\234\234\234\232\226\216\203xmd^[[\\_``aab"..., 4096) = 4096
+write(6, "\245\243\237\234\233\233\235\240\245\252\257\261\263\234\205ke_\\]^^_acdeedddc"..., 4096) = 4096
+write(6, "\236\243\251\260\263\266\265\265\264\264\264\263\262\224y]^_`beeffffffffed"..., 4096) = 4096
+write(6, "\260\261\261\261\260\260\257\257\256\256\256\256\257\226}egfeccdcddddcccb`"..., 4096) = 4096
+write(6, "\257\260\257\256\256\256\256\255\255\254\254\254\254\222y_``aaabcdeddeffgg"..., 4096) = 4096
+write(6, "\254\254\255\255\253\252\253\254\254\253\255\256\256\226~gfhfhhjijjmlljikj"..., 4096) = 4096
+write(6, "\253\253\252\252\252\252\251\250\250\251\251\250\250\225\202ommllmnomlklmmmmm"..., 4096) = 4096
+write(6, "\250\251\251\251\251\252\252\251\250\247\250\251\251\224\200nmnmmnooomlkllmml"..., 4096) = 4096
+write(6, "\254\254\254\254\254\253\253\253\254\255\256\256\254\225\177jjjkkljmlmkjijkkl"..., 4096) = 4096
+write(6, "\254\255\255\255\255\254\255\254\253\252\252\253\254\225\177ikjhgfgggggghhhhh"..., 4096) = 4096
+write(6, "\254\254\253\253\253\254\254\254\253\253\253\253\252\224}hhjjkjllkiihihiik"..., 4096) = 4096
+write(6, "\252\251\250\250\251\251\251\250\246\246\250\251\247\223\177lllkkklllmkkjmoon"..., 4096) = 4096
+write(6, "\253\252\251\250\250\250\250\247\246\246\246\247\250\224\201mmopppqqpnnlkiijo"..., 4096) = 4096
+write(6, "\252\252\253\252\253\252\252\250\250\246\247\246\245\226\206vsrrsrqqqqrqrnnlo"..., 4096) = 4096
+write(6, "\252\251\251\250\250\250\251\251\250\246\247\247\247\225\204tssstuusrpponmono"..., 4096) = 4096
+write(6, "\253\253\252\251\250\251\252\251\247\247\247\247\247\226\206uuvwvvsrqqqqqpnmm"..., 4096) = 4096
+write(6, "\255\255\255\254\254\253\251\250\247\246\245\245\245\225\205utsqrsttsttspmlll"..., 4096) = 4096
+write(6, "\254\254\253\253\252\252\252\251\250\247\247\246\245\222\200oqsssqsqsrrrqonll"..., 4096) = 4096
+write(6, "\247\250\250\251\251\251\250\247\247\246\247\245\245\223\203ssssssqomlllmmljh"..., 4096) = 4096
+write(6, "\241\243\243\243\243\244\243\244\244\245\246\246\246\224\202oqqqnnnmmklkkihhh"..., 4096) = 4096
+write(6, "\233\233\234\232\231\230\231\230\226\224\223\222\222\206{oppppoooomnnnnnnm"..., 4096) = 4096
+write(6, "\243\242\240\237\236\235\234\233\230\230\227\226\223\205xnnonnopqoonnllnml"..., 4096) = 4096
+write(6, "\225\225\224\223\224\224\225\223\222\222\222\222\220\203vjlllihgggggfeedba"..., 4096) = 4096
+write(6, "\227\232\240\243\247\253\260\263\266\271\275\300\304\250\212lmnmmlkkkllihdcbc"..., 4096) = 4096
+write(6, "\316\317\320\320\320\320\320\320\317\316\316\315\316\256\217pppoonkjjjheca_]\\"..., 4096) = 4096
+write(6, "\320\317\316\316\315\316\317\320\321\320\320\320\321\255\211deddbb`_]]]\\[YXVV"..., 4096) = 4096
+write(6, "\323\323\324\325\326\327\330\332\332\332\333\335\335\262\206[ZXWXWVUTRRTVUSQQ"..., 4096) = 4096
+write(6, "\343\343\343\343\342\341\340\340\337\336\336\335\336\261\204UUTSSRQPRRSSRPNLK"..., 4096) = 4096
+write(6, "\342\342\343\343\342\342\343\343\343\341\341\341\342\264\206YXYWVRRRQOPOQOMIH"..., 4096) = 4096
+write(6, "\341\342\342\343\344\344\344\344\344\344\344\343\342\267\213_]ZXWXYXUUTSRPMIH"..., 4096) = 4096
+write(6, "\346\346\346\345\345\344\344\343\342\342\342\343\344\264\204VWXUVUVRRQTSTQOKG"..., 4096) = 4096
+write(6, "\346\347\347\347\347\347\347\347\350\350\347\347\347\265\203RQPMNPPPNOQRRPNKG"..., 4096) = 4096
+write(6, "\352\352\353\352\351\347\347\347\350\350\351\347\347\264\201KFCCDEFHIKKMLKIHG"..., 4096) = 4096
+write(6, "\353\353\354\353\352\351\351\351\351\351\351\350\350\256u;<<==?@AABEGHFEDC"..., 4096) = 4096
+write(6, "\344\344\343\342\342\343\342\341\340\341\341\341\341\252t<98:<==><=>??>>=<"..., 4096) = 4096
+write(6, "\345\346\346\346\346\346\347\347\347\350\347\347\347\255t9767898766666645:"..., 4096) = 4096
+write(6, "\342\342\342\342\342\343\343\343\342\342\341\337\336\244k333556542234546=L"..., 4096) = 4096
+write(6, "\265\247\227\204sbSG?:742000123344421//13347"..., 4096) = 4096
+write(6, ",-049=CIOTVVSLE@BCEEB?:85543/-+/"..., 4096) = 4096
+write(6, "PSVYZ\\\\[]^_^]o\200\221\221\217\216\213\207\177umgb\\VPKHK"..., 4096) = 4096
+write(6, "jmmnjhfc`\\[]aq~\214\217\224\231\234\237\243\244\245\242\237\234\230\223\214\207\200"..., 4096) = 4096
+write(6, "urmigeedfjmpqaREN^n|\205\215\223\232\240\251\256\262\262\262\261\256"..., 4096) = 4096
+write(6, "_adinqrrrommoW>%%)08I^y\217\240\253\263\270\271\271\271\270"..., 4096) = 4096
+write(6, "prrqqpnmlnppnT;#$$&*5G`z\221\240\250\255\264\271\273\274"..., 4096) = 4096
+write(6, "rqolkihfdb^[XF3####&-;Qm\205\227\242\254\263\272\274\274"..., 4096) = 4096
+write(6, "iggihedbcdffhR<$$%&(+0=Qm\205\230\245\256\264\271\275"..., 4096) = 4096
+write(6, "bcghjhhhjif^VF8+)(&''*0=Qi\203\226\244\254\262\267"..., 4096) = 4096
+write(6, "sokhgc^YSKD?>5.&&%$$&*.5@Ur\217\246\263\272\276"..., 4096) = 4096
+write(6, "jfc\\VLFA@=:886558;=?@A@@GXq\213\237\256\270\276"..., 4096) = 4096
+write(6, "`[ZZYUMFBAADFOU_acbcehlpu~\210\222\235\251\264\272"..., 4096) = 4096
+write(6, "TLGCDGJKLMMID<7<GU_gmppqpqv\200\215\233\247\261"..., 4096) = 4096
+write(6, "GCA@ABBA><;<<;9<=@>@BHNUYY]hv\206\226\247"..., 4096) = 4096
+write(6, "8<?>A??=CINRYPC68999:;>?>?DVo\216\257\307"..., 4096) = 4096
+write(6, "\24\26\30\32\34\36 \"#%%%&\32\r", 15) = 15
+close(6)                                = 0
+munmap(0xb58ac000, 4096)                = 0
+munmap(0xb54c1000, 1052672)             = 0
+munmap(0xb53c0000, 1052672)             = 0
+munmap(0xb55c2000, 266240)              = 0
+rt_sigaction(SIGINT, {SIG_IGN, [], 0x4000000 /* SA_??? */}, {0xb6b3a209, [], SA_NODEFER|SA_RESETHAND|0x4000000}, 8) = 0
+rt_sigaction(SIGQUIT, {SIG_IGN, [], 0x4000000 /* SA_??? */}, {0xb6b3a209, [], SA_NODEFER|SA_RESETHAND|0x4000000}, 8) = 0
+rt_sigprocmask(SIG_BLOCK, [CHLD], [], 8) = 0
+clone(child_stack=0, flags=CLONE_CHILD_CLEARTID|CLONE_CHILD_SETTID|SIGCHLD, child_tidptr=0xb6fc8068) = 21498
+wait4(21498, [{WIFEXITED(s) && WEXITSTATUS(s) == 0}], 0, NULL) = 21498
+rt_sigaction(SIGINT, {0xb6b3a209, [], SA_NODEFER|SA_RESETHAND|0x4000000}, NULL, 8) = 0
+rt_sigaction(SIGQUIT, {0xb6b3a209, [], SA_NODEFER|SA_RESETHAND|0x4000000}, NULL, 8) = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+--- SIGCHLD (Child exited) @ 0 (0) ---
+write(1, "cl:main program:gausblur\ncl:main"..., 733cl:main program:gausblur
+cl:main program:img_width 512
+cl:main program:img_height 512
+cl:main program:Init_Device 
+cl:main timing:PAPI clGetPlatformIDs 56us
+cl:main timing:PAPI clGetDeviceIDs 11575us
+cl:main timing:PAPI clCreateContext 185us
+cl:main timing:PAPI clCreateCommandQueue 74us
+cl:main timing:PAPI clCreateProgramWithSource 406us
+cl:main timing:PAPI clBuildProgram 1552043us
+cl:main timing:PAPI clCreateKernel 995us
+cl:main timing:PAPI clCreateBuffer 3336us
+cl:main timing:PAPI clSetKernelArg 74us
+cl:main timing:PAPI clEnqueueNDRangeKernel 4444602us
+cl:main timing:opencl clEnqueueNDRangeKernel 784289.000us
+cl:main timing:PAPI clEnqueueReadBuffer 3428us
+cl:main timing:PAPI total_time 6033676us
+cl:main program:completed
+) = 733
+exit_group(0)                           = ?
