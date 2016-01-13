@@ -35,7 +35,7 @@ armpocl_value = []
 search_for = ['logic']
 
 for csvfile in glob.glob(os.path.join('./x86_64_c/', '*.csv')):
-    fpath = csvfile.split("/x86_64/", 1)
+    fpath = csvfile.split("/x86_64_c/", 1)
     fname = fpath[1].split(".", 1) ## fname[0] should be our worksheet name
 
     with open(csvfile, 'rb') as inf:
@@ -46,7 +46,7 @@ for csvfile in glob.glob(os.path.join('./x86_64_c/', '*.csv')):
 		x86pocl_value.append(int(row[1]))
 
 for csvfile in glob.glob(os.path.join('./armv7l_c/', '*.csv')):
-    fpath = csvfile.split("/armv7l/", 1)
+    fpath = csvfile.split("/armv7l_c/", 1)
     fname = fpath[1].split(".", 1) ## fname[0] should be our worksheet name
 
     with open(csvfile, 'rb') as inf:

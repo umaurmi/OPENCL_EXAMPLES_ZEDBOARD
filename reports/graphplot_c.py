@@ -99,7 +99,7 @@ def autolabel(rects):
 autolabel(rects1)
 autolabel(rects2)
 #plt.show()
-plt.savefig('comp.png')
+plt.savefig('comp_c.png')
 
         
 		
