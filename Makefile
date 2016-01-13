@@ -47,6 +47,6 @@ clean:
 	cd transpose && $(MAKE) clean
 	cd transpose/transpose_c && $(MAKE) clean
 	rm -rf reports/*.csv
-	rm -rf *~
+	rm -rf *~ reports/*~
 	#rm -rf reports/*.xls
 
