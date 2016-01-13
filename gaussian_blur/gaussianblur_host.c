@@ -267,8 +267,8 @@ int main()
        	       exit(1);
    	  }
  
-	   localWorkSize[0] = 8;
-	   localWorkSize[1] = 8;
+	   localWorkSize[0] = 4;
+	   localWorkSize[1] = 5;
 	   globalWorkSize[0] = ipgm_img_width;
 	   globalWorkSize[1] = ipgm_img_height;
 	 

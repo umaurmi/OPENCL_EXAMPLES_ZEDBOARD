@@ -72,7 +72,7 @@ int main()
     const char fileName[] = "./power_law.cl";
     size_t source_size;
     char *source_str;
-    cl_int i, j,n;
+    cl_int i, j, width, height;
 
     size_t gws[2];
     size_t lws[2];
@@ -88,21 +88,22 @@ int main()
     fclose( fp );
 
     /* Image file input */
-    readPGM(&ipgm, "lena.pgm");
+	readPGM(&ipgm, "lena.pgm");
 
-    n = ipgm.width; 
-    printf("image width is %d \n", n);
+	width = ipgm.width;
+	height = ipgm.height;
+	printf("width of image is %d\n", width);
+	printf("width of image is %d\n", height);
 
-    xm = (cl_float *)malloc(n * n * sizeof(cl_float));
-    rm = (cl_float *)malloc(n * n * sizeof(cl_float));
+	xm = (cl_float *)malloc(width * height * sizeof(cl_float));
+	rm = (cl_float *)malloc(width * height * sizeof(cl_float));
 
-    for( i = 0; i < n; i++ ) {
-        for( j = 0; j < n; j++ ) {
-			((float*)xm)[(n*j) + i] = (float)ipgm.buf[n*j + i];
+	for (i = 0; i < width; i++) {
+		for (j = 0; j < height; j++) {
+			((float*)xm)[(width*j) + i] = (float)ipgm.buf[width*j + i];
 
         }
     }
-
     printf("cl:main program:Init_Device \n");
 
     ptotal_start = PAPI_get_virt_usec();
@@ -131,14 +132,14 @@ int main()
 
     ptimer1 = PAPI_get_virt_usec();
     /* Creating a buffer object */
-    xmobj = clCreateBuffer(context, CL_MEM_READ_WRITE, n*n*sizeof(cl_float), NULL, &ret);
-    rmobj = clCreateBuffer(context, CL_MEM_READ_WRITE, n*n*sizeof(cl_float), NULL, &ret);
+    xmobj = clCreateBuffer(context, CL_MEM_READ_WRITE, width*height*sizeof(cl_float), NULL, &ret);
+    rmobj = clCreateBuffer(context, CL_MEM_READ_WRITE, width*height*sizeof(cl_float), NULL, &ret);
     ptimer2 = PAPI_get_virt_usec();
     printf("cl:main timing:PAPI clCreateBuffer %llu us\n",(ptimer2-ptimer1));
 
     ptimer1 = PAPI_get_virt_usec();
     /* And transfer the data to the memory buffer */
-    ret = clEnqueueWriteBuffer(queue, xmobj, CL_TRUE, 0, n*n*sizeof(cl_float), xm, 0, NULL, NULL);
+    ret = clEnqueueWriteBuffer(queue, xmobj, CL_TRUE, 0, width*height*sizeof(cl_float), xm, 0, NULL, NULL);
     ptimer2 = PAPI_get_virt_usec();
     printf("cl:main timing:PAPI clEnqueueWriteBuffer %llu us\n",(ptimer2-ptimer1));
 
@@ -169,14 +170,14 @@ int main()
 	/* set kernel arguments */
 	ret = clSetKernelArg(kernel, 0, sizeof(cl_mem), (void *)&rmobj);
 	ret = clSetKernelArg(kernel, 1, sizeof(cl_mem), (void *)&xmobj);
-	ret = clSetKernelArg(kernel, 2, sizeof(cl_int), (void *)&n);
+	ret = clSetKernelArg(kernel, 2, sizeof(cl_int), (void *)&width);
 	ret = clSetKernelArg(kernel, 3, sizeof(cl_float), (void *)&gamma);
 	ptimer2 = PAPI_get_virt_usec();
 	printf("cl:main timing:PAPI clSetKernelArg %llu us\n",(ptimer2-ptimer1));
 
     //setWorkSize(gws, lws, n, n);
-	gws[0] = n;
-	gws[1] = n;
+	gws[0] = width;
+	gws[1] = height;
 
 	 ptimer1 = PAPI_get_virt_usec();
 	/*Enque task for parallel execution*/
@@ -196,15 +197,15 @@ int main()
 
 	ptimer1 = PAPI_get_virt_usec();
     	/* Get results from the memory buffer */
-    	ret = clEnqueueReadBuffer(queue, rmobj, CL_TRUE, 0, n*n*sizeof(cl_float), rm, 0, NULL, NULL);
+    	ret = clEnqueueReadBuffer(queue, rmobj, CL_TRUE, 0, width*height*sizeof(cl_float), rm, 0, NULL, NULL);
 	ptotal_end = PAPI_get_virt_usec();
 	ptimer2 = PAPI_get_virt_usec();
 	printf("cl:main timing:PAPI clEnqueueReadBuffer %llu us\n",(ptimer2-ptimer1));
 
 	printf("cl:main timing:PAPI total_time %llu us\n",(ptotal_end-ptotal_start));
 
-    opgm.width = n;
-    opgm.height = n;
+    opgm.width = width;
+    opgm.height = height;
     normalizeF2PGM(&opgm, rm);
 
 

@@ -12,37 +12,39 @@ int main()
 	long long timer1 = 0;
 	long long timer2 = 0;
 
-	register int i,j,n;
+	register int i,j;
 	float *in_image;
 	float *out_image;
+	int width, height;
 	
 	pgm_t ipgm;
     	pgm_t opgm;
 
 
    	/* Image file input */
-	readPGM(&ipgm, "lena.pgm");
+	readPGM(&ipgm, "test_img_old.pgm");
 	printf("reading file done ... \n");
 
-	n = ipgm.width; 
-	printf("width of image is %d\n",n);
+    	width = ipgm.width; 
+	height = ipgm.height;
+	printf("width of image is %d\n",width);
+	printf("width of image is %d\n", height);
 
-	in_image = (float *)malloc(n * n * sizeof(float));
-	out_image = (float *)malloc(n * n * sizeof(float));
+	in_image = (float *)malloc(width * height * sizeof(float));
+	out_image = (float *)malloc(width * height * sizeof(float));
 
-   	 for( i = 0; i < n; i++ ) {
-        	for( j = 0; j < n; j++ ) {
+    	for( i = 0; i < width; i++ ) {
+        	for( j = 0; j < height; j++ ) {
 
-                        ((float*)in_image)[(n*j) + i] = (float)ipgm.buf[n*j + i];
+			((float*)in_image)[(width*j) + i] = (float)ipgm.buf[width*j + i];
         	}
     	}
 	
 	timer1 = PAPI_get_virt_usec();
 	
-	 for( i = 0; i < n; i++ ) {
-        	for( j = 0; j < n; j++ ) {
-
-			((float*)out_image)[(n*i) + j] = ((float*)in_image)[(n*j) + i];
+ 	for( i = 0; i < width; i++ ) {
+                for( j = 0; j < height; j++ ) {
+			((float*)out_image)[(height*i) + j] = ((float*)in_image)[(width*j) + i];
         	}	
     	 }
 
@@ -51,8 +53,8 @@ int main()
 	
     	printf("computing transpose done...\n");
 
-    	opgm.width = n;
-    	opgm.height = n;
+    	opgm.width = height ;
+    	opgm.height = width ;
     	normalizeF2PGM(&opgm, out_image);
 
 	/* Image file output */

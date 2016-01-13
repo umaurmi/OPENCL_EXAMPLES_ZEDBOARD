@@ -45,18 +45,6 @@ for csvfile in glob.glob(os.path.join('.', '*.csv')):
     	wb.save('x86_64.xls')
 
 
-search_for = ['clEnqueueNDRangeKernel']
-
-for csvfile in glob.glob(os.path.join('.', '*.csv')):
-    fpath = csvfile.split("/", 1)
-    fname = fpath[1].split(".", 1) ## fname[0] should be our worksheet name
-
-    with open(csvfile, 'rb') as inf, open('out.csv','w') as outf:
-        reader = csv.reader(inf)
-        for row in reader:
-            if row[0] in search_for:
-                print(fname[0])
-                print row
         
 		
             

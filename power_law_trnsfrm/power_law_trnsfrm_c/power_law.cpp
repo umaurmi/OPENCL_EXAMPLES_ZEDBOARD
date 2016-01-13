@@ -12,7 +12,7 @@ int main()
 	long long timer1 = 0;
 	long long timer2 = 0;
 
-	int i, j, n;
+	int i, j, width, height;
 	float *in_image;
 	float *out_image;
 
@@ -21,33 +21,35 @@ int main()
 
 
     	/* Image file input */
-    	readPGM(&ipgm, "lena.pgm");
+	readPGM(&ipgm, "test_img_old.pgm");
 	printf("reading image done ...");
     
-	n = ipgm.width; 
-	printf("image width is %d \n", n);
+	width = ipgm.width; 
+	height = ipgm.height;
+	printf("image width is %d \n", width);
+	printf("image height is %d \n", height);
 
    	/*read gamma from user*/
 	float gamma;
 	printf("Enter required gamma value for power-law transform (higher gamma implies darker image) \n");
 	scanf("%f", &gamma);
 
-	in_image = (float *)malloc(n * n * sizeof(float));
-	out_image = (float *)malloc(n * n * sizeof(float));
+	in_image = (float *)malloc(width * height * sizeof(float));
+	out_image = (float *)malloc(width * height * sizeof(float));
 
-	for (i = 0; i < n; i++) {
-                for (j = 0; j < n; j++) {
+	for (i = 0; i < width; i++) {
+		for (j = 0; j < height; j++) {
 
-                        ((float*)in_image)[(n*j) + i] = (float)ipgm.buf[n*j + i];
-                }
-        }
+			((float*)in_image)[(width*j) + i] = (float)ipgm.buf[width*j + i];
+		}
+	}
 
 	timer1 = PAPI_get_virt_usec();
 
-	for (i = 0; i < n; i++) {
-		for (j = 0; j < n; j++) {
+	for (i = 0; i < width; i++) {
+		for (j = 0; j < height; j++) {
 
-			((float*)out_image)[(n*j) + i] = pow(((float*)in_image)[(n*j) + i],gamma);
+			((float*)out_image)[(width*j) + i] = pow(((float*)in_image)[(width*j) + i],gamma);
 		}
 	}
 	
@@ -56,8 +58,8 @@ int main()
 
 	printf("computing power law transform done...\n");
 
-	opgm.width = n;
-	opgm.height = n;
+	opgm.width = width;
+	opgm.height = height;
 	normalizeF2PGM(&opgm, out_image);
 
 	/* Image file output */

@@ -12,7 +12,7 @@ int main()
 	long long timer1 = 0;
         long long timer2 = 0;
     
-	int i, j, n;
+	int i, j, width, height;
 	float *in_image;
 	float *out_image;
 
@@ -21,37 +21,40 @@ int main()
 
 
 	/* Image file input */
-	readPGM(&ipgm, "einstein.pgm");
+	readPGM(&ipgm, "test_img_old.pgm");
 	printf("reading image done ...");
 
-	n = ipgm.width;
-	printf("image width is %d \n", n);
+	width = ipgm.width;
+	printf("image width is %d \n", width);
+	height = ipgm.height;
+	printf("image height is %d \n", height);
 
-	in_image = (float *)malloc(n * n * sizeof(float));
-	out_image = (float *)malloc(n * n * sizeof(float));
+	in_image = (float *)malloc(width * height * sizeof(float));
+	out_image = (float *)malloc(width * height * sizeof(float));
 
-  	for (i = 0; i < n; i++) {
-                for (j = 0; j < n; j++) {
+	for (i = 0; i < width; i++) {
+		for (j = 0; j < height; j++) {
 
-                        ((float*)in_image)[(n*j) + i] = (float)ipgm.buf[n*j + i];
-                }
-        }
+			((float*)in_image)[(width*j) + i] = (float)ipgm.buf[width*j + i];
+		}
+	}
 
 	timer1 = PAPI_get_virt_usec();
 
-	for (i = 0; i < n; i++) {
-		for (j = 0; j < n; j++) {
+	 for (i = 0; i < width; i++) {
+                for (j = 0; j < height; j++) {
 
-			((float*)out_image)[(n*j) + i] = 100*(log10(((((float*)in_image)[(n*j) + i]))+1));
-		}
-	}
+                        ((float*)out_image)[(width*j) + i] = 100*(log10(((((float*)in_image)[(width*j) + i]))+1));
+                }
+        }
+
 	timer2 = PAPI_get_virt_usec();
         printf("Time elapsed is %llu us\n",(timer2-timer1));
 
 	printf("computing log transform done...\n");
 
-	opgm.width = n;
-	opgm.height = n;
+	opgm.width = width;
+	opgm.height = height;
 	normalizeF2PGM(&opgm, out_image);
 
 	/* Image file output */
