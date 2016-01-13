@@ -17,4 +17,4 @@ c:negative.c
 
 
 clean:
-	rm -rf nrgative output.pgm *~
+	rm -rf negative output.pgm *~
