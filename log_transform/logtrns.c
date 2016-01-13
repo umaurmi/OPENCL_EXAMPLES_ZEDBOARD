@@ -90,7 +90,7 @@ int main()
     fclose( fp );
 
     /* Image file input */
-	readPGM(&ipgm, "test_img_old.pgm");
+	readPGM(&ipgm, "lena.pgm");
 
 	width = ipgm.width;
 	height = ipgm.height;
