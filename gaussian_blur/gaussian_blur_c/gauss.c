@@ -20,8 +20,11 @@ int main(int argc, char** argv)
 	long long ptimer2=0;
 
 	int ipgm_img_width = 0;
-	int i = 0;
-	int j = 0;
+	int ipgm_img_height = 0;
+	register int i = 0;
+	register int j = 0;
+	register int r = 0;
+	register int c = 0;
 	pgm_t ipgm;
 	pgm_t opgm;
 
@@ -30,14 +33,15 @@ int main(int argc, char** argv)
 	readPGM(&ipgm, "lena.pgm");
 
 	ipgm_img_width = ipgm.width;
-	printf("image width is %d \n", ipgm_img_width);
+	ipgm_img_height = ipgm.height;
+	printf("c:main program:log img_width is %d \n", ipgm_img_width);
 
 	//Allocate host memory for matrices A and B
-	unsigned int size_A = ipgm_img_width*ipgm_img_width;
+	unsigned int size_A = ipgm_img_width*ipgm_img_height;
 	unsigned int mem_size_A = sizeof(float) * size_A;
 	float* h_A = (float*)malloc(mem_size_A);
 	for (i = 0; i < ipgm_img_width; i++) {
-		for (j = 0; j < ipgm_img_width; j++) {
+		for (j = 0; j < ipgm_img_height; j++) {
 			((float*)h_A)[(ipgm_img_width*j) + i] = (float)ipgm.buf[ipgm_img_width*j + i];
 		}
 	}
@@ -142,7 +146,7 @@ int main(int argc, char** argv)
 	unsigned int mem_size_C = sizeof(float) * size_C;
 	float* h_C = (float*)malloc(mem_size_C);
 
-	printf("Running gaussian blur\n");
+	printf("c:main program:log Running_gaussblur\n");
 	
 	int x, y, sum = 0;
 
@@ -150,13 +154,13 @@ int main(int argc, char** argv)
 
 	for (x = 0; x < ipgm_img_width; x++)
 	{
-		for (y = 0; y < ipgm_img_width; y++)
+		for (y = 0; y < ipgm_img_height; y++)
 		{
 			sum = 0;
-			for (int r = 0; r < 3; r++)
+			for (r = 0; r < 3; r++)
 			{
 				int tmp = (y + r) * ipgm_img_width + x;
-				for (int c = 0; c < 3; c++)
+				for (c = 0; c < 3; c++)
 				{
 					sum += (((float*)h_B)[(r * 3) + c]) * (((float*)h_A)[tmp + c]);	//h_b -> mask, h_A -> input image
 				}
@@ -166,17 +170,17 @@ int main(int argc, char** argv)
 		}
 	}
 	ptimer2 = PAPI_get_virt_usec();
-	printf("Time elapsed is %llu us \n", (ptimer2-ptimer1));
+	printf("c:main timing:PAPI logic %llu us \n", (ptimer2-ptimer1));
 
 
 	opgm.width = ipgm_img_width;
-	opgm.height = ipgm_img_width;
+	opgm.height = ipgm_img_height;
 	normalizeF2PGM(&opgm, h_C);
 
 	/* Image file output */
 	writePGM(&opgm, "output.pgm");
 
-	printf("output pgm done ...\n");
+	printf("c:main program:log done\n");
 
 	destroyPGM(&ipgm);
 	destroyPGM(&opgm);

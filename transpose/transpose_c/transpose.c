@@ -22,13 +22,13 @@ int main()
 
 
    	/* Image file input */
-	readPGM(&ipgm, "test_img_old.pgm");
-	printf("reading file done ... \n");
+	readPGM(&ipgm, "lena.pgm");
+	printf("c:main program:log read_done\n");
 
     	width = ipgm.width; 
 	height = ipgm.height;
-	printf("width of image is %d\n",width);
-	printf("width of image is %d\n", height);
+	printf("c:main program:log img_width %d\n",width);
+	printf("c:main program:log img_height %d\n", height);
 
 	in_image = (float *)malloc(width * height * sizeof(float));
 	out_image = (float *)malloc(width * height * sizeof(float));
@@ -49,9 +49,9 @@ int main()
     	 }
 
     	timer2 = PAPI_get_virt_usec();
-    	printf("Time elapsed is %llu us\n",(timer2-timer1));
+    	printf("c:main timing:PAPI logic %llu us\n",(timer2-timer1));
 	
-    	printf("computing transpose done...\n");
+    	printf("c:main program:log compute_done\n");
 
     	opgm.width = height ;
     	opgm.height = width ;
@@ -60,7 +60,7 @@ int main()
 	/* Image file output */
 	writePGM(&opgm, "output.pgm");
 
-	printf("output pgm done ...\n");
+	printf("c:main program:log output_done\n");
 
 
     	destroyPGM(&ipgm);

@@ -77,7 +77,7 @@ int main(int argc, char** argv)
   	}	
 
   	timer2 = PAPI_get_virt_usec();
-  	printf(" Time elapsed is %llu us\n",(timer2-timer1));
+  	printf("c:main timing:PAPI logic %llu us\n",(timer2-timer1));
  	
  	#ifdef print
  	printf("\n\nMatrix A \n");

@@ -10,24 +10,29 @@
 int main()
 {
 	long long timer1 = 0;
-        long long timer2 = 0;
-    
+	long long timer2 = 0;
+
 	int i, j, width, height;
 	float *in_image;
 	float *out_image;
 
-    	pgm_t ipgm;
-    	pgm_t opgm;
+	pgm_t ipgm;
+	pgm_t opgm;
 
 
-	/* Image file input */
-	readPGM(&ipgm, "test_img_old.pgm");
-	printf("reading image done ...");
-
-	width = ipgm.width;
-	printf("image width is %d \n", width);
+    	/* Image file input */
+	readPGM(&ipgm, "lena.pgm");
+	printf("c:main program:log read_img_done\n");
+    
+	width = ipgm.width; 
 	height = ipgm.height;
-	printf("image height is %d \n", height);
+	printf("c:main program:log img_width %d \n", width);
+	printf("c:main program:log img_height is %d \n", height);
+
+   	/*read gamma from user*/
+	float gamma = 3;
+	//printf("Enter required gamma value for power-law transform (higher gamma implies darker image) \n");
+	//scanf("%f", &gamma);
 
 	in_image = (float *)malloc(width * height * sizeof(float));
 	out_image = (float *)malloc(width * height * sizeof(float));
@@ -41,17 +46,17 @@ int main()
 
 	timer1 = PAPI_get_virt_usec();
 
-	 for (i = 0; i < width; i++) {
-                for (j = 0; j < height; j++) {
+	for (i = 0; i < width; i++) {
+		for (j = 0; j < height; j++) {
 
-                        ((float*)out_image)[(width*j) + i] = 100*(log10(((((float*)in_image)[(width*j) + i]))+1));
-                }
-        }
-
+			((float*)out_image)[(width*j) + i] = pow(((float*)in_image)[(width*j) + i],gamma);
+		}
+	}
+	
 	timer2 = PAPI_get_virt_usec();
-        printf("Time elapsed is %llu us\n",(timer2-timer1));
+	printf("c:main timing:PAPI logic %llu us\n",(timer2-timer1));
 
-	printf("computing log transform done...\n");
+	printf("c:main program:log compute_done\n");
 
 	opgm.width = width;
 	opgm.height = height;
@@ -60,7 +65,7 @@ int main()
 	/* Image file output */
 	writePGM(&opgm, "output.pgm");
 
-	printf("output pgm done ...\n");
+	printf("c:main program:log output_done\n");
 
 	destroyPGM(&ipgm);
 	destroyPGM(&opgm);

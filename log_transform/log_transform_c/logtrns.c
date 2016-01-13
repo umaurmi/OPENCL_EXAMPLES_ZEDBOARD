@@ -9,7 +9,7 @@
 
 int main()
 {
-        long long timer1 = 0;
+	long long timer1 = 0;
         long long timer2 = 0;
     
 	int i, j, width, height;
@@ -20,28 +20,17 @@ int main()
     	pgm_t opgm;
 
 
-    	/* Image file input */
- 	readPGM(&ipgm, "test_img_old.pgm");
-	printf("reading image done ...");
+	/* Image file input */
+	readPGM(&ipgm, "lena.pgm");
+	printf("c:main program:log read_img_done\n");
 
 	width = ipgm.width;
-	printf("image width is %d \n", width);
+	printf("c:main program:log img_width %d \n", width);
 	height = ipgm.height;
-	printf("image height is %d \n", height);
+	printf("c:main program:log img_height %d \n", height);
 
 	in_image = (float *)malloc(width * height * sizeof(float));
 	out_image = (float *)malloc(width * height * sizeof(float));
-
-	/* threshold values :
-	for test_image => 10-80;
-	35-70(better clarity)
-	for lena       => around 127
-	for einstein   => 20-40
-	*/
-
-	int thresh;
-	printf("Enter required thresholding value (0-255) \n");
-	scanf("%d", &thresh);
 
 	for (i = 0; i < width; i++) {
 		for (j = 0; j < height; j++) {
@@ -52,20 +41,17 @@ int main()
 
 	timer1 = PAPI_get_virt_usec();
 
- 	for (i = 0; i < width; i++) {
+	 for (i = 0; i < width; i++) {
                 for (j = 0; j < height; j++) {
 
-                        if ((((float*)in_image)[(width*j) + i]) > thresh)
-                                ((float*)out_image)[(width*j) + i] = 255;
-                        else
-                                ((float*)out_image)[(width*j) + i] = 0;
+                        ((float*)out_image)[(width*j) + i] = 100*(log10(((((float*)in_image)[(width*j) + i]))+1));
                 }
         }
 
- 	timer2 = PAPI_get_virt_usec();
-        printf("Time elapsed is %llu us\n",(timer2-timer1));
+	timer2 = PAPI_get_virt_usec();
+        printf("c:main timing:PAPI logic %llu us\n",(timer2-timer1));
 
-	printf("computing negative done...\n");
+	printf("c:main program:log compute_done\n");
 
 	opgm.width = width;
 	opgm.height = height;
@@ -73,8 +59,6 @@ int main()
 
 	/* Image file output */
 	writePGM(&opgm, "output.pgm");
-
-	printf("output pgm done ...\n");
 
 	destroyPGM(&ipgm);
 	destroyPGM(&opgm);

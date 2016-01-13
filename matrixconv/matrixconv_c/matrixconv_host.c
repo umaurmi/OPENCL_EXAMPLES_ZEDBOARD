@@ -58,7 +58,7 @@ int main(int argc, char** argv)
    	unsigned int mem_size_C = sizeof(float) * size_C;
    	float* h_C = (float*) malloc(mem_size_C);
   
-   	printf("Running matrix convolution for matrices A (%dx%d) and B (%dx%d) ...\n", WA,HA,WB,HB); 
+   	printf("c:main program:log Matrix_A(%dx%d),Matrix_B(%dx%d)\n", WA,HA,WB,HB); 
 	
 	timer1 = PAPI_get_virt_usec();
 
@@ -82,7 +82,7 @@ int main(int argc, char** argv)
 	}
 
 	timer2 = PAPI_get_virt_usec();
-	printf("Time elapsed is %lluus \n",(timer2-timer1));
+	printf("c:main timing:PAPI logic %llu us \n",(timer2-timer1));
 
 	#ifdef print
 	printf("\n\nMatrix A \n");
@@ -116,7 +116,6 @@ int main(int argc, char** argv)
    	printf("\n");
 	#endif
   
- 	printf("Matrix convolution completed...\n"); 
 
    	//Shutdown and cleanup
    	free(h_A);
