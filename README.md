@@ -5,7 +5,10 @@ The repository contains certain OpenCl Examples that can be run on the zedboard 
 
 Current performance profiles are displayed below
 
+*Performance graphs for OpenCL
 ![alt tag](https://raw.githubusercontent.com/umaurmi/OPENCL_EXAMPLES_ZEDBOARD/master/reports/comp.png)
+*Performance graphs for c
+![alt tag](https://raw.githubusercontent.com/umaurmi/OPENCL_EXAMPLES_ZEDBOARD/master/reports/comp_c.png)
 
 ## Table of Contents
 + [Pre-Requisites](#prereq) 
